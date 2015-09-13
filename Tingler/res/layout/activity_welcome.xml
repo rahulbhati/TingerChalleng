@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <Button
+        android:id="@+id/btn_fb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/btn_fb" />
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_fb"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_google" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_google"
+        android:layout_centerHorizontal="true"
+        android:text="@string/signup_txt" />
+
+    <EditText
+        android:id="@+id/etxtz_fname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="@string/etxt_mobile_hint" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/btn_signup" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_save"
+        android:layout_alignParentBottom="true"
+        android:text="@string/btn_login" />
+
+    <EditText
+        android:id="@+id/etxt_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_clear"
+        android:layout_alignLeft="@+id/etxt_mobile_login"
+        android:layout_marginBottom="23dp"
+        android:ems="10"
+        android:hint="@string/etxt_password_hint" >
+
+       
+    </EditText>
+
+    <EditText
+        android:id="@+id/etxt_mobile_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etxt_pass"
+        android:layout_alignLeft="@+id/btn_fb"
+        android:ems="10"
+        android:hint="@string/etxt_mobile_hint" />
+    
+    
+    <TextView
+        android:id="@+id/txt_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etxt_mobile_login"
+        android:layout_centerHorizontal="true"
+        android:text="@string/txt_account" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_save"
+        android:layout_marginTop="14dp"
+        android:background="@android:color/darker_gray" />
+
+</RelativeLayout>

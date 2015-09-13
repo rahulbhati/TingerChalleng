@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxtz_fname"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:text="@string/btn_clear" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btn_clear"
+            android:layout_alignBottom="@+id/btn_clear"
+            android:layout_alignRight="@+id/etxtz_fname"
+            android:text="@string/btn_save" />
+
+        <EditText
+            android:id="@+id/etxt_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxt_contact"
+            android:layout_below="@+id/etxt_contact"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="@string/etxt_country" />
+
+        <EditText
+            android:id="@+id/etxt_lname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxtz_fname"
+            android:layout_below="@+id/etxtz_fname"
+            android:ems="10"
+            android:hint="@string/etxt_ln" />
+
+        <EditText
+            android:id="@+id/EditText01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxt_lname"
+            android:layout_below="@+id/etxt_lname"
+            android:ems="10"
+            android:hint="@string/etxt_email" />
+
+        <EditText
+            android:id="@+id/etxt_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/EditText01"
+            android:layout_below="@+id/EditText01"
+            android:ems="10"
+            android:hint="@string/etxt_contact" />
+
+        <EditText
+            android:id="@+id/etxt_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxt_country"
+            android:layout_below="@+id/etxt_country"
+            android:ems="10"
+            android:hint="@string/etxt_city" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etxt_city"
+            android:layout_alignRight="@+id/etxt_city"
+            android:layout_below="@+id/etxt_city"
+            android:entries="@array/gender" />
+
+        <EditText
+            android:id="@+id/etxtz_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:ems="10"
+            android:hint="@string/etxt_fn" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/etxt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spinner1"
+            android:layout_below="@+id/spinner1"
+            android:ems="10"
+            android:hint="@string/etxt_status" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+</RelativeLayout>
