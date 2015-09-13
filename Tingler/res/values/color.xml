@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <color name="error_bg">#FF4000</color>
-   
+    <color name="primaryColor">#40C49D</color>
+    <color name="primaryColorDark">#00BA8B</color>
+    <color name="accentColor">#00796B</color>
+   <!--  <color name="navigationBarColor">#BF360C</color> -->
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowsBackgroundColor">#FFFFFF</color>
 </resources>
