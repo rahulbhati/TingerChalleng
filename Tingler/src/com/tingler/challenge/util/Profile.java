@@ -19,12 +19,10 @@ public class Profile {
 	 private static final String LEVEL="level";
 	 private static final String POINTS="points";
 	 private static final String COINS="coins";
-	public static SharedPreferences getSharedpreferences() {
-		return sharedpreferences;
-	}
-	public static void setSharedpreferences(SharedPreferences sharedpreferences) {
-		Profile.sharedpreferences = sharedpreferences;
-	}
+	
+	 
+	 
+	 
 	public static String getMyprofile() {
 		return MYProfile;
 	}
