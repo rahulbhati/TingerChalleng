@@ -19,6 +19,57 @@ public class Profile {
 	 private static final String LEVEL="level";
 	 private static final String POINTS="points";
 	 private static final String COINS="coins";
+	public static SharedPreferences getSharedpreferences() {
+		return sharedpreferences;
+	}
+	public static void setSharedpreferences(SharedPreferences sharedpreferences) {
+		Profile.sharedpreferences = sharedpreferences;
+	}
+	public static String getMyprofile() {
+		return MYProfile;
+	}
+	public static String getSocial() {
+		return SOCIAL;
+	}
+	public static String getMobile() {
+		return MOBILE;
+	}
+	public static String getPassword() {
+		return PASSWORD;
+	}
+	public static String getFirstName() {
+		return FIRST_NAME;
+	}
+	public static String getLastName() {
+		return LAST_NAME;
+	}
+	public static String getEmail() {
+		return EMAIL;
+	}
+	public static String getCountry() {
+		return COUNTRY;
+	}
+	public static String getCity() {
+		return CITY;
+	}
+	public static String getGender() {
+		return GENDER;
+	}
+	public static String getStatus() {
+		return STATUS;
+	}
+	public static String getPicture() {
+		return PICTURE;
+	}
+	public static String getLevel() {
+		return LEVEL;
+	}
+	public static String getPoints() {
+		return POINTS;
+	}
+	public static String getCoins() {
+		return COINS;
+	}
 	 
 	 
 	 
