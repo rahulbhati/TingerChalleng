@@ -32,6 +32,7 @@ public class WelcomeActivity extends Activity {
 	}
 
 	public void init() {
+		authentication = new Authentication(this);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 		toolbar_title.setText("Welcome");
 		btn_fb = (Button) findViewById(R.id.btn_fb);
@@ -43,12 +44,12 @@ public class WelcomeActivity extends Activity {
 		etxt_mobile_login = (EditText) findViewById(R.id.etxt_mobile_login);
 		etxt_pass = (EditText) findViewById(R.id.etxt_pass);
 
-		btn_signup.setOnClickListener(authentication
-				.loginAuthentication(Signup_TAG));
+	/*	btn_signup.setOnClickListener(authentication
+				.loginAuthentication());
 		btn_login.setOnClickListener(authentication
-				.loginAuthentication(Login_TAG));
-		
-		btn_fb.setOnClickListener(authentication.loginAuthentication(FACBOOK_TAG));
+				.loginAuthentication());
+		*/
+	//	btn_fb.setOnClickListener(authentication.loginAuthentication());
 		btn_google.setOnClickListener(authentication.loginAuthentication(GOOGLE_LOGIN_TAG));
 		
 	}
