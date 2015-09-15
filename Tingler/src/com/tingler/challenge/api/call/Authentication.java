@@ -14,12 +14,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.tingler.challenge.R;
 import com.tingler.challenge.WelcomeActivity;
 
-public class Authentication {
+public class Authentication extends GoogleLogin{
 	Context context;
 	ProgressDialog progressDialog;
 	public static int activityResult = 0;
 	public Authentication(Context context) {
-
+		super(context);
 		this.context = context;
 
 	}
@@ -35,8 +35,7 @@ public class Authentication {
 				}else if (v.getId() == R.id.btn_google) {
 					Authentication.activityResult = activityResult;
 
-					GoogleLogin googleLogin=new GoogleLogin(context);
-					googleLogin.googleLogin();
+					googleLogin();
 				}
 
 			}

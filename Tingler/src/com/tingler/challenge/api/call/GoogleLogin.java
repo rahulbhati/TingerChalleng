@@ -36,7 +36,6 @@ public class GoogleLogin implements ConnectionCallbacks,
 	}
 
 	public void googleLogin() {
-		
 		mGoogleApiClient = new GoogleApiClient.Builder(context)
 				.addConnectionCallbacks(this)
 				.addOnConnectionFailedListener(this).addApi(Plus.API)
@@ -45,6 +44,7 @@ public class GoogleLogin implements ConnectionCallbacks,
 		mGoogleApiClient.connect();
 		mIntentInProgress = false;
 	}
+
 
 
 	@Override

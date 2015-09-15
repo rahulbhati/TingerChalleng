@@ -1,6 +1,7 @@
 package com.tingler.challenge;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,13 +45,25 @@ public class WelcomeActivity extends Activity {
 		etxt_mobile_login = (EditText) findViewById(R.id.etxt_mobile_login);
 		etxt_pass = (EditText) findViewById(R.id.etxt_pass);
 
-	/*	btn_signup.setOnClickListener(authentication
-				.loginAuthentication());
+		btn_signup.setOnClickListener(authentication
+				.loginAuthentication(Signup_TAG));
 		btn_login.setOnClickListener(authentication
-				.loginAuthentication());
-		*/
-	//	btn_fb.setOnClickListener(authentication.loginAuthentication());
+				.loginAuthentication(Login_TAG));
+		
+		btn_fb.setOnClickListener(authentication.loginAuthentication(FACBOOK_TAG));
 		btn_google.setOnClickListener(authentication.loginAuthentication(GOOGLE_LOGIN_TAG));
 		
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, responseCode, intent);
+		if (Authentication.activityResult == FACBOOK_TAG) {
+			/*Session.getActiveSession().onActivityResult(this, requestCode,
+					responseCode, intent);
+			authentication.facebooklogin.callingFBResult(this);*/
+		} else if (Authentication.activityResult == GOOGLE_LOGIN_TAG) {
+			authentication.onActivityResult(requestCode, responseCode, intent);
+		}
 	}
 }
