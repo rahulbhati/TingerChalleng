@@ -47,5 +47,9 @@ public class WelcomeActivity extends Activity {
 				.loginAuthentication(Signup_TAG));
 		btn_login.setOnClickListener(authentication
 				.loginAuthentication(Login_TAG));
+		
+		btn_fb.setOnClickListener(authentication.loginAuthentication(FACBOOK_TAG));
+		btn_google.setOnClickListener(authentication.loginAuthentication(GOOGLE_LOGIN_TAG));
+		
 	}
 }

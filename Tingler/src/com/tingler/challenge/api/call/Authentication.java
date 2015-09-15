@@ -17,7 +17,7 @@ import com.tingler.challenge.WelcomeActivity;
 public class Authentication {
 	Context context;
 	ProgressDialog progressDialog;
-
+	public static int activityResult = 0;
 	public Authentication(Context context) {
 
 		this.context = context;
@@ -32,6 +32,11 @@ public class Authentication {
 				// TODO Auto-generated method stub
 				if (v.getId() == R.id.btn_signup) {
 					customSignupAuth();
+				}else if (v.getId() == R.id.btn_google) {
+					Authentication.activityResult = activityResult;
+
+					GoogleLogin googleLogin=new GoogleLogin(context);
+					googleLogin.googleLogin();
 				}
 
 			}
