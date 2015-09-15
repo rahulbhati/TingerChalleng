@@ -1,0 +1,14 @@
+<resources>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="welcome_margin_top_bottom">20dp</dimen>
+    <dimen name="welcome_margin_top">5dp</dimen>
+    <dimen name="welcome_signup_bottom">8dp</dimen>
+    <dimen name="welcome_account_txt_top">15dp</dimen>
+    <dimen name="btn_social_padding">5dp</dimen>
+    <dimen name="btn_padding_left">20dp</dimen>
+<dimen name="btn_padding_right">20dp</dimen>
+<dimen name="btn_padding_top">1dp</dimen>
+<dimen name="btn_padding_bottom">1dp</dimen>
+</resources>

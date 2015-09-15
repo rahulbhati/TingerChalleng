@@ -4,7 +4,10 @@
     <color name="primaryColor">#40C49D</color>
     <color name="primaryColorDark">#00BA8B</color>
     <color name="accentColor">#00796B</color>
-   <!--  <color name="navigationBarColor">#BF360C</color> -->
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowsBackgroundColor">#FFFFFF</color>
+    <color name="facebookColorBackground">#3C568F</color>
+    <color name="googleColorBackground">#DE4931</color>
+    <color name="btnTxtColor">#FFFFFF</color>
+      <color name="etxtColor">#000000</color>
 </resources>
