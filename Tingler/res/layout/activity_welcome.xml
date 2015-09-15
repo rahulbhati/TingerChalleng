@@ -64,15 +64,13 @@
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/btn_height"
                 android:layout_marginBottom="@dimen/welcome_signup_bottom"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:background="@drawable/button_round"
                 android:paddingBottom="@dimen/btn_padding_bottom"
-                android:paddingLeft="@dimen/btn_padding_left"
-                android:paddingRight="@dimen/btn_padding_right"
                 android:paddingTop="@dimen/btn_padding_top"
-                android:text="@string/btn_signup"
+                android:text="       SIGN UP       "
                 android:textAllCaps="false" />
 
             <View
@@ -119,16 +117,16 @@
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                   android:layout_height="@dimen/btn_height"
                     android:background="@drawable/button_round"
                     android:paddingBottom="@dimen/btn_padding_bottom"
-                    android:paddingLeft="@dimen/btn_padding_left"
-                    android:paddingRight="@dimen/btn_padding_right"
+                    
                     android:paddingTop="@dimen/btn_padding_top"
-                    android:text="@string/btn_login"
+                    android:text="         LOGIN         "
+                    android:layout_marginBottom="5dp"
                     android:textAllCaps="false" />
 
-                   <Button
+                 <!--   <Button
                        android:id="@+id/btn_forgot"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
@@ -139,7 +137,7 @@
                        android:paddingTop="@dimen/btn_padding_top"
                        android:text="@string/btn_forgot"
                        android:textAllCaps="false" />
-
+ -->
             </LinearLayout>
             <!-- </ScrollView> -->
         </LinearLayout>

@@ -4,24 +4,26 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_account_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/btn_account_active" />
+          android:background="@drawable/button_round"
+        android:text="         ACTIVE ACCOUNT         " />
 
     <EditText
         android:id="@+id/etxtz_fname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_save"
+        android:layout_above="@+id/btn_account_active"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="18dp"
         android:ems="10"
+         android:textColor="@android:color/black"
         android:hint="@string/etxt_otp_hint" >
 
-        <requestFocus />
+       
     </EditText>
 
     <TextView
@@ -31,18 +33,11 @@
         android:layout_above="@+id/etxtz_fname"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
+        android:textColor="@android:color/black"
         android:text="@string/txt_otp" />
 
-    <TextView
-        android:id="@+id/txt_accountactive_error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/error_bg"
-        android:padding="10dp"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/white"
-        android:text="@string/txt_accountactive_error" />
+     <include
+            android:id="@+id/error"
+            layout="@layout/error"></include>
 
 </RelativeLayout>

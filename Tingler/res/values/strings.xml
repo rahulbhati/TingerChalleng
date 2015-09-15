@@ -8,12 +8,12 @@
     <string name="btn_google">Sign in with Google</string>
     <string name="signup_txt">Or Sign up with your mobile number</string>
     <string name="etxt_mobile_hint">Mobile number</string>
-    <string name="btn_signup">SIGN UP</string>
+    <string name="btn_signup">   SIGN UP   </string>
     <string name="txt_account">Do you have account</string>
     <string name="txt_password_hint">Password</string>
     <string name="etxt_password_hint">Password</string>
-    <string name="btn_login">LOGIN</string>
-    <string name="txt_accountactive_error">Please check your mobile / email for code</string>
+    <string name="btn_login">   LOGIN   </string>
+    <string name="txt_accountactive_error">Please check your mobile for code</string>
     <string name="txt_otp">We sent you OTP code to your mobile</string>
     <string name="etxt_otp_hint">OTP code</string>
     <string name="btn_account_active">Active Account</string>
