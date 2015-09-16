@@ -10,4 +10,9 @@
     <color name="googleColorBackground">#DE4931</color>
     <color name="btnTxtColor">#FFFFFF</color>
       <color name="etxtColor">#000000</color>
+      
+      <color name="primaryBackground">#172532</color>
+      
+      <color name="levelTxtColor">#94724D</color>
+    
 </resources>
