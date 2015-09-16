@@ -6,7 +6,7 @@ public class APIS {
 	
 	public static String CUSTOM_LOGIN = HOST+"user/login";
 	public static String CUSTOM_SIGNUP = HOST+"user/register_by_mobile";
-	public static String CUSTOM_UPDATE = "http://67.207.157.186/infoplum/API/api.php?updateUserInfo=true&";
+	public static String CUSTOM_PROFILE = HOST+"user/create_user_profile";
 	public static String CUSTOM_FORGOT_PASS = "http://67.207.157.186/infoplum/API/api.php?forgotPassword=true&";
 
 	public static String MOBILT = "mobile";

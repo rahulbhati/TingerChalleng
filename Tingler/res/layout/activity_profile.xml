@@ -12,9 +12,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        
-        >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -23,65 +21,70 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
+                android:id="@+id/imageview_profile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/no_image_icon" />
 
             <EditText
-                android:id="@+id/etxtz_fname"
+                android:id="@+id/etxt_fname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/etxt_fn" >
+                android:hint="@string/etxt_fn"
+                android:textColor="@android:color/black" >
             </EditText>
 
             <EditText
                 android:id="@+id/etxt_lname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:hint="@string/etxt_ln" />
+                android:hint="@string/etxt_ln"
+                android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/EditText01"
+                android:id="@+id/etxt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:hint="@string/etxt_email" />
+                android:hint="@string/etxt_email"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:hint="@string/etxt_contact" />
+                android:hint="@string/etxt_contact"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:hint="Password"
-                 />
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_cpassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:hint="Confirm Password" />
+                android:hint="Confirm Password"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:layout_marginBottom="@dimen/welcome_margin_top_bottom"
+                android:layout_marginTop="@dimen/welcome_margin_top"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
@@ -96,12 +99,12 @@
 
                 <Button
                     android:id="@+id/btn_save"
-                     android:background="@drawable/button_round"
-                    android:paddingBottom="@dimen/btn_padding_bottom"
-                    android:paddingTop="@dimen/btn_padding_top"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
+                    android:background="@drawable/button_round"
+                    android:paddingBottom="@dimen/btn_padding_bottom"
+                    android:paddingTop="@dimen/btn_padding_top"
                     android:text="@string/btn_save" />
             </LinearLayout>
         </LinearLayout>

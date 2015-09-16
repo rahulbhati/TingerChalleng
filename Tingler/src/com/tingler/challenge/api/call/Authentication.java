@@ -168,6 +168,58 @@ public class Authentication extends GoogleLogin {
 		
 	}
 
+	public void requestProfileAPI(final Map<String, String> params) {
+
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_PROFILE, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+						
+						try {
+							JSONObject obj = new JSONObject(arg0);
+							responseAPI = obj;
+							System.out.println("JsonObject :" + responseAPI);
+                            com.tingler.challenge.util.Profile profile=new com.tingler.challenge.util.Profile(context);
+                            profile.addProfileInfo(arg0);
+                            System.out.println("Id :"+profile.getId());
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+		
+	}
+
 	
 	public void customActiveAccountAuth() {
 		final String mobile = WelcomeActivity.etxt_mobile_login.getText()
