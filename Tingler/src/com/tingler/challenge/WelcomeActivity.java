@@ -1,15 +1,25 @@
 package com.tingler.challenge;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends Activity implements
+		android.view.View.OnClickListener {
 	TextView toolbar_title;
 	Button btn_fb, btn_google, btn_signup, btn_login;
 	public static EditText etxt_mobile_signup, etxt_mobile_login, etxt_pass;
@@ -23,7 +33,7 @@ public class WelcomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.activity_welcome);
 		init();
 	}
@@ -40,30 +50,55 @@ public class WelcomeActivity extends Activity {
 		btn_google = (Button) findViewById(R.id.btn_google);
 		btn_login = (Button) findViewById(R.id.btn_login);
 		btn_signup = (Button) findViewById(R.id.btn_signup);
-		//btn_forgot = (Button) findViewById(R.id.btn_forgot);
+		// btn_forgot = (Button) findViewById(R.id.btn_forgot);
 		etxt_mobile_signup = (EditText) findViewById(R.id.etxt_mobile_signup);
 		etxt_mobile_login = (EditText) findViewById(R.id.etxt_mobile_login);
 		etxt_pass = (EditText) findViewById(R.id.etxt_pass);
 
-		btn_signup.setOnClickListener(authentication
-				.loginAuthentication(Signup_TAG));
-		btn_login.setOnClickListener(authentication
-				.loginAuthentication(Login_TAG));
-		
-		btn_fb.setOnClickListener(authentication.loginAuthentication(FACBOOK_TAG));
-		btn_google.setOnClickListener(authentication.loginAuthentication(GOOGLE_LOGIN_TAG));
-		
+		btn_signup.setOnClickListener(this);
+		btn_login.setOnClickListener(this);
+
+		btn_fb.setOnClickListener(authentication
+				.loginAuthentication(FACBOOK_TAG));
+		btn_google.setOnClickListener(authentication
+				.loginAuthentication(GOOGLE_LOGIN_TAG));
+
 	}
+
 	@Override
-	protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+	protected void onActivityResult(int requestCode, int responseCode,
+			Intent intent) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, responseCode, intent);
 		if (Authentication.activityResult == FACBOOK_TAG) {
-			/*Session.getActiveSession().onActivityResult(this, requestCode,
-					responseCode, intent);
-			authentication.facebooklogin.callingFBResult(this);*/
+			/*
+			 * Session.getActiveSession().onActivityResult(this, requestCode,
+			 * responseCode, intent);
+			 * authentication.facebooklogin.callingFBResult(this);
+			 */
 		} else if (Authentication.activityResult == GOOGLE_LOGIN_TAG) {
 			authentication.onActivityResult(requestCode, responseCode, intent);
 		}
 	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+		if (v.getId() == R.id.btn_signup) {
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(APIS.MOBILT, etxt_mobile_signup.getText().toString()
+					.trim());
+			authentication.requestSignupAPI(params);
+
+		}else if(v.getId()==R.id.btn_login){
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(APIS.MOBILT, etxt_mobile_login.getText().toString()
+					.trim());
+			params.put(APIS.PASSWORD, etxt_pass.getText().toString()
+					.trim());
+			authentication.requestLoginAPI(params);
+		}
+	}
+
 }
