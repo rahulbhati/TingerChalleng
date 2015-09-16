@@ -64,7 +64,7 @@ public void onClick(View v) {
 		
 		Bitmap bitmap = ((BitmapDrawable)imageview_profile.getDrawable()).getBitmap();
 		
-		String picbase64=encodeTobase64(bitmap);
+		//String picbase64=encodeTobase64(bitmap);
 		
 		Map<String, String> params = new HashMap<String, String>();
 		
@@ -78,7 +78,7 @@ public void onClick(View v) {
 				.trim());
 		params.put(Profile.PASSWORD, etxt_password.getText().toString()
 				.trim());
-		params.put(Profile.PICTURE,"profile image");
+	//	params.put(Profile.PICTURE,"profile image");
 		params.put(Profile.ID,"1");
 		params.put(Profile.STATUS_MSG,"hello bro");
 		authentication.requestProfileAPI(params);

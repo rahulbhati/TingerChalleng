@@ -31,7 +31,7 @@ public class Authentication extends GoogleLogin {
 	Context context;
 	ProgressDialog progressDialog;
 	public static int activityResult = 0;
-	JSONObject responseAPI = null;
+
 
 	public Authentication(Context context) {
 		super(context);
@@ -79,8 +79,8 @@ public class Authentication extends GoogleLogin {
 
 						try {
 							JSONObject obj = new JSONObject(arg0);
-							responseAPI = obj;
-							System.out.println("JsonObject :" + responseAPI);
+							
+							System.out.println("JsonObject :" + obj);
                             com.tingler.challenge.util.Profile profile=new com.tingler.challenge.util.Profile(context);
                             profile.addProfileInfo(arg0);
                             System.out.println("Id :"+profile.getId());
@@ -131,8 +131,8 @@ public class Authentication extends GoogleLogin {
 
 						try {
 							JSONObject obj = new JSONObject(arg0);
-							responseAPI = obj;
-							System.out.println("JsonObject :" + responseAPI);
+							
+							System.out.println("JsonObject :" + obj);
 
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
@@ -181,11 +181,18 @@ public class Authentication extends GoogleLogin {
 						
 						try {
 							JSONObject obj = new JSONObject(arg0);
-							responseAPI = obj;
-							System.out.println("JsonObject :" + responseAPI);
-                            com.tingler.challenge.util.Profile profile=new com.tingler.challenge.util.Profile(context);
+							
+							obj.getJSONObject("data").remove(com.tingler.challenge.util.Profile.PASSWORD);
+							
+							
+							obj.getJSONObject("data").put(com.tingler.challenge.util.Profile.PASSWORD, params.get(com.tingler.challenge.util.Profile.PASSWORD));
+							
+							System.out.println("JsonObject :" + obj);
+							com.tingler.challenge.util.Profile profile=new com.tingler.challenge.util.Profile(context);
                             profile.addProfileInfo(arg0);
                             System.out.println("Id :"+profile.getId());
+					
+					
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
