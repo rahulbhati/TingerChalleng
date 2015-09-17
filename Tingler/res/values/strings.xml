@@ -32,6 +32,7 @@
     <string name="etxt_status">Status</string>
     <string name="btn_clear">Clear</string>
     <string name="btn_save">Save</string>
+    <string name="btn_createchallenge">Create Challenge</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="btn_forgot">Forgot</string>

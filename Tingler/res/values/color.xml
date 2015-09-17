@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+
     <color name="error_bg">#FF4000</color>
     <color name="primaryColor">#40C49D</color>
     <color name="primaryColorDark">#00BA8B</color>
@@ -9,10 +10,10 @@
     <color name="facebookColorBackground">#3C568F</color>
     <color name="googleColorBackground">#DE4931</color>
     <color name="btnTxtColor">#FFFFFF</color>
-      <color name="etxtColor">#000000</color>
-      
-      <color name="primaryBackground">#172532</color>
-      
-      <color name="levelTxtColor">#94724D</color>
-    
+    <color name="etxtColor">#000000</color>
+    <color name="primaryBackground">#172532</color>
+    <color name="levelTxtColor">#94724D</color>
+    <color name="btn_dark">#020A15</color>
+    <color name="itme_one">#00996A</color>
+
 </resources>

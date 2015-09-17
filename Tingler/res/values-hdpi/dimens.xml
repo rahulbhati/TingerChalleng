@@ -8,16 +8,21 @@
     <dimen name="welcome_account_txt_top">15dp</dimen>
     <dimen name="btn_social_padding">5dp</dimen>
     <dimen name="btn_padding_left">20dp</dimen>
-<dimen name="btn_padding_right">20dp</dimen>
-<dimen name="btn_padding_top">1dp</dimen>
-<dimen name="btn_padding_bottom">0dp</dimen>
-<dimen name="btn_height">35dp</dimen>
-<dimen name="levelTxtColor">20dp</dimen>
-
-<dimen name="profile_un_txt_size">20dp</dimen>
-<dimen name="profile_un_txt_margin_top">15dp</dimen>
-<dimen name="profile_un_txt_margin_bottom">15dp</dimen>
-<dimen name="profile_coins_txt_size">15dp</dimen>
-<dimen name="profile_status_txt_size">10dp</dimen>
-
+    <dimen name="btn_padding_right">20dp</dimen>
+    <dimen name="btn_padding_top">1dp</dimen>
+    <dimen name="btn_padding_bottom">0dp</dimen>
+    <dimen name="btn_height">35dp</dimen>
+    <dimen name="levelTxtColor">20dp</dimen>
+    <dimen name="profile_un_txt_size">20dp</dimen>
+    <dimen name="profile_un_txt_margin_top">15dp</dimen>
+    <dimen name="profile_un_txt_margin_bottom">15dp</dimen>
+    <dimen name="profile_coins_txt_size">15dp</dimen>
+    <dimen name="profile_status_txt_size">10dp</dimen>
+    <dimen name="action_icon_width">35dp</dimen>
+    <dimen name="action_icon_height">35dp</dimen>
+    
+    <dimen name="drawer_layout_margin_top_bottom">20dp</dimen>
+  <dimen name="drawer_btn_maring_top_bottom">20dp</dimen>
+  <dimen name="drawer_txt_maring_top_bottom">20dp</dimen>
+  
 </resources>

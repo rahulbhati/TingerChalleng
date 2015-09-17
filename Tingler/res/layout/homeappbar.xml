@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor" >
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentTop="true"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/action_icon_width"
+            android:layout_height="@dimen/action_icon_height"
+            android:layout_toRightOf="@+id/imageView3"
+            android:src="@drawable/tab_logo" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Toolbar Title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/title_txt_size" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/action_icon_width"
+            android:layout_height="@dimen/action_icon_height"
+            android:layout_alignBottom="@+id/toolbar_title"
+            android:src="@drawable/top_banner_backbutton" />
+
+        <ImageView
+            android:id="@+id/imv_action_menu"
+            android:layout_width="@dimen/action_icon_width"
+            android:layout_height="@dimen/action_icon_height"
+            android:layout_alignBottom="@+id/toolbar_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
+            android:src="@drawable/action_menu" />
+    </RelativeLayout>
+
+</RelativeLayout>

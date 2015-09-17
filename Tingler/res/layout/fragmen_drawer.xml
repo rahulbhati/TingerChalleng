@@ -1,27 +1,122 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray">
+    android:background="@color/primaryColorDark" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:id="@+id/layout"
+    <ScrollView
+       
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fillViewport="true" >
 
-        <ImageView
-            android:layout_width="260dp"
-            android:layout_height="200dp"
-            android:src="@drawable/icon" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/drawer_layout_margin_top_bottom"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/layout"
-        android:id="@+id/drawerItems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher" />
 
-    </android.support.v7.widget.RecyclerView>
+            <Button
+                android:id="@+id/btn_createchallenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/drawer_btn_maring_top_bottom"
+                android:layout_marginTop="@dimen/drawer_btn_maring_top_bottom"
+                android:background="@drawable/button_round_blue"
+                android:paddingBottom="@dimen/btn_padding_bottom"
+                android:paddingTop="@dimen/btn_padding_top"
+                android:text="   Create Challenge   " />
+
+            <TextView
+                android:id="@+id/txt_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/itme_one"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="Profile"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="Dashboard"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/itme_one"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="Notification"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_helpcenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="Help Center"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_aboutus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/itme_one"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="About us"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/drawer_layout_margin_top_bottom"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="Update"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/etxt_setting"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:src="@drawable/action_menu" />
+
+            <TextView
+                android:id="@+id/txt_signout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/drawer_layout_margin_top_bottom"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
+                android:text="SIGN OUT"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

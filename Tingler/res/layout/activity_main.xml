@@ -2,20 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="false"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true" >
 
     <RelativeLayout
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.tingler.challenge.MainActivity">
-
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" >
 
         <include
             android:id="@+id/toolBar"
-            layout="@layout/appbar"></include>
-
+            layout="@layout/homeappbar" >
+        </include>
+          <FrameLayout
+               android:layout_below="@+id/toolBar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     </RelativeLayout>
 
     <fragment
@@ -23,7 +26,10 @@
         android:name="com.tingler.challenge.fragment.NavigationDrawerFragment"
         android:layout_width="260dp"
         android:layout_height="match_parent"
+        android:layout_gravity="end"
+        tools:layout="@layout/fragmen_drawer" >
+    </fragment>
 
-        android:layout_gravity="start"
-        tools:layout="@layout/fragmen_drawer"></fragment>
+  
+
 </android.support.v4.widget.DrawerLayout>
