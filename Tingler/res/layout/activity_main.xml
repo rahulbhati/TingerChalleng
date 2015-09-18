@@ -14,22 +14,19 @@
             android:id="@+id/toolBar"
             layout="@layout/homeappbar" >
         </include>
-          <FrameLayout
-               android:layout_below="@+id/toolBar"
-        android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolBar" />
     </RelativeLayout>
 
-    <fragment
-        android:id="@+id/drawerFragment"
-        android:name="com.tingler.challenge.fragment.NavigationDrawerFragment"
+    <include
+        android:id="@+id/drawerItem"
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-        tools:layout="@layout/fragmen_drawer" >
-    </fragment>
-
-  
+        layout="@layout/drawer_items" />
 
 </android.support.v4.widget.DrawerLayout>

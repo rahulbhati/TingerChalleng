@@ -73,7 +73,7 @@ public class NavigationDrawerFragment extends Fragment implements OnClickListene
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.fragmen_drawer, container, false);
+		View view = inflater.inflate(R.layout.drawer_items, container, false);
 	//	init(view);
 		return view;
 	}

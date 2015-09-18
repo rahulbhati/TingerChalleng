@@ -16,6 +16,10 @@ public class Dashboard extends Fragment{
 	ViewPager viewPager;
     TabPagerAdapter tabAdapter;
     Context context;
+    
+    public Dashboard(){
+    	
+    }
     public Dashboard(Context context){
     	this.context=context;
     }
@@ -25,7 +29,7 @@ public class Dashboard extends Fragment{
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View dashboardView=inflater.inflate(R.layout.fragment_dashboard,container,false);
-		init(dashboardView);
+		//init(dashboardView);
 		
 		return dashboardView;
 	}
