@@ -60,8 +60,10 @@ public void init() {
 @Override
 public void onClick(View v) {
 	// TODO Auto-generated method stub
+	   
+	
 	if(v.getId()==R.id.btn_save){
-		
+		Profile profile=new Profile(this);
 		Bitmap bitmap = ((BitmapDrawable)imageview_profile.getDrawable()).getBitmap();
 		
 		//String picbase64=encodeTobase64(bitmap);
@@ -78,9 +80,9 @@ public void onClick(View v) {
 				.trim());
 		params.put(Profile.PASSWORD, etxt_password.getText().toString()
 				.trim());
-	//	params.put(Profile.PICTURE,"profile image");
-		params.put(Profile.ID,"1");
-		params.put(Profile.STATUS_MSG,"hello bro");
+	//	params.put(Profile.Profile_Img,"profile image");
+		params.put(Profile.ID,profile.getId());
+		params.put(Profile.STATUS_MSG,"2");
 		authentication.requestProfileAPI(params);
 	
 	}else if(v.getId()==R.id.btn_clear){

@@ -19,15 +19,26 @@ public class Profile {
 
 	public static final String STATUS_MSG = "status_msg";
 	public static final String STATUS = "status";
-	public static final String PICTURE = "profile_img";
-	public static final String LEVEL = "level";
-	public static final String POINTS = "points";
+
+	public static final String LEVEL = "user_level";
+	public static final String POINTS = "user_points";
 	public static final String FACEBOOK_ID = "fb_id";
 	public static final String GOOGLE_ID = "gp_id";
 	public static final String COINS = "coins";
 	public static final String IS_VARIFY = "is_verify";
 	public static final String DATE_ADDED = "date_added";
 	public static final String Verification_Code = "verification_code";
+	public static final String Change_Password_Code = "change_pwd_code";
+	public static final String Profile_Img = "profile_img";
+
+	public static String getChangePasswordCode() {
+		return Change_Password_Code;
+	}
+
+	public static String getProfileImg() {
+		return Profile_Img;
+	}
+
 	public Context context;
 	SharedPreferences.Editor editor;
 
@@ -49,15 +60,23 @@ public class Profile {
 			editor.putString(FIRST_NAME, jsonObject.getString(FIRST_NAME));
 			editor.putString(LAST_NAME, jsonObject.getString(LAST_NAME));
 			editor.putString(MOBILE, jsonObject.getString(MOBILE));
+			editor.putString(Profile_Img, jsonObject.getString(COINS));
 			editor.putString(STATUS_MSG, jsonObject.getString(STATUS_MSG));
+			editor.putString(STATUS, jsonObject.getString(STATUS));
 			editor.putString(DATE_ADDED, jsonObject.getString(DATE_ADDED));
 			editor.putString(FACEBOOK_ID, jsonObject.getString(FACEBOOK_ID));
 			editor.putString(GOOGLE_ID, jsonObject.getString(GOOGLE_ID));
 			editor.putString(IS_VARIFY, jsonObject.getString(IS_VARIFY));
-			editor.putString(STATUS, jsonObject.getString(STATUS));
+
 			editor.putString(Verification_Code,
 					jsonObject.getString(Verification_Code));
+
 			editor.putString(COINS, jsonObject.getString(COINS));
+			editor.putString(POINTS, jsonObject.getString(POINTS));
+			editor.putString(LEVEL, jsonObject.getString(LEVEL));
+			editor.putString(Change_Password_Code,
+					jsonObject.getString(Change_Password_Code));
+            
 			editor.commit();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -106,11 +125,6 @@ public class Profile {
 	public static String getStatus() {
 
 		return sharedpreferences.getString(STATUS, "");
-	}
-
-	public static String getPicture() {
-
-		return sharedpreferences.getString(PICTURE, "");
 	}
 
 	public static String getLevel() {
