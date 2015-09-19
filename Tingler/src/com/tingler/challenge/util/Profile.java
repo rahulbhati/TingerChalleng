@@ -10,7 +10,7 @@ public class Profile {
 	public static final String MYProfile = "MyProfilePre";
 	public static SharedPreferences sharedpreferences;
 	public static final String ID = "id";
-	public static final String SOCIAL = "social";
+
 	public static final String MOBILE = "mobile";
 	public static final String PASSWORD = "password";
 	public static final String FIRST_NAME = "first_name";
@@ -30,6 +30,12 @@ public class Profile {
 	public static final String Verification_Code = "verification_code";
 	public static final String Change_Password_Code = "change_pwd_code";
 	public static final String Profile_Img = "profile_img";
+	public static final String Media_Type = "media_type";
+	
+	
+	public static String getMediaType() {
+		return sharedpreferences.getString(Media_Type, "");
+	}
 
 	public static String getChangePasswordCode() {
 		return Change_Password_Code;
@@ -88,9 +94,7 @@ public class Profile {
 		return sharedpreferences.getString(ID, "");
 	}
 
-	public static String getSocial() {
-		return SOCIAL;
-	}
+	
 
 	public static String getMobile() {
 
@@ -106,17 +110,32 @@ public class Profile {
 
 		return sharedpreferences.getString(FIRST_NAME, "");
 	}
+	
+	public void setFirstName(String first_Name){
+		editor.putString(FIRST_NAME, first_Name);
+		editor.commit();
+	}
 
 	public static String getLastName() {
 
 		return sharedpreferences.getString(LAST_NAME, "");
 	}
-
+	public void setLastName(String LastName){
+		editor.putString(LAST_NAME, LastName);
+		editor.commit();
+	}
 	public static String getEmail() {
 
 		return sharedpreferences.getString(EMAIL, "");
 	}
-
+	public void setEmail(String Email){
+		editor.putString(EMAIL, Email);
+		editor.commit();
+	}
+	public void setMediaType(String MediaType){
+		editor.putString(Media_Type, MediaType);
+		editor.commit();
+	}
 	public static String getStatusMsg() {
 
 		return sharedpreferences.getString(STATUS_MSG, "");
@@ -141,12 +160,22 @@ public class Profile {
 		return sharedpreferences.getString(FACEBOOK_ID, "");
 
 	}
-
+	public void setFacebookId(String FacebookId){
+		editor.putString(FACEBOOK_ID, FacebookId);
+		editor.commit();
+	}
 	public static String getGoogleId() {
 
 		return sharedpreferences.getString(GOOGLE_ID, "");
 	}
-
+	public void setGoogleId(String GoogleId){
+		editor.putString(GOOGLE_ID, GoogleId);
+		editor.commit();
+	}
+	public void setProfileImage(String ProfileImage){
+		editor.putString(Profile_Img, ProfileImage);
+		editor.commit();
+	}
 	public static String getCoins() {
 		return sharedpreferences.getString(COINS, "");
 	}

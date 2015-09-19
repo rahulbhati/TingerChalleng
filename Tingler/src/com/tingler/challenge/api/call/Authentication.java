@@ -4,7 +4,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,19 +11,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract.Profile;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.tingler.challenge.AccountActiveActivity;
 import com.tingler.challenge.MainActivity;
@@ -49,19 +42,14 @@ public class Authentication extends GoogleLogin {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (v.getId() == R.id.btn_signup) {
-					// customSignupAuth();
-
-				} else if (v.getId() == R.id.btn_google) {
+				 if (v.getId() == R.id.btn_google) {
 					Authentication.activityResult = activityResult;
-
 					googleLogin();
-				} else if (v.getId() == R.id.btn_login) {
-
-				} else if (v.getId() == R.id.btn_account_active) {
-					customActiveAccountAuth();
-				}
-
+				} else if (v.getId() == R.id.btn_fb) {
+					Authentication.activityResult = activityResult;
+					
+				
+			}
 			}
 		};
 		return clickListener;
@@ -126,6 +114,66 @@ public class Authentication extends GoogleLogin {
 
 	}
 
+	public void requestSocialMediaAPI(final Map<String, String> params) {
+
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_Social_Media_Login, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("object  :" + arg0);
+						try {
+							JSONObject obj = new JSONObject(arg0);
+							
+							if (obj.getString("data").length() > 0
+									&& obj.getString("error").length() == 0) {
+								com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
+										context);
+								profile.addProfileInfo(arg0);
+								System.out.println("Id :" + profile.getId());
+								Intent intent = new Intent(context,
+										AccountActiveActivity.class);
+								context.startActivity(intent);
+								((Activity)context).startActivity(intent);
+							}
+
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+	}
+
+	
 	public void requestLoginAPI(final Map<String, String> params) {
 
 		progressDialog = ProgressDialog.show(context, "", "loading...");

@@ -34,6 +34,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
+	//	setContentView(R.layout.welcome_test);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		init();
 	}

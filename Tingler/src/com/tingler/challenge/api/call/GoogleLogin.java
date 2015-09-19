@@ -2,7 +2,6 @@ package com.tingler.challenge.api.call;
 
 import java.util.HashMap;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,19 +15,15 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.tingler.challenge.ProfileActivity;
+import com.tingler.challenge.util.Profile;
 
 public class GoogleLogin implements ConnectionCallbacks,
 		OnConnectionFailedListener {
 	private static int GOOGLE_LOGIN_TAG = 0;
 	public static GoogleApiClient mGoogleApiClient;
-	
-	private boolean mIntentInProgress;
-
-	private static String USERNAME = "userName";
-	private static String PASSWORD = "password";
-	private static String EMAIL="email";
-
-	Context context;
+    private boolean mIntentInProgress;
+    Context context;
 	private ConnectionResult mConnectionResult;
 
 	public GoogleLogin(Context context) {
@@ -40,12 +35,10 @@ public class GoogleLogin implements ConnectionCallbacks,
 				.addConnectionCallbacks(this)
 				.addOnConnectionFailedListener(this).addApi(Plus.API)
 				.addScope(Plus.SCOPE_PLUS_LOGIN).build();
-		
+
 		mGoogleApiClient.connect();
 		mIntentInProgress = false;
 	}
-
-
 
 	@Override
 	public void onConnectionFailed(ConnectionResult result) {
@@ -66,12 +59,20 @@ public class GoogleLogin implements ConnectionCallbacks,
 	@Override
 	public void onConnected(Bundle arg0) {
 		// TODO Auto-generated method stub
-		System.out.println("connected google");
-		
-	//	Toast.makeText(context, "User is connected!", Toast.LENGTH_LONG).show();
+		Toast.makeText(context, "Connected ", Toast.LENGTH_LONG).show();
 		HashMap<String, String> profileHashMap = new HashMap<String, String>();
 		profileHashMap = getProfileDetails();
-		
+        Profile profile=new Profile(context);
+        profile.setFirstName(profileHashMap.get(Profile.FIRST_NAME));
+        profile.setLastName(profileHashMap.get(Profile.LAST_NAME));
+        //profile.set(profileHashMap.get(Profile.Profile_Img));
+        profile.setEmail(profileHashMap.get(Profile.EMAIL));
+        profile.setGoogleId(profileHashMap.get(Profile.GOOGLE_ID));
+        profile.setMediaType("google_plus");
+        System.out.println("Media type "+Profile.getMediaType());
+        Intent intent=new Intent(context,ProfileActivity.class);
+        context.startActivity(intent);
+        ((Activity)context).finish();
 	}
 
 	@Override
@@ -83,15 +84,15 @@ public class GoogleLogin implements ConnectionCallbacks,
 	public void onActivityResult(int requestCode, int responseCode,
 			Intent intent) {
 		// TODO Auto-generated method stub
-       if(responseCode!=0){
-		if (requestCode == GOOGLE_LOGIN_TAG) {
-			mIntentInProgress = false;
+		if (responseCode != 0) {
+			if (requestCode == GOOGLE_LOGIN_TAG) {
+				mIntentInProgress = false;
 
-			if (!mGoogleApiClient.isConnecting()) {
-				mGoogleApiClient.connect();
+				if (!mGoogleApiClient.isConnecting()) {
+					mGoogleApiClient.connect();
+				}
 			}
-		}
-		}else{
+		} else {
 			googleLogout();
 			mIntentInProgress = true;
 		}
@@ -106,16 +107,16 @@ public class GoogleLogin implements ConnectionCallbacks,
 				Person currentPerson = Plus.PeopleApi
 						.getCurrentPerson(mGoogleApiClient);
 				System.out.println("Curent Person :" + currentPerson);
-				String name = currentPerson.getDisplayName();
-				profileHashMap.put(USERNAME, name);
-				profileHashMap.put(PASSWORD, "google");
+				//String name = currentPerson.getDisplayName();
 				String photoUrl = currentPerson.getImage().getUrl();
-				profileHashMap.put("ImageURL", photoUrl);
-
 				String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
-				profileHashMap.put(EMAIL, email);
-				// String personGooglePlusProfile = currentPerson.getUrl();
-
+				
+				profileHashMap.put(Profile.FIRST_NAME, currentPerson.getName().getGivenName());
+				profileHashMap.put(Profile.LAST_NAME, currentPerson.getName().getFamilyName());
+			    profileHashMap.put(Profile.Profile_Img,photoUrl);
+				profileHashMap.put(Profile.EMAIL, email);
+				profileHashMap.put(Profile.GOOGLE_ID, currentPerson.getId());
+				
 			} else {
 				Toast.makeText(context, "Person information is null",
 						Toast.LENGTH_LONG).show();

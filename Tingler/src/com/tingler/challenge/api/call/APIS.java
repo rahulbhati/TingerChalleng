@@ -8,7 +8,7 @@ public class APIS {
 	public static String CUSTOM_SIGNUP = HOST+"user/register_by_mobile";
 	public static String CUSTOM_PROFILE = HOST+"user/create_user_profile";
 	public static String CUSTOM_Account_Active = HOST+"user/verify_user_account";
-	
+	public static String CUSTOM_Social_Media_Login = HOST+"user/login_by_media";
 	
 	
 	public static String MOBILT = "mobile";

@@ -30,7 +30,7 @@ public class ProfileActivity extends Activity implements OnClickListener{
 	Button btn_clear, btn_save;
 	ImageView imageview_profile;
 	public static EditText etxt_fname, etxt_lname,etxt_email,etxt_contact,etxt_password,etxt_cpassword;
-	
+	Profile profile;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 	// TODO Auto-generated method stub
@@ -39,6 +39,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	init();
 }
 public void init() {
+	 profile=new Profile(this);
 	authentication = new Authentication(this);
 	toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 	toolbar_title.setText("Active Account");
@@ -55,8 +56,17 @@ public void init() {
 	etxt_contact = (EditText) findViewById(R.id.etxt_contact);
 	etxt_password = (EditText) findViewById(R.id.etxt_password);
 	etxt_cpassword = (EditText) findViewById(R.id.etxt_cpassword);
-	
+	setValues();
 }
+
+public void setValues(){
+	
+	etxt_fname.setText(profile.getFirstName());
+	etxt_lname.setText(profile.getLastName());
+	etxt_email.setText(profile.getEmail());
+}
+
+
 @Override
 public void onClick(View v) {
 	// TODO Auto-generated method stub
@@ -83,7 +93,23 @@ public void onClick(View v) {
 	//	params.put(Profile.Profile_Img,"profile image");
 		params.put(Profile.ID,profile.getId());
 		params.put(Profile.STATUS_MSG,"2");
-		authentication.requestProfileAPI(params);
+		if(profile.getGoogleId().length()>0 || profile.getFacebookId().length()>0){
+			
+				params.put(Profile.Media_Type,profile.getMediaType().toString()
+						.trim());
+				if(profile.getMediaType().equalsIgnoreCase("facebook"))
+				{
+					params.put(Profile.FACEBOOK_ID,profile.getFacebookId().toString()
+							.trim());
+				}else{
+					params.put(Profile.GOOGLE_ID,profile.getGoogleId().toString()
+							.trim());
+
+				}
+				authentication.requestSocialMediaAPI(params);
+		}else{
+			authentication.requestProfileAPI(params);
+		}
 	
 	}else if(v.getId()==R.id.btn_clear){
 		

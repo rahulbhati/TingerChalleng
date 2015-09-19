@@ -26,7 +26,7 @@ public class WelcomeActivity extends Activity implements
 	private static int GOOGLE_LOGIN_TAG = 0;
 	private static int Login_TAG = 5;
 	private static int Signup_TAG = 1;
-Profile profile;
+    Profile profile;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
