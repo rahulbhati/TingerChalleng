@@ -148,7 +148,7 @@
             android:textSize="@dimen/profile_status_txt_size" />
 
         <Button
-            android:id="@+id/btn_chllenge"
+            android:id="@+id/btn_challenge"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
             android:layout_marginBottom="@dimen/profile_btn_margin_bottom"

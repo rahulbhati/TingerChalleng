@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/etxt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Challenge title" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/etxt_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:ems="10"
+            android:hint="Challenge description"
+            android:lines="3" >
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginBottom="@dimen/welcome_signup_bottom"
+            android:layout_marginTop="@dimen/welcome_margin_top"
+            android:background="@drawable/btn_primary"
+            android:paddingLeft="@dimen/btn_paddding_left"
+            android:paddingRight="@dimen/btn_paddding_right"
+            android:text="NEXT"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    
+</RelativeLayout>

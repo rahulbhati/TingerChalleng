@@ -6,6 +6,8 @@ import com.tingler.challenge.fragment.Help;
 import com.tingler.challenge.fragment.NavigationDrawerFragment;
 import com.tingler.challenge.fragment.Notification;
 import com.tingler.challenge.fragment.Profile;
+import com.tingler.challenge.fragment.createchallenge.Challengee;
+import com.tingler.challenge.fragment.createchallenge.Details;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,6 +20,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +31,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	TextView txt_profile, txt_dashboard, txt_notification, txt_helpcenter,
 			txt_aboutus, txt_update, txt_signout,toolbar_title;
 	ImageView etxt_setting;
-
+    Button btn_createchallenge;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,7 +55,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		txt_signout = (TextView) findViewById(R.id.txt_signout);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 		etxt_setting = (ImageView) findViewById(R.id.etxt_setting);
-
+		btn_createchallenge=(Button)findViewById(R.id.btn_createchallenge);
 		imv_action_menu.setOnClickListener(this);
 		txt_profile.setOnClickListener(this);
 		txt_dashboard.setOnClickListener(this);
@@ -62,6 +65,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		txt_update.setOnClickListener(this);
 		txt_signout.setOnClickListener(this);
 		etxt_setting.setOnClickListener(this);
+		btn_createchallenge.setOnClickListener(this);
 		displayView(0);
 	}
 
@@ -85,6 +89,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		}else if (v.getId() == R.id.txt_aboutus) {
 			displayView(4);
 			toolbar_title.setText("About Us");
+		}else if (v.getId() == R.id.txt_aboutus) {
+			displayView(4);
+			toolbar_title.setText("About Us");
+		}else if(v.getId()==R.id.btn_createchallenge){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Details()).commit();
 		}
 
 	}
@@ -107,7 +118,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		case 4:
 			fragment = new About();
 			break;
-
+		case 5:
+			fragment = new Details();
+			break;
+       
 		default:
 			break;
 		}

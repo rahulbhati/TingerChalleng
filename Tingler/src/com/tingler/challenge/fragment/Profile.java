@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tingler.challenge.R;
+import com.tingler.challenge.fragment.createchallenge.Details;
 
 public class Profile extends Fragment implements OnClickListener {
 	ProgressBar progressbar_profileLevel;
@@ -19,7 +21,7 @@ public class Profile extends Fragment implements OnClickListener {
 	private Handler handler = new Handler();
 	TextView txt_edit,txt_level_number,txt_username,txt_coins;
 	com.tingler.challenge.util.Profile profile;
-
+Button btn_challenge;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -38,8 +40,8 @@ public class Profile extends Fragment implements OnClickListener {
 		txt_level_number=(TextView)view.findViewById(R.id.txt_level_number);
 		txt_username=(TextView)view.findViewById(R.id.txt_username);
 		txt_coins=(TextView)view.findViewById(R.id.txt_coins);
-		
-		
+		btn_challenge=(Button)view.findViewById(R.id.btn_challenge);
+		btn_challenge.setOnClickListener(this);
 		txt_edit.setOnClickListener(this);
 		setValues();
 		progressBarLevel();
@@ -90,6 +92,10 @@ public class Profile extends Fragment implements OnClickListener {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new EditProfile()).commit();
+		}else if(v.getId()==R.id.btn_challenge){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Details()).commit();
 		}
 	}
 }
