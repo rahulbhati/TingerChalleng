@@ -132,7 +132,7 @@
             android:layout_height="@dimen/btn_height"
             android:layout_marginBottom="@dimen/welcome_signup_bottom"
             android:layout_marginTop="@dimen/welcome_margin_top"
-            android:background="@drawable/button_round"
+            android:background="@drawable/btn_primary"
             android:paddingBottom="@dimen/btn_padding_bottom"
             android:paddingTop="@dimen/btn_padding_top"
             android:text="       CREATE CHALLENGE       "

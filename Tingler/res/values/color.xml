@@ -7,8 +7,8 @@
     <color name="accentColor">#00796B</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowsBackgroundColor">#FFFFFF</color>
-    <color name="facebookColorBackground">#3C568F</color>
-    <color name="googleColorBackground">#DE4931</color>
+    <color name="facebookColorBackground">#456199</color>
+    <color name="googleColorBackground">#E0513A</color>
     <color name="btnTxtColor">#FFFFFF</color>
     <color name="etxtColor">#000000</color>
     <color name="primaryBackground">#172532</color>

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@color/error_bg"
+        android:background="@color/googleColorBackground"
         android:padding="10dp"
         android:gravity="center_horizontal"
         android:textColor="@android:color/white"

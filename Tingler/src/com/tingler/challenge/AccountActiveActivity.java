@@ -33,6 +33,7 @@ EditText etxt_otp;
 	public void init() {
 		authentication = new Authentication(this);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+		
 		txt_accountactive_error = (TextView) findViewById(R.id.txt_accountactive_error);
 		txt_accountactive_error.setText(getResources().getString(R.string.txt_accountactive_error));
 		toolbar_title.setText("Active Account");

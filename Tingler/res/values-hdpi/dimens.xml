@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="welcome_margin_top_bottom">20dp</dimen>
-    <dimen name="welcome_margin_top">5dp</dimen>
+    <dimen name="welcome_margin_top">10dp</dimen>
     <dimen name="welcome_signup_bottom">8dp</dimen>
     <dimen name="welcome_account_txt_top">15dp</dimen>
     <dimen name="btn_social_padding">5dp</dimen>
@@ -24,5 +24,8 @@
     <dimen name="drawer_layout_margin_top_bottom">20dp</dimen>
   <dimen name="drawer_btn_maring_top_bottom">20dp</dimen>
   <dimen name="drawer_txt_maring_top_bottom">20dp</dimen>
+  
+  <dimen name="btn_paddding_left">20dp</dimen>
+  <dimen name="btn_paddding_right">20dp</dimen>
   
 </resources>

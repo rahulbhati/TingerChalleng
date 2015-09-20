@@ -26,8 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top_bottom"
-                android:background="@color/facebookColorBackground"
-                android:padding="@dimen/btn_social_padding"
+                android:background="@drawable/btn_facebook"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
                 android:text="@string/btn_fb"
                 android:textAllCaps="false"
                 android:textColor="@color/btnTxtColor" />
@@ -37,8 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:background="@color/googleColorBackground"
-                android:padding="@dimen/btn_social_padding"
+                android:background="@drawable/btn_google"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
                 android:text="@string/btn_google"
                 android:textAllCaps="false"
                 android:textColor="@color/btnTxtColor" />
@@ -49,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:text="@string/signup_txt"
-                android:textColor="@color/etxtColor" />
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/etxt_mobile_signup"
@@ -57,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
+                  android:inputType="phone"
                 android:hint="@string/etxt_mobile_hint"
                 android:textColor="@color/etxtColor" >
             </EditText>
@@ -67,10 +70,10 @@
                 android:layout_height="@dimen/btn_height"
                 android:layout_marginBottom="@dimen/welcome_signup_bottom"
                 android:layout_marginTop="@dimen/welcome_margin_top"
-                android:background="@drawable/button_round"
-                android:paddingBottom="@dimen/btn_padding_bottom"
-                android:paddingTop="@dimen/btn_padding_top"
-                android:text="       SIGN UP       "
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="SIGN UP"
                 android:textAllCaps="false" />
 
             <View
@@ -86,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_account_txt_top"
                 android:text="@string/txt_account"
-                android:textColor="@color/etxtColor" />
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
                 android:id="@+id/etxt_mobile_login"
@@ -94,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
+                  android:inputType="phone"
                 android:hint="@string/etxt_mobile_hint"
                 android:textColor="@color/etxtColor" />
 
@@ -112,32 +116,26 @@
                 android:layout_marginBottom="@dimen/welcome_margin_top_bottom"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal" >
+                android:orientation="vertical" >
 
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="wrap_content"
-                   android:layout_height="@dimen/btn_height"
-                    android:background="@drawable/button_round"
-                    android:paddingBottom="@dimen/btn_padding_bottom"
-                    
-                    android:paddingTop="@dimen/btn_padding_top"
-                    android:text="         LOGIN         "
+                    android:layout_height="@dimen/btn_height"
                     android:layout_marginBottom="5dp"
+                    android:background="@drawable/btn_primary"
+                    android:paddingLeft="@dimen/btn_paddding_left"
+                    android:paddingRight="@dimen/btn_paddding_right"
+                    android:text="LOGIN"
                     android:textAllCaps="false" />
 
-                 <!--   <Button
-                       android:id="@+id/btn_forgot"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:background="@drawable/button_round"
-                       android:paddingBottom="@dimen/btn_padding_bottom"
-                       android:paddingLeft="@dimen/btn_padding_left"
-                       android:paddingRight="@dimen/btn_padding_right"
-                       android:paddingTop="@dimen/btn_padding_top"
-                       android:text="@string/btn_forgot"
-                       android:textAllCaps="false" />
- -->
+                <TextView
+                    android:id="@+id/txt_forgot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/welcome_account_txt_top"
+                    android:text="Forgot your password ?"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
             <!-- </ScrollView> -->
         </LinearLayout>
