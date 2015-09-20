@@ -124,6 +124,10 @@ public class Profile {
 		editor.putString(LAST_NAME, LastName);
 		editor.commit();
 	}
+	
+	public static String getFullName(){
+		return getFirstName()+" "+getLastName();
+	}
 	public static String getEmail() {
 
 		return sharedpreferences.getString(EMAIL, "");

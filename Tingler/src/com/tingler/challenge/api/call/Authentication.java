@@ -261,7 +261,7 @@ public class Authentication extends GoogleLogin {
 						try {
 
 							JSONObject obj = new JSONObject(arg0);
-							System.out.println("JsonObject :" + obj);
+							
 							if (obj.getString("data").length() > 0
 									&& obj.getString("error").length() == 0) {
 								obj.getJSONObject("data")
@@ -272,7 +272,7 @@ public class Authentication extends GoogleLogin {
 
 								com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 										context);
-								profile.addProfileInfo(arg0);
+								profile.addProfileInfo(obj.toString());
 
 								System.out.println("Id :" + profile.getId());
 								Intent intent = new Intent(context,
