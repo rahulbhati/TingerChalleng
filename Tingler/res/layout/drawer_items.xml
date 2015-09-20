@@ -4,7 +4,6 @@
     android:background="@color/primaryColorDark" >
 
     <ScrollView
-       
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true" >
@@ -18,20 +17,23 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher" />
+                android:id="@+id/imageview_profile"
+                android:layout_width="@dimen/profile_picture_width"
+                android:layout_height="@dimen/profile_picture_height"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circle_border"
+                android:src="@drawable/icon_profile" />
 
             <Button
-                android:id="@+id/btn_createchallenge"
+                android:id="@+id/btn_createchallenge1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                 android:layout_height="@dimen/btn_height"
                 android:layout_marginBottom="@dimen/drawer_btn_maring_top_bottom"
                 android:layout_marginTop="@dimen/drawer_btn_maring_top_bottom"
-                android:background="@drawable/button_round_blue"
-                android:paddingBottom="@dimen/btn_padding_bottom"
-                android:paddingTop="@dimen/btn_padding_top"
-                android:text="   Create Challenge   " />
+                android:background="@drawable/btn_drawer"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="CREATE CHALLENGE" />
 
             <TextView
                 android:id="@+id/txt_profile"

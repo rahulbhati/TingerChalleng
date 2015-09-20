@@ -24,10 +24,10 @@
 
             <ImageView
                 android:id="@+id/imageview_profile"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/profile_picture_width"
+                android:layout_height="@dimen/profile_picture_height"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/no_image_icon" />
+                android:src="@drawable/icon_profile" />
 
             <EditText
                 android:id="@+id/etxt_fname"
