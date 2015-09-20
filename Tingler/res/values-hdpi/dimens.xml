@@ -27,5 +27,7 @@
   
   <dimen name="btn_paddding_left">20dp</dimen>
   <dimen name="btn_paddding_right">20dp</dimen>
-  
+  <dimen name="coin_width">30dp</dimen>
+   <dimen name="coin_height">30dp</dimen>
+   <dimen name="profile_btn_margin_bottom">30dp</dimen>
 </resources>
