@@ -33,6 +33,7 @@
                 android:background="@drawable/btn_drawer"
                 android:paddingLeft="@dimen/btn_paddding_left"
                 android:paddingRight="@dimen/btn_paddding_right"
+                android:textColor="@android:color/white"
                 android:text="CREATE CHALLENGE" />
 
             <TextView

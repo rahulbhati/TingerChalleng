@@ -100,6 +100,7 @@
                     android:background="@drawable/btn_primary"
                     android:paddingLeft="@dimen/btn_paddding_left"
                     android:paddingRight="@dimen/btn_paddding_right"
+                      android:textColor="@android:color/white"
                     android:text="@string/btn_clear" />
 
                 <Button
@@ -109,6 +110,7 @@
                     android:background="@drawable/btn_primary"
                     android:paddingLeft="@dimen/btn_paddding_left"
                     android:paddingRight="@dimen/btn_paddding_right"
+                      android:textColor="@android:color/white"
                     android:text="@string/btn_save" />
             </LinearLayout>
         </LinearLayout>
