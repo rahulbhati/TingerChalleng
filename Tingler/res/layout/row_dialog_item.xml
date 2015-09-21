@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp" >
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dialog_picture_width"
+        android:layout_height="@dimen/dialog_picture_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/icon_profile" />
+
+    <TextView
+        android:id="@+id/txt_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_name"
+        android:layout_below="@+id/txt_name"
+        android:ellipsize="end"
+        android:text="5 hours ago..."
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkBox"
+        android:layout_alignBottom="@+id/checkBox"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/image"
+        android:ellipsize="end"
+        android:text="Oh! you got new"
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>

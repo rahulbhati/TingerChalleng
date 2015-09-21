@@ -67,6 +67,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		etxt_setting.setOnClickListener(this);
 		btn_createchallenge.setOnClickListener(this);
 		displayView(0);
+		toolbar_title.setText("Profile");
 	}
 
 	@Override
@@ -96,6 +97,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new Details()).commit();
+			drawerLayout.closeDrawers();
 		}
 
 	}

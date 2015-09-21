@@ -30,4 +30,7 @@
     <dimen name="profile_btn_margin_bottom">30dp</dimen>
     <dimen name="profile_picture_width">110dp</dimen>
   <dimen name="profile_picture_height">110dp</dimen>
+  
+  <dimen name="dialog_picture_width">50dp</dimen>
+  <dimen name="dialog_picture_height">50dp</dimen>
 </resources>
