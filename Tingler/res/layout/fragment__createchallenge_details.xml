@@ -1,47 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center" >
+    android:fillViewport="true"
+    android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/etxt_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Challenge title" >
-        </EditText>
-
-        <EditText
-            android:id="@+id/etxt_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:ems="10"
-            android:hint="Challenge description"
-            android:lines="3" >
-        </EditText>
+        android:layout_height="match_parent" >
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
-            android:layout_marginBottom="@dimen/welcome_signup_bottom"
-            android:layout_marginTop="@dimen/welcome_margin_top"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/btn_primary"
             android:paddingLeft="@dimen/btn_paddding_left"
             android:paddingRight="@dimen/btn_paddding_right"
             android:text="NEXT"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
-    </LinearLayout>
 
-    
-</RelativeLayout>
+        <NumberPicker
+            android:id="@+id/np_days"
+            android:background="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_next"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="20dp" />
+
+        <NumberPicker
+               android:background="@android:color/darker_gray"
+            android:id="@+id/np_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/np_hours" />
+
+        <EditText
+            android:id="@+id/etxt_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/np_days"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="31dp"
+            android:ems="10"
+            android:hint="Challenge description"
+            android:lines="3" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/etxt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/etxt_description"
+            android:layout_alignLeft="@+id/etxt_description"
+            android:ems="10"
+            android:hint="Challenge title" />
+
+        <NumberPicker
+            android:id="@+id/np_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/btn_next"
+            android:layout_alignTop="@+id/np_days"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
+</ScrollView>
