@@ -60,7 +60,7 @@ public class Challengee extends Fragment implements OnClickListener{
 		ly_add_challengee.setOnClickListener(this);
 	    lv_challengee.addFooterView(footerView);
 	    tempArrayList=new ArrayList<ContactItem>();
-		tempArrayList=SetterGetter.getTempArrayList();
+		tempArrayList=SetterGetter.getChallengeeTempArrayList();
 		challengeeAdapter=new ChallengeeAdapter(getActivity(), tempArrayList);
 		lv_challengee.setAdapter(challengeeAdapter);;
 	}
@@ -186,7 +186,7 @@ public class DialogContacts implements OnClickListener {
 		if(v.getId()==R.id.btn_ok){
 			
 			tempArrayList=new ArrayList<ContactItem>();
-			tempArrayList=SetterGetter.getTempArrayList();
+			tempArrayList=SetterGetter.getChallengeeTempArrayList();
 			challengeeAdapter=new ChallengeeAdapter(getActivity(), tempArrayList);
 			lv_challengee.setAdapter(challengeeAdapter);;
 			dialog.dismiss();
@@ -267,7 +267,7 @@ public class ContactsAdapter extends BaseAdapter {
 						tempArrayList.add(contactItem);
 					}
 				}
-				SetterGetter.setTempArrayList(tempArrayList);
+				SetterGetter.setChallengeeTempArrayList(tempArrayList);
 				
 				
 			}
