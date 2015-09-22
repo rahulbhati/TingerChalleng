@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Window;
@@ -19,7 +20,7 @@ import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.ContactsAdapter;
 
 public class DialogContacts {
-	EditText etxt_search;
+//	EditText etxt_search;
 	ListView lv_contacts;
 	Button btn_select, btn_cancel;
 	Context context;
@@ -44,10 +45,10 @@ public class DialogContacts {
 
 	public void init(Dialog dialog) {
 		contactsArrayList = new ArrayList<ContactItem>();
-		etxt_search = (EditText) dialog.findViewById(R.id.etxt_search);
+	//	etxt_search = (EditText) dialog.findViewById(R.id.etxt_search);
 		lv_contacts = (ListView) dialog.findViewById(R.id.lv_contacts);
 		new ContactsAsy().execute();
-		etxt_search.addTextChangedListener(watcher());
+		//etxt_search.addTextChangedListener(watcher());
 
 	}
 
@@ -56,25 +57,25 @@ public class DialogContacts {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			Cursor cursor = context.getContentResolver().query(
-					ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-					null, null, null);
-			while (cursor.moveToNext()) {
+			
+			android.content.ContentResolver cr=context.getContentResolver();
+			Cursor c = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
+			    
+			//	Cursor c=cr.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,Phone.DISPLAY_NAME + " ASC");
+			while(c.moveToNext()==true)
+			{
+				String name =null;
+				String phoneNumber=null ;
+				name=c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+				phoneNumber=c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 				
-				String name = cursor
-						.getString(cursor
-								.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-
-				String phoneNumber = cursor
-						.getString(cursor
-								.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-				ContactItem contactItem = new ContactItem(name, phoneNumber,
-						"level");
-                
-				if(!contactsArrayList.contains(contactItem))
-				{contactsArrayList.add(contactItem);
+				if(name.length()>0 && phoneNumber.length()>0){
+				ContactItem contactItem=new ContactItem(name, phoneNumber, "");
+				contactsArrayList.add(contactItem);
 				}
+				
 			}
+			c.close();
 			return null;
 		}
 
@@ -108,9 +109,9 @@ public class DialogContacts {
 			@Override
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
-				String text = etxt_search.getText().toString()
+			/*	String text = etxt_search.getText().toString()
 						.toLowerCase(Locale.getDefault());
-				contactsAdapter.filter(text);
+				contactsAdapter.filter(text);*/
 			}
 		};
 		return textWatcher;

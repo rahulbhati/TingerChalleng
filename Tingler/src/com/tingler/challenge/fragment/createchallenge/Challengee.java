@@ -27,7 +27,7 @@ public class Challengee extends Fragment implements OnClickListener{
 	{
 		
 		btn_next=(Button)view.findViewById(R.id.btn_next);
-		
+		btn_next.setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
