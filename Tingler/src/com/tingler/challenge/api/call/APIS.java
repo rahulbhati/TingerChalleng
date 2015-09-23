@@ -22,4 +22,8 @@ public class APIS {
 	public static String FACEBOOK = "facebook";
 	public static String GOOGLE = "google";
 	
+	public static String Media_type = "media_type";
+	public static String Gplus_id = "gplus_id";
+	public static String Email = "email";
+	
 }

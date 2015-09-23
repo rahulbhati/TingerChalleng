@@ -18,6 +18,10 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_right"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
@@ -37,7 +41,7 @@
                 android:id="@+id/btn_google"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
                 android:background="@drawable/btn_google"
                 android:paddingLeft="@dimen/btn_paddding_left"
                 android:paddingRight="@dimen/btn_paddding_right"
@@ -49,19 +53,21 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
                 android:text="@string/signup_txt"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/darkGray" />
 
             <EditText
                 android:id="@+id/etxt_mobile_signup"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                  android:inputType="phone"
                 android:hint="@string/etxt_mobile_hint"
-                android:textColor="@color/etxtColor" >
+                android:inputType="phone"
+                android:maxLength="13"
+                android:textColor="@android:color/black" >
             </EditText>
 
             <Button
@@ -69,13 +75,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/btn_height"
                 android:layout_marginBottom="@dimen/welcome_signup_bottom"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
                 android:background="@drawable/btn_primary"
                 android:paddingLeft="@dimen/btn_paddding_left"
                 android:paddingRight="@dimen/btn_paddding_right"
                 android:text="SIGN UP"
-                  android:textColor="@android:color/white"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
 
             <View
                 android:id="@+id/view1"
@@ -88,28 +94,33 @@
                 android:id="@+id/txt_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_account_txt_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
                 android:text="@string/txt_account"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/darkGray" />
 
             <EditText
                 android:id="@+id/etxt_mobile_login"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                  android:inputType="phone"
                 android:hint="@string/etxt_mobile_hint"
-                android:textColor="@color/etxtColor" />
+                android:inputType="phone"
+                android:maxLength="13"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_pass"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/welcome_margin_top"
+                android:layout_marginTop="@dimen/welcome_margin_top_item"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
                 android:hint="@string/etxt_password_hint"
-                android:textColor="@color/etxtColor" />
+                android:maxLength="25"
+                android:password="true"
+                android:textColor="@android:color/black" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -123,21 +134,21 @@
                     android:id="@+id/btn_login"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/btn_height"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="@dimen/welcome_margin_top_item"
                     android:background="@drawable/btn_primary"
                     android:paddingLeft="@dimen/btn_paddding_left"
                     android:paddingRight="@dimen/btn_paddding_right"
                     android:text="LOGIN"
-                      android:textColor="@android:color/white"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:id="@+id/txt_forgot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/welcome_account_txt_top"
-                    android:text="Forgot your password ?"
-                    android:textColor="@android:color/darker_gray" />
+                    android:layout_marginTop="@dimen/welcome_margin_top_item"
+                    android:text="Forgot your password?"
+                    android:textColor="@color/darkGray" />
             </LinearLayout>
             <!-- </ScrollView> -->
         </LinearLayout>

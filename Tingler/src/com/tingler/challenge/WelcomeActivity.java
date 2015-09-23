@@ -5,16 +5,18 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.Validations;
 
 public class WelcomeActivity extends Activity implements
 		android.view.View.OnClickListener {
@@ -26,7 +28,8 @@ public class WelcomeActivity extends Activity implements
 	private static int GOOGLE_LOGIN_TAG = 0;
 	private static int Login_TAG = 5;
 	private static int Signup_TAG = 1;
-    Profile profile;
+	Profile profile;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -37,25 +40,34 @@ public class WelcomeActivity extends Activity implements
 	}
 
 	public void checkLogin() {
-        profile=new Profile(this);
-        System.out.println("profiile id"+profile.getId());
-        if(profile.getId().length()>0){ // check first time start app
-        	if(Profile.getIsVarify().equalsIgnoreCase("1")){    // check if is_varity =1 then user account activated
-        		if(Profile.getStatus().equalsIgnoreCase("1")){  // check if status =1 then user completed profile info 
-        			Intent intent=new Intent(this,MainActivity.class);
-        			startActivity(intent);
-        			finish();
-        		}else{
-        			Intent intent=new Intent(this,ProfileActivity.class);
-        			startActivity(intent);
-        			finish();
-        		}
-        	}else{
-        		Intent intent=new Intent(this,AccountActiveActivity.class);
-    			startActivity(intent);
-    			finish();
-        	}
-        }
+		profile = new Profile(this);
+		System.out.println("profiile id" + profile.getId());
+		if (profile.getId().length() > 0) { // check first time start app
+			if (Profile.getIsVarify().equalsIgnoreCase("1")) { // check if
+																// is_varity =1
+																// then user
+																// account
+																// activated
+				if (Profile.getStatus().equalsIgnoreCase("1")) { // check if
+																	// status =1
+																	// then user
+																	// completed
+																	// profile
+																	// info
+					Intent intent = new Intent(this, MainActivity.class);
+					startActivity(intent);
+					finish();
+				} else {
+					Intent intent = new Intent(this, ProfileActivity.class);
+					startActivity(intent);
+					finish();
+				}
+			} else {
+				Intent intent = new Intent(this, AccountActiveActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		}
 	}
 
 	public void init() {
@@ -102,17 +114,41 @@ public class WelcomeActivity extends Activity implements
 		// TODO Auto-generated method stub
 
 		if (v.getId() == R.id.btn_signup) {
-			Map<String, String> params = new HashMap<String, String>();
-			params.put(APIS.MOBILT, etxt_mobile_signup.getText().toString()
-					.trim());
-			authentication.requestSignupAPI(params);
+
+			String mobile = etxt_mobile_signup.getText().toString().trim();
+			if (mobile.length() > 0 && mobile.length() > 9) {
+
+				 Validations.isError(etxt_mobile_signup, false);
+				
+				Map<String, String> params = new HashMap<String, String>();
+				params.put(APIS.MOBILT, mobile);
+				authentication.requestSignupAPI(params);
+			} else {
+				 Validations.isError(etxt_mobile_signup, true);
+
+			}
 
 		} else if (v.getId() == R.id.btn_login) {
-			Map<String, String> params = new HashMap<String, String>();
-			params.put(APIS.MOBILT, etxt_mobile_login.getText().toString()
-					.trim());
-			params.put(APIS.PASSWORD, etxt_pass.getText().toString().trim());
-			authentication.requestLoginAPI(params);
+			String mobile = etxt_mobile_login.getText().toString().trim();
+			String pass = etxt_pass.getText().toString().trim();
+			if (mobile.length() > 0 && mobile.length() > 9) {
+				 Validations.isError(etxt_mobile_login, false);
+				
+				if (pass.length() > 0) {
+					
+					 Validations.isError(etxt_pass, false);
+					
+					Map<String, String> params = new HashMap<String, String>();
+					params.put(APIS.MOBILT, mobile);
+					params.put(APIS.PASSWORD, pass);
+					authentication.requestLoginAPI(params);
+				}else{
+					 Validations.isError(etxt_pass, true);
+				}
+
+			} else {
+				 Validations.isError(etxt_mobile_login, true);
+			}
 		}
 	}
 

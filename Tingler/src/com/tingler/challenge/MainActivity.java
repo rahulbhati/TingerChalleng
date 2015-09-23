@@ -1,20 +1,11 @@
 package com.tingler.challenge;
 
-import com.tingler.challenge.fragment.About;
-import com.tingler.challenge.fragment.Dashboard;
-import com.tingler.challenge.fragment.Help;
-import com.tingler.challenge.fragment.NavigationDrawerFragment;
-import com.tingler.challenge.fragment.Notification;
-import com.tingler.challenge.fragment.Profile;
-import com.tingler.challenge.fragment.createchallenge.Challengee;
-import com.tingler.challenge.fragment.createchallenge.Details;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,6 +14,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.tingler.challenge.fragment.About;
+import com.tingler.challenge.fragment.Dashboard;
+import com.tingler.challenge.fragment.Help;
+import com.tingler.challenge.fragment.Notification;
+import com.tingler.challenge.fragment.Profile;
+import com.tingler.challenge.fragment.createchallenge.Details;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	Toolbar toolbar;
@@ -43,6 +41,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	public void init() {
+		
+		Typeface robotoBoldTF = Typeface.createFromAsset(getAssets(),"fonts/roboto_bold.ttf"); 
+		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 		imv_action_menu = (ImageView) findViewById(R.id.imv_action_menu);
 
@@ -54,6 +55,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		txt_update = (TextView) findViewById(R.id.txt_update);
 		txt_signout = (TextView) findViewById(R.id.txt_signout);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+		toolbar_title.setTypeface(robotoBoldTF);
+		
 		etxt_setting = (ImageView) findViewById(R.id.etxt_setting);
 		btn_createchallenge=(Button)findViewById(R.id.btn_createchallenge);
 		imv_action_menu.setOnClickListener(this);

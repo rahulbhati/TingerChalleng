@@ -79,6 +79,8 @@ public class Authentication extends GoogleLogin {
 										AccountActiveActivity.class);
 								context.startActivity(intent);
 								((Activity)context).startActivity(intent);
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
 							}
 
 						} catch (JSONException e) {
@@ -212,6 +214,8 @@ public class Authentication extends GoogleLogin {
 									((Activity)context).finish();	
 								}
 
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
 							}
 
 						} catch (JSONException e) {

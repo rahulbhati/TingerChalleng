@@ -59,7 +59,7 @@ public class GoogleLogin implements ConnectionCallbacks,
 	@Override
 	public void onConnected(Bundle arg0) {
 		// TODO Auto-generated method stub
-		Toast.makeText(context, "Connected ", Toast.LENGTH_LONG).show();
+	
 		HashMap<String, String> profileHashMap = new HashMap<String, String>();
 		profileHashMap = getProfileDetails();
         Profile profile=new Profile(context);
@@ -67,9 +67,9 @@ public class GoogleLogin implements ConnectionCallbacks,
         profile.setLastName(profileHashMap.get(Profile.LAST_NAME));
         //profile.set(profileHashMap.get(Profile.Profile_Img));
         profile.setEmail(profileHashMap.get(Profile.EMAIL));
-        profile.setGoogleId(profileHashMap.get(Profile.GOOGLE_ID));
+        profile.setGoogleId(profileHashMap.get(APIS.Gplus_id));
         profile.setMediaType("google_plus");
-        System.out.println("Media type "+Profile.getMediaType());
+       
         Intent intent=new Intent(context,ProfileActivity.class);
         context.startActivity(intent);
         ((Activity)context).finish();
@@ -115,8 +115,8 @@ public class GoogleLogin implements ConnectionCallbacks,
 				profileHashMap.put(Profile.LAST_NAME, currentPerson.getName().getFamilyName());
 			    profileHashMap.put(Profile.Profile_Img,photoUrl);
 				profileHashMap.put(Profile.EMAIL, email);
-				profileHashMap.put(Profile.GOOGLE_ID, currentPerson.getId());
-				
+				profileHashMap.put(APIS.Gplus_id, currentPerson.getId());
+				profileHashMap.put(APIS.Media_type, "google_plus");
 			} else {
 				Toast.makeText(context, "Person information is null",
 						Toast.LENGTH_LONG).show();
