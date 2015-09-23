@@ -1,27 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@android:color/white" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="price"
-          android:textColor="@android:color/black"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-  <Button
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="@dimen/challengee_picture_width"
+            android:layout_height="@dimen/challengee_picture_height"
+            android:src="@drawable/icon_profile" />
+
+        <EditText
+            android:id="@+id/etxt_price_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="@string/etxt_price_hint"
+            android:lines="5" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/profile_un_txt_margin_bottom"
+            android:layout_marginTop="@dimen/profile_un_txt_margin_top"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="or Play with challenge app coins"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/profile_status_txt_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/etxt_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:inputType="phone"
+                android:hint="500" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/btn_height"
-        android:layout_marginBottom="@dimen/welcome_signup_bottom"
-        android:layout_marginTop="@dimen/welcome_margin_top"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/btn_primary"
         android:paddingLeft="@dimen/btn_paddding_left"
         android:paddingRight="@dimen/btn_paddding_right"
         android:text="SUBMIT"
         android:textAllCaps="false"
         android:textColor="@android:color/white" />
-    
-</LinearLayout>
+
+</RelativeLayout>
