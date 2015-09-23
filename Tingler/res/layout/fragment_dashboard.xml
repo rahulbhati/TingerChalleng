@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackground"
-    android:orientation="vertical" >
+    android:fillViewport="true" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btn_chllenge"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_height"
-            android:layout_marginBottom="@dimen/welcome_signup_bottom"
-            android:layout_marginTop="@dimen/welcome_margin_top"
-            android:background="@drawable/btn_primary"
-            android:paddingBottom="@dimen/btn_padding_bottom"
-            android:paddingTop="@dimen/btn_padding_top"
-            android:text="       CREATE CHALLENGE       "
-            android:textAllCaps="false" />
+        android:layout_height="match_parent" >
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_chellenge"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -73,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/primaryBackground"
-                      android:gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
                     <ImageView
@@ -101,18 +88,40 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5" >
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-    </LinearLayout>
+            android:layout_below="@+id/layout"
+            android:layout_margin="10dp"
+            android:orientation="vertical" >
 
-</LinearLayout>
+            <com.tingler.challenge.util.SlidingTabLayout
+                android:id="@+id/slidingTabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_chellenge"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/welcome_signup_bottom"
+            android:layout_marginTop="@dimen/welcome_margin_top"
+            android:background="@drawable/btn_primary"
+            android:paddingLeft="@dimen/btn_paddding_left"
+            android:paddingRight="@dimen/btn_paddding_right"
+            android:text="CREATE CHALLENGE"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+
+</ScrollView>
