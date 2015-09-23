@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:fillViewport="true"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/create_challenge_layout_margin_left"
+    android:layout_marginRight="@dimen/create_challenge_layout_margin_right"
+    android:fillViewport="true" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
             android:layout_height="@dimen/btn_height"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="@dimen/create_challenge_btn_margin_bottom"
             android:background="@drawable/btn_primary"
             android:paddingLeft="@dimen/btn_paddding_left"
             android:paddingRight="@dimen/btn_paddding_right"
@@ -24,20 +26,20 @@
 
         <NumberPicker
             android:id="@+id/np_days"
-            android:background="@android:color/darker_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btn_next"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/darker_gray" />
 
         <NumberPicker
-               android:background="@android:color/darker_gray"
             android:id="@+id/np_minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/np_hours" />
+            android:layout_alignTop="@+id/np_hours"
+            android:background="@android:color/darker_gray" />
 
         <EditText
             android:id="@+id/etxt_description"
@@ -49,8 +51,6 @@
             android:ems="10"
             android:hint="Challenge description"
             android:lines="3" >
-
-            <requestFocus />
         </EditText>
 
         <EditText
@@ -66,10 +66,22 @@
             android:id="@+id/np_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/btn_next"
             android:layout_alignTop="@+id/np_days"
+            android:layout_centerHorizontal="true"
             android:background="@android:color/darker_gray" />
 
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/np_days"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="set countdown timer"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/profile_status_txt_size" />
     </RelativeLayout>
 
 </ScrollView>
