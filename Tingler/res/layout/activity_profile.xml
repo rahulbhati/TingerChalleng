@@ -16,10 +16,11 @@
         android:fillViewport="true" >
 
         <LinearLayout
+              android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_right"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            
             android:orientation="vertical" >
 
             <ImageView
@@ -30,9 +31,11 @@
                 android:src="@drawable/icon_profile" />
 
             <EditText
+                 android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:id="@+id/etxt_fname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
                 android:hint="@string/etxt_fn"
                 android:textColor="@android:color/black" >
@@ -40,48 +43,58 @@
 
             <EditText
                 android:id="@+id/etxt_lname"
-                android:layout_width="wrap_content"
+                
+              android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
                 android:hint="@string/etxt_ln"
                 android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_email"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
+                 android:background="@drawable/etxt_border"
                 android:hint="@string/etxt_email"
+                android:inputType="textEmailAddress"
                 android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_contact"
-                android:layout_width="wrap_content"
+            android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
-                android:inputType="phone"
+                 android:background="@drawable/etxt_border"
                 android:hint="@string/etxt_contact"
+                android:inputType="phone"
+                android:maxLength="13"
                 android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_password"
-                android:layout_width="wrap_content"
+               android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                 android:background="@drawable/etxt_border"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_cpassword"
-                android:layout_width="wrap_content"
+               android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:ems="10"
+                 android:background="@drawable/etxt_border"
                 android:hint="Confirm Password"
+                android:inputType="textPassword"
                 android:textColor="@android:color/black" />
 
             <LinearLayout
@@ -94,24 +107,24 @@
 
                 <Button
                     android:id="@+id/btn_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/btn_height"
                     android:layout_marginRight="20dp"
+                    android:background="@drawable/btn_primary"
+                    android:paddingLeft="@dimen/btn_paddding_left"
+                    android:paddingRight="@dimen/btn_paddding_right"
+                    android:text="@string/btn_clear"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/btn_save"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/btn_height"
                     android:background="@drawable/btn_primary"
                     android:paddingLeft="@dimen/btn_paddding_left"
                     android:paddingRight="@dimen/btn_paddding_right"
-                      android:textColor="@android:color/white"
-                    android:text="@string/btn_clear" />
-
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="wrap_content"
-                     android:layout_height="@dimen/btn_height"
-                    android:background="@drawable/btn_primary"
-                    android:paddingLeft="@dimen/btn_paddding_left"
-                    android:paddingRight="@dimen/btn_paddding_right"
-                      android:textColor="@android:color/white"
-                    android:text="@string/btn_save" />
+                    android:text="@string/btn_save"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

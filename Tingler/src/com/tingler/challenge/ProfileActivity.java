@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.Validations;
 
 public class ProfileActivity extends Activity implements OnClickListener {
 
@@ -74,43 +75,109 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 
 		if (v.getId() == R.id.btn_save) {
-			Profile profile = new Profile(this);
-			Bitmap bitmap = ((BitmapDrawable) imageview_profile.getDrawable())
-					.getBitmap();
+			String fname=etxt_fname.getText().toString()
+					.trim();
+			String lname=etxt_lname.getText().toString()
+					.trim();
+			String email=etxt_email.getText().toString()
+					.trim();
+			String mobile=etxt_contact.getText().toString()
+					.trim();
+			String pass=etxt_password.getText().toString()
+					.trim();
+			String cpass=etxt_cpassword.getText().toString()
+					.trim();
+			Validations.isError(etxt_fname, false);
+			Validations.isError(etxt_lname, false);
+			Validations.isError(etxt_email, false);
+			Validations.isError(etxt_contact, false);
+			Validations.isError(etxt_password, false);
+			Validations.isError(etxt_cpassword, false);
+			if(fname.length()>0  ){
+				Validations.isError(etxt_fname, false);
+				if(lname.length()>0  ){
+					Validations.isError(etxt_lname, false);
+					if(email.length()>0 && Validations.emailValidator(email) ){
+						Validations.isError(etxt_email, false);
+						if(mobile.length()>0  && mobile.length() > 9){
+							Validations.isError(etxt_contact, false);
+							if(pass.length()>0  ){
+								Validations.isError(etxt_password, false);
+								if(cpass.length()>0  ){
+									Validations.isError(etxt_cpassword, false);
+									if(pass.equals(cpass) ){
+										Validations.isError(etxt_password, false);
+										Validations.isError(etxt_cpassword, false);
 
-			// String picbase64=encodeTobase64(bitmap);
+										Profile profile = new Profile(this);
+							            Bitmap bitmap = ((BitmapDrawable) imageview_profile.getDrawable())
+												.getBitmap();
 
-			Map<String, String> params = new HashMap<String, String>();
+										// String picbase64=encodeTobase64(bitmap);
 
-			params.put(Profile.FIRST_NAME, etxt_fname.getText().toString()
-					.trim());
-			params.put(Profile.LAST_NAME, etxt_lname.getText().toString()
-					.trim());
-			params.put(Profile.EMAIL, etxt_email.getText().toString().trim());
-			params.put(Profile.MOBILE, etxt_contact.getText().toString().trim());
-			params.put(Profile.PASSWORD, etxt_password.getText().toString()
-					.trim());
-			// params.put(Profile.Profile_Img,"profile image");
-			params.put(Profile.ID, profile.getId());
-			params.put(Profile.STATUS_MSG, "2");
-			if (profile.getGoogleId().length() > 0
-					|| profile.getFacebookId().length() > 0) {
+										Map<String, String> params = new HashMap<String, String>();
 
-				params.put(Profile.Media_Type, profile.getMediaType()
-						.toString().trim());
-				if (profile.getMediaType().equalsIgnoreCase("facebook")) {
-					params.put(Profile.FACEBOOK_ID, profile.getFacebookId()
-							.toString().trim());
-				} else {
-					params.put(Profile.GOOGLE_ID, profile.getGoogleId()
-							.toString().trim());
+										params.put(Profile.FIRST_NAME,fname );
+										params.put(Profile.LAST_NAME, lname);
+										params.put(Profile.EMAIL,email);
+										params.put(Profile.MOBILE,mobile);
+										params.put(Profile.PASSWORD, pass);
+										// params.put(Profile.Profile_Img,"profile image");
+										params.put(Profile.ID, profile.getId());
+										params.put(Profile.STATUS_MSG, "2");
+										if (profile.getGoogleId().length() > 0
+												|| profile.getFacebookId().length() > 0) {
 
+											params.put(Profile.Media_Type, profile.getMediaType()
+													.toString().trim());
+											if (profile.getMediaType().equalsIgnoreCase("facebook")) {
+												params.put(Profile.FACEBOOK_ID, profile.getFacebookId()
+														.toString().trim());
+											} else {
+												params.put(Profile.GOOGLE_ID, profile.getGoogleId()
+														.toString().trim());
+
+											}
+											authentication.requestSocialMediaAPI(params);
+										} else {
+											authentication.requestProfileAPI(params);
+										}
+											
+										
+									}else{
+										Validations.isError(etxt_cpassword, true);
+									}
+									
+									
+								}else{
+									Validations.isError(etxt_cpassword, true);
+								}
+								
+								
+							}else{
+								Validations.isError(etxt_password, true);
+							}
+							
+							
+						}else{
+							Validations.isError(etxt_contact, true);
+						}
+						
+						
+					}else{
+						Validations.isError(etxt_email, true);
+					}
+				
+				
+				}else{
+					Validations.isError(etxt_lname, true);
 				}
-				authentication.requestSocialMediaAPI(params);
-			} else {
-				authentication.requestProfileAPI(params);
+				
+			}else{
+				Validations.isError(etxt_fname, true);
 			}
-
+			
+			
 		} else if (v.getId() == R.id.btn_clear) {
 			etxt_fname.getText().clear();
 			
@@ -119,8 +186,15 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			etxt_contact.getText().clear();
 			etxt_password.getText().clear();
 			etxt_cpassword.getText().clear();
+			Validations.isError(etxt_fname, false);
+			Validations.isError(etxt_lname, false);
+			Validations.isError(etxt_email, false);
+			Validations.isError(etxt_contact, false);
+			Validations.isError(etxt_password, false);
+			Validations.isError(etxt_cpassword, false);
 		}
 	}
+
 
 	public static String encodeTobase64(Bitmap image) {
 		Bitmap immagex = image;

@@ -140,6 +140,8 @@ public class Authentication extends GoogleLogin {
 										AccountActiveActivity.class);
 								context.startActivity(intent);
 								((Activity)context).startActivity(intent);
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
 							}
 
 						} catch (JSONException e) {
@@ -284,6 +286,9 @@ public class Authentication extends GoogleLogin {
 								context.startActivity(intent);
 								((Activity) context).finish();
 							}
+							else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
+							}
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -342,11 +347,14 @@ public class Authentication extends GoogleLogin {
 										ProfileActivity.class);
 								context.startActivity(intent);
 								((Activity)context).startActivity(intent);
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
 							}
 
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							
 						}
 						progressDialog.dismiss();
 
@@ -377,163 +385,5 @@ public class Authentication extends GoogleLogin {
 
 	}
 
-	public void customActiveAccountAuth() {
-		final String mobile = WelcomeActivity.etxt_mobile_login.getText()
-				.toString().trim();
-		final String password = WelcomeActivity.etxt_pass.getText().toString()
-				.trim();
-		progressDialog = ProgressDialog.show(context, "", "loading...");
-		String url = null;
-		try {
-			url = APIS.CUSTOM_LOGIN + "" + APIS.MOBILT + "="
-					+ URLEncoder.encode(mobile, "UTF-8") + "&" + APIS.PASSWORD
-					+ "=" + password;
-		} catch (Exception e) {
-			System.out.println("Error :" + e);
-		}
-		System.out.println("URL login :" + url);
-
-		StringRequest loginStringRequest = new StringRequest(url,
-				new Response.Listener<String>() {
-
-					@Override
-					public void onResponse(String arg0) {
-						// TODO Auto-generated method stub
-						System.out.println("Result :" + arg0);
-
-						if (arg0.equalsIgnoreCase("true")) {
-
-						} else {
-							Toast.makeText(context,
-									"Invalid UserName/Password",
-									Toast.LENGTH_LONG).show();
-						}
-						progressDialog.dismiss();
-
-					}
-
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError arg0) {
-						// TODO Auto-generated method stub
-						Toast.makeText(context,
-								"Please check internet connection",
-								Toast.LENGTH_LONG).show();
-						System.out.println("Volley Error :" + arg0);
-
-						progressDialog.dismiss();
-					}
-				});
-
-		AppController.getInstance().addToRequestQueue(loginStringRequest);
-
-	}
-
-	public void customSignupAuth() {
-		final String mobile = WelcomeActivity.etxt_mobile_signup.getText()
-				.toString().trim();
-		progressDialog = ProgressDialog.show(context, "", "loading...");
-
-		StringRequest signupStringRequest = new StringRequest(
-				Request.Method.POST, APIS.CUSTOM_SIGNUP,
-				new Response.Listener<String>() {
-
-					@Override
-					public void onResponse(String arg0) {
-						// TODO Auto-generated method stub
-						System.out.println("Result :" + arg0);
-
-						try {
-							JSONObject obj = new JSONObject(arg0);
-							System.out.println("JsonObject :" + obj);
-
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						progressDialog.dismiss();
-
-					}
-
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError arg0) {
-						// TODO Auto-generated method stub
-						Toast.makeText(context,
-								"Please check internet connection",
-								Toast.LENGTH_LONG).show();
-						System.out.println("Volley Error :" + arg0);
-
-						progressDialog.dismiss();
-					}
-				}) {
-			@Override
-			protected Map<String, String> getParams() {
-				Map<String, String> params = new HashMap<String, String>();
-				params.put(APIS.MOBILT, mobile);
-				return params;
-			}
-		};
-
-		AppController.getInstance().addToRequestQueue(signupStringRequest);
-
-		// AppController.getInstance().addToRequestQueue(singupArrayRequest);
-
-	}
-
-	public void customLoginAuth() {
-		final String mobile = WelcomeActivity.etxt_mobile_login.getText()
-				.toString().trim();
-		final String password = WelcomeActivity.etxt_pass.getText().toString()
-				.trim();
-		progressDialog = ProgressDialog.show(context, "", "loading...");
-		String url = null;
-		try {
-			url = APIS.CUSTOM_LOGIN + "" + APIS.MOBILT + "="
-					+ URLEncoder.encode(mobile, "UTF-8") + "&" + APIS.PASSWORD
-					+ "=" + password;
-		} catch (Exception e) {
-			System.out.println("Error :" + e);
-		}
-		System.out.println("URL login :" + url);
-
-		StringRequest loginStringRequest = new StringRequest(url,
-				new Response.Listener<String>() {
-
-					@Override
-					public void onResponse(String arg0) {
-						// TODO Auto-generated method stub
-						System.out.println("Result :" + arg0);
-
-						if (arg0.equalsIgnoreCase("true")) {
-
-						} else {
-							Toast.makeText(context,
-									"Invalid UserName/Password",
-									Toast.LENGTH_LONG).show();
-						}
-						progressDialog.dismiss();
-
-					}
-
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError arg0) {
-						// TODO Auto-generated method stub
-						Toast.makeText(context,
-								"Please check internet connection",
-								Toast.LENGTH_LONG).show();
-						System.out.println("Volley Error :" + arg0);
-
-						progressDialog.dismiss();
-					}
-				});
-
-		AppController.getInstance().addToRequestQueue(loginStringRequest);
-
-	}
-
+	
 }

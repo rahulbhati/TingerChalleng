@@ -34,25 +34,28 @@
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:src="@drawable/ic_launcher" />
 
             <TextView
                 android:id="@+id/txt_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
-                android:layout_marginTop="20dp"
+               
                 android:text="@string/txt_otp"
-                android:textColor="@android:color/darker_gray" />
+                 android:layout_marginTop="@dimen/welcome_margin_bottom_item"
+                android:textColor="@color/darkGray" />
 
             <EditText
                 android:id="@+id/etxt_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"
+              
+                android:background="@drawable/etxt_border"
                 android:ems="10"
+                 android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:hint="@string/etxt_otp_hint"
+                android:maxLength="10"
                 android:textColor="@android:color/black" >
             </EditText>
 
@@ -65,17 +68,19 @@
                 android:background="@drawable/btn_primary"
                 android:paddingLeft="@dimen/btn_paddding_left"
                 android:paddingRight="@dimen/btn_paddding_right"
-                  android:textColor="@android:color/white"
-                android:text="ACTIVE ACCOUNT" />
+                android:text="ACTIVE ACCOUNT"
+                 android:layout_marginTop="@dimen/welcome_margin_bottom_item"
+                 android:layout_marginBottom="@dimen/welcome_margin_bottom_item"
+                 
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:id="@+id/txt_resend_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:text="Resend OPT to your mobile number"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/darkGray" />
         </LinearLayout>
     </ScrollView>
 
