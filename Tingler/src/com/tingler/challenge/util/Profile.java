@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 
 public class Profile {
 	public static final String MYProfile = "MyProfilePre";
@@ -31,7 +33,7 @@ public class Profile {
 	public static final String Change_Password_Code = "change_pwd_code";
 	public static final String Profile_Img = "profile_img";
 	public static final String Media_Type = "media_type";
-	
+	public static final Bitmap Profile_Bitmap=null;
 	
 	public static String getMediaType() {
 		return sharedpreferences.getString(Media_Type, "");
@@ -43,6 +45,10 @@ public class Profile {
 
 	public static String getProfileImg() {
 		return Profile_Img;
+	}
+
+	public static Bitmap getProfileBitmap() {
+		return Profile_Bitmap;
 	}
 
 	public Context context;
@@ -124,7 +130,10 @@ public class Profile {
 		editor.putString(LAST_NAME, LastName);
 		editor.commit();
 	}
+	public void setProfileBitmap(Bitmap profileBitmap){
+		Bundle key1;
 	
+	}
 	public static String getFullName(){
 		return getFirstName()+" "+getLastName();
 	}
