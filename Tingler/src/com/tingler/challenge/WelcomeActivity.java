@@ -1,20 +1,27 @@
 package com.tingler.challenge;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.Session;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.api.call.FacebookLogin;
 import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.Validations;
 
@@ -29,14 +36,18 @@ public class WelcomeActivity extends Activity implements
 	private static int Login_TAG = 5;
 	private static int Signup_TAG = 1;
 	Profile profile;
-
+	
+	public boolean facebookCall=false;
+	public static FacebookLogin facebooklogin;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		checkLogin();
 		setContentView(R.layout.activity_welcome);
+		pkghash();
 		init();
+		
 	}
 
 	public void checkLogin() {
@@ -86,8 +97,9 @@ public class WelcomeActivity extends Activity implements
 		btn_signup.setOnClickListener(this);
 		btn_login.setOnClickListener(this);
 
-		btn_fb.setOnClickListener(authentication
-				.loginAuthentication(FACBOOK_TAG));
+		/*btn_fb.setOnClickListener(authentication
+				.loginAuthentication(FACBOOK_TAG));*/
+		btn_fb.setOnClickListener(this);
 		btn_google.setOnClickListener(authentication
 				.loginAuthentication(GOOGLE_LOGIN_TAG));
 
@@ -98,22 +110,28 @@ public class WelcomeActivity extends Activity implements
 			Intent intent) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, responseCode, intent);
-		if (Authentication.activityResult == FACBOOK_TAG) {
-			/*
-			 * Session.getActiveSession().onActivityResult(this, requestCode,
-			 * responseCode, intent);
-			 * authentication.facebooklogin.callingFBResult(this);
-			 */
+		if (facebookCall) {
+			
+			Session.getActiveSession().onActivityResult(this, requestCode,
+					responseCode, intent);
+		facebooklogin.callingFBResult(this);
+			 
 		} else if (Authentication.activityResult == GOOGLE_LOGIN_TAG) {
 			authentication.onActivityResult(requestCode, responseCode, intent);
 		}
+		facebookCall=false;
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-
-		if (v.getId() == R.id.btn_signup) {
+       if(v.getId()==R.id.btn_fb){
+    	   facebookCall=true;
+    	   facebooklogin = new FacebookLogin();
+			facebooklogin.signInWithFacebook(WelcomeActivity.this);
+       }
+		
+       else if (v.getId() == R.id.btn_signup) {
 
 			String mobile = etxt_mobile_signup.getText().toString().trim();
 			if (mobile.length() > 0 && mobile.length() > 9) {
@@ -151,5 +169,20 @@ public class WelcomeActivity extends Activity implements
 			}
 		}
 	}
-
+	public void pkghash() {
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					"com.tingler.challenge", PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				System.out.println(Base64.encodeToString(md.digest(),
+						Base64.NO_WRAP));
+			}
+		} catch (PackageManager.NameNotFoundException e) {
+			Log.d("", e.getMessage(), e);
+		} catch (NoSuchAlgorithmException e) {
+			Log.d("", e.getMessage(), e);
+		}
+	}
 }

@@ -137,7 +137,7 @@ public class Authentication extends GoogleLogin {
 								profile.addProfileInfo(arg0);
 								System.out.println("Id :" + profile.getId());
 								Intent intent = new Intent(context,
-										AccountActiveActivity.class);
+										MainActivity.class);
 								context.startActivity(intent);
 								((Activity)context).startActivity(intent);
 							}else{
