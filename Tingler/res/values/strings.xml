@@ -28,7 +28,18 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
-
+    <string-array name="days">
+        <item>0</item>
+          <item>1</item>
+          <item>2</item>
+          <item>3</item>
+          <item>4</item>
+          <item>5</item>
+          <item>6</item>
+          <item>7</item>
+    </string-array>
+    
+    
     <string name="etxt_status">Status</string>
     <string name="btn_clear">Clear</string>
     <string name="btn_save">Save</string>
@@ -36,6 +47,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="btn_forgot">Forgot</string>
- <string name="facebook_appid">1063645003655210</string>
- <string name="etxt_price_hint">Custom challengee prize type here</string>
+    <string name="facebook_appid">1063645003655210</string>
+    <string name="etxt_price_hint">Custom challengee prize type here</string>
+
 </resources>

@@ -2,86 +2,89 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/create_challenge_layout_margin_left"
-    android:layout_marginRight="@dimen/create_challenge_layout_margin_right"
     android:fillViewport="true" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/create_challenge_layout_margin_left"
+        android:paddingRight="@dimen/create_challenge_layout_margin_right" >
 
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_height"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/create_challenge_btn_margin_bottom"
-            android:background="@drawable/btn_primary"
-            android:paddingLeft="@dimen/btn_paddding_left"
-            android:paddingRight="@dimen/btn_paddding_right"
-            android:text="NEXT"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
-
-        <NumberPicker
-            android:id="@+id/np_days"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imv_level"
+            android:layout_width="@dimen/icon_step_level_width"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_next"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:background="@android:color/darker_gray" />
-
-        <NumberPicker
-            android:id="@+id/np_minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/np_hours"
-            android:background="@android:color/darker_gray" />
-
-        <EditText
-            android:id="@+id/etxt_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/np_days"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="31dp"
-            android:ems="10"
-            android:hint="Challenge description"
-            android:lines="3" >
-        </EditText>
+            android:layout_marginTop="16dp"
+            android:src="@drawable/step_first" />
 
         <EditText
             android:id="@+id/etxt_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/etxt_description"
-            android:layout_alignLeft="@+id/etxt_description"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/etxt_border"
             android:ems="10"
-            android:hint="Challenge title" />
+            android:hint="Challenge title"
+            android:textColor="@android:color/black" >
+        </EditText>
 
-        <NumberPicker
-            android:id="@+id/np_hours"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etxt_description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/np_days"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/etxt_border"
+            android:ems="10"
+            android:hint="Challenge description"
+            android:lines="3"
+            android:textColor="@android:color/black" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
             android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/txt_status"
+            android:id="@+id/txt_timer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/np_days"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:text="set countdown timer"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/profile_status_txt_size" />
-    </RelativeLayout>
+            android:text="Set countdown timer" />
+
+        <include
+            android:id="@+id/timerTool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            layout="@layout/custom_timer" >
+        </include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center|bottom"
+            android:orientation="vertical"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                 android:layout_marginBottom="@dimen/create_challenge_btn_margin_bottom"
+                android:layout_marginTop="@dimen/create_challenge_btn_margin_bottom"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="NEXT"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

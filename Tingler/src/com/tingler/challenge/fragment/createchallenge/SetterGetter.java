@@ -7,6 +7,7 @@ import com.tingler.challenge.util.ContactItem;
 public class SetterGetter {
 public static ArrayList<ContactItem> challengeeTempArrayList=new ArrayList<ContactItem>();
 public static ArrayList<ContactItem> witnessTempArrayList=new ArrayList<ContactItem>();
+public static String title,description,days,hours,minutes;
 
 public static String challengeTitle=null;
 public static String challengeDescription=null;
@@ -68,6 +69,46 @@ public static ArrayList<ContactItem> getWitnessTempArrayList() {
 public static void setWitnessTempArrayList(
 		ArrayList<ContactItem> witnessTempArrayList) {
 	SetterGetter.witnessTempArrayList = witnessTempArrayList;
+}
+
+public static String getTitle() {
+	return title;
+}
+
+public static String getDescription() {
+	return description;
+}
+
+public static String getDays() {
+	return days;
+}
+
+public static String getHours() {
+	return hours;
+}
+
+public static String getMinutes() {
+	return minutes;
+}
+
+public static void setTitle(String title) {
+	SetterGetter.title = title;
+}
+
+public static void setDescription(String description) {
+	SetterGetter.description = description;
+}
+
+public static void setDays(String days) {
+	SetterGetter.days = days;
+}
+
+public static void setHours(String hours) {
+	SetterGetter.hours = hours;
+}
+
+public static void setMinutes(String minutes) {
+	SetterGetter.minutes = minutes;
 };
 
 

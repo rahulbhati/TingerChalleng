@@ -3,38 +3,50 @@
     android:id="@+id/ly_add_witness"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="#2C3D4D"
-    android:orientation="horizontal"
-    android:padding="5dp" >
-
-    <ImageView
-        android:id="@+id/imv_icon"
-        android:layout_width="@dimen/challengee_picture_width"
-        android:layout_height="@dimen/challengee_picture_height"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/icon_profile" />
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical" >
+        android:background="#2C3D4D"
+        android:orientation="horizontal"
+        android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/txt_name"
+        <ImageView
+            android:id="@+id/imv_icon"
+            android:layout_width="@dimen/challengee_picture_width"
+            android:layout_height="@dimen/challengee_picture_height"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/icon_profile" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Witnesss"
-            android:textColor="@color/primaryColor"
-            android:textSize="@dimen/profile_un_txt_size" />
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/txt_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="with the help of your phonebook"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Witness"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/profile_un_txt_size" />
+
+            <TextView
+                android:id="@+id/txt_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="with the help of your phonebook"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="right"
+        android:text="you can add up to 5 witnes" />
 
 </LinearLayout>

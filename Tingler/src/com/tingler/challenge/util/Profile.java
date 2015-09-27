@@ -35,6 +35,8 @@ public class Profile {
 	public static final String Media_Type = "media_type";
 	public static final Bitmap Profile_Bitmap=null;
 	
+	
+	
 	public static String getMediaType() {
 		return sharedpreferences.getString(Media_Type, "");
 	}

@@ -3,7 +3,9 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/create_challenge_layout_margin_left"
+    android:paddingRight="@dimen/create_challenge_layout_margin_right" >
 
     <ListView
         android:id="@+id/lv_contacts"
@@ -17,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -30,6 +33,7 @@
             android:paddingRight="@dimen/btn_paddding_right"
             android:text="Cancel"
             android:textAllCaps="false"
+            android:layout_marginRight="10dp"
             android:textColor="@android:color/white" />
 
         <Button
@@ -43,7 +47,9 @@
             android:paddingRight="@dimen/btn_paddding_right"
             android:text="Submit"
             android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
             android:textColor="@android:color/white" />
+
     </LinearLayout>
 
 </LinearLayout>

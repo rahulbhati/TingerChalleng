@@ -2,6 +2,8 @@ package com.tingler.challenge.fragment.createchallenge;
 
 import com.tingler.challenge.R;
 import com.tingler.challenge.fragment.EditProfile;
+import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.Validations;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -14,49 +16,95 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
-public class Details extends Fragment implements OnClickListener{
-EditText etxt_title,etxt_description;
-Button btn_next;
-NumberPicker np_days,np_hours,np_minutes;
+public class Details extends Fragment implements OnClickListener {
+	EditText etxt_title, etxt_description,etxt_days,etxt_hours,etxt_minutes;
+	Button btn_next;
+    
+	// NumberPicker np_days,np_hours,np_minutes;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View createChalleneView=inflater.inflate(R.layout.fragment__createchallenge_details,container,false);
+		View createChalleneView = inflater.inflate(
+				R.layout.fragment__createchallenge_details, container, false);
 		init(createChalleneView);
 		return createChalleneView;
 	}
-public void init(View view)
-{
-	etxt_title=(EditText)view.findViewById(R.id.etxt_title);
-	etxt_description=(EditText)view.findViewById(R.id.etxt_description);
-	btn_next=(Button)view.findViewById(R.id.btn_next);
-	btn_next.setOnClickListener(this);
-	
-	np_days=(NumberPicker)view.findViewById(R.id.np_days);
-	np_hours=(NumberPicker)view.findViewById(R.id.np_hours);
-	np_minutes=(NumberPicker)view.findViewById(R.id.np_minutes);
-	
-	
-	np_days.setMinValue(0);
-    np_days.setMaxValue(999);
-	np_days.setWrapSelectorWheel(true);
-	
-	np_hours.setMinValue(0);
-	np_hours.setMaxValue(24);
-	np_hours.setWrapSelectorWheel(true);
-	
-	np_minutes.setMinValue(0);
-	np_minutes.setMaxValue(59);
-	np_minutes.setWrapSelectorWheel(true);
-}
-@Override
-public void onClick(View v) {
-	// TODO Auto-generated method stub
-	if(v.getId()==R.id.btn_next){
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, new Challengee()).commit();
+
+	public void init(View view) {
+		etxt_title = (EditText) view.findViewById(R.id.etxt_title);
+		etxt_days = (EditText) view.findViewById(R.id.etxt_days);
+		etxt_hours = (EditText) view.findViewById(R.id.etxt_hours);
+		etxt_minutes = (EditText) view.findViewById(R.id.etxt_minutes);
+		etxt_description = (EditText) view.findViewById(R.id.etxt_description);
+		btn_next = (Button) view.findViewById(R.id.btn_next);
+		btn_next.setOnClickListener(this);
+
 	}
-}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		String title = etxt_title.getText().toString().trim();
+		String days = etxt_days.getText().toString().trim();
+		String hours = etxt_hours.getText().toString().trim();
+		String minutes = etxt_minutes.getText().toString().trim();
+		String description = etxt_description.getText().toString().trim();
+		String regularExpression="[0-9]";
+		
+		if(days.length()==0){
+			days="0";
+		}
+		if(hours.length()==0){
+			hours="0";
+		}if(minutes.length()==0){
+			minutes="0";
+		}
+		if (v.getId() == R.id.btn_next) {
+			
+			if (title.length() > 0) {
+				Validations.isError(etxt_title, false);
+				if (description.length() > 0) {
+					Validations.isError(etxt_description, false);
+					 /* if (days.matches(regularExpression)) {
+						Validations.isError(etxt_days, false);
+					  if (hours.matches(regularExpression)) {
+							Validations.isError(etxt_hours, false);
+							if (minutes.matches(regularExpression)) {
+								Validations.isError(etxt_minutes, false);
+								
+								*/
+					SetterGetter.setTitle(title);;
+					SetterGetter.setDescription(description);
+					SetterGetter.setDays(days);
+					SetterGetter.setHours(hours);
+					SetterGetter.setMinutes(minutes);
+					
+					
+						FragmentManager fragmentManager = getFragmentManager();
+									fragmentManager.beginTransaction()
+									.replace(R.id.frame_container, new Challengee()).commit();
+							
+									
+									/*	}else{
+								Validations.isError(etxt_minutes, true);
+							}
+							}else{
+							Validations.isError(etxt_hours, true);
+						}
+						
+						}else{
+						Validations.isError(etxt_days, true);
+					}*/
+					}else{
+					Validations.isError(etxt_description, true);
+				}
+				}else{
+				Validations.isError(etxt_title, true);
+			}
+		
+		
+		}
+	}
+	
 }

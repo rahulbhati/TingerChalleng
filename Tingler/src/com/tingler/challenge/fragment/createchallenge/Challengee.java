@@ -9,6 +9,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -121,10 +122,7 @@ public class DialogContacts implements OnClickListener {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			
-			android.content.ContentResolver cr=context.getContentResolver();
-			Cursor c = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
-			    
-			//	Cursor c=cr.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,Phone.DISPLAY_NAME + " ASC");
+			Cursor c = getActivity().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
 			while(c.moveToNext()==true)
 			{
 				String name =null;

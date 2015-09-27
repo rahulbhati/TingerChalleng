@@ -1,41 +1,62 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/challengee_layout_margin_left"
-    android:layout_marginRight="@dimen/challengee_layout_margin_right"
-    android:layout_marginTop="@dimen/challengee_layout_margin_top"
-    android:gravity="center"
-    android:orientation="vertical" >
+    android:fillViewport="true" >
 
     <LinearLayout
-        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical" >
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/create_challenge_layout_margin_left"
+        android:paddingRight="@dimen/create_challenge_layout_margin_right" >
 
-        <ListView
-            android:id="@+id/lv_challengee"
+        <ImageView
+            android:id="@+id/imv_level"
+            android:layout_width="@dimen/icon_step_level_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/step_second" />
+
+        <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="@dimen/challengee_lv_divider_height" >
-        </ListView>
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/lv_challengee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="@dimen/challengee_lv_divider_height" >
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:orientation="vertical" >
+
+          
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="@dimen/create_challenge_btn_margin_bottom"
+                android:layout_marginTop="@dimen/create_challenge_btn_margin_bottom"
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="NEXT"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_height"
-        android:layout_below="@+id/layout"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="@dimen/welcome_signup_bottom"
-        android:layout_marginTop="@dimen/welcome_margin_top"
-        android:background="@drawable/btn_primary"
-        android:paddingLeft="@dimen/btn_paddding_left"
-        android:paddingRight="@dimen/btn_paddding_right"
-        android:text="NEXT"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white" />
-
-</LinearLayout>
+</ScrollView>
