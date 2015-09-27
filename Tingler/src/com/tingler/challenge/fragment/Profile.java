@@ -19,7 +19,7 @@ public class Profile extends Fragment implements OnClickListener {
 	ProgressBar progressbar_profileLevel;
 	int pStatus = 0;
 	private Handler handler = new Handler();
-	TextView txt_edit,txt_level_number,txt_username,txt_coins;
+	TextView txt_edit,txt_level_number,txt_username,txt_coins,txt_status;
 	com.tingler.challenge.util.Profile profile;
 Button btn_challenge;
 	@Override
@@ -40,6 +40,7 @@ Button btn_challenge;
 		txt_level_number=(TextView)view.findViewById(R.id.txt_level_number);
 		txt_username=(TextView)view.findViewById(R.id.txt_username);
 		txt_coins=(TextView)view.findViewById(R.id.txt_coins);
+		txt_status=(TextView)view.findViewById(R.id.txt_status);
 		btn_challenge=(Button)view.findViewById(R.id.btn_challenge);
 		btn_challenge.setOnClickListener(this);
 		txt_edit.setOnClickListener(this);
@@ -50,7 +51,7 @@ Button btn_challenge;
 	public void setValues() {
 
 		txt_username.setText(profile.getFullName());
-		
+		txt_status.setText(profile.getStatusMsg());
 	}
 
 	public void progressBarLevel() {

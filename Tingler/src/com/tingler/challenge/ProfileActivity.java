@@ -145,7 +145,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 										params.put(Profile.PASSWORD, pass);
 										// params.put(Profile.Profile_Img,"profile image");
 										params.put(Profile.ID, profile.getId());
-										params.put(Profile.STATUS_MSG, "2");
+										params.put(Profile.STATUS_MSG, status);
 										if (profile.getGoogleId().length() > 0
 												|| profile.getFacebookId()
 														.length() > 0) {
