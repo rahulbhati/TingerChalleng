@@ -176,43 +176,13 @@ public class Witness extends Fragment implements OnClickListener {
 
 		}
 
-		public TextWatcher watcher() {
-			TextWatcher textWatcher = new TextWatcher() {
-
-				@Override
-				public void onTextChanged(CharSequence s, int start,
-						int before, int count) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void beforeTextChanged(CharSequence s, int start,
-						int count, int after) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void afterTextChanged(Editable s) {
-					// TODO Auto-generated method stub
-					/*
-					 * String text = etxt_search.getText().toString()
-					 * .toLowerCase(Locale.getDefault());
-					 * contactsAdapter.filter(text);
-					 */
-				}
-			};
-			return textWatcher;
-		}
-
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			if (v.getId() == R.id.btn_ok) {
 
 				tempArrayList = new ArrayList<ContactItem>();
-				tempArrayList = SetterGetter.getChallengeeTempArrayList();
+				tempArrayList = SetterGetter.getWitnessTempArrayList();
 				witnessAdapter = new WitnessAdapter(getActivity(),
 						tempArrayList);
 				lv_witness.setAdapter(witnessAdapter);
@@ -303,7 +273,7 @@ public class Witness extends Fragment implements OnClickListener {
 							tempArrayList.add(contactItem);
 						}
 					}
-					SetterGetter.setChallengeeTempArrayList(tempArrayList);
+					SetterGetter.setWitnessTempArrayList(tempArrayList);
 
 				}
 			});
@@ -311,23 +281,6 @@ public class Witness extends Fragment implements OnClickListener {
 			return convertView;
 		}
 
-		// Filter Class
-		public void filter(String charText) {
-			charText = charText.toLowerCase(Locale.getDefault());
-
-			contactsArrayList.clear();
-			if (charText.length() == 0) {
-				contactsArrayList.addAll(arraylist);
-			} else {
-				for (ContactItem wp : arraylist) {
-					if (wp.getName().toLowerCase(Locale.getDefault())
-							.contains(charText)) {
-						contactsArrayList.add(wp);
-					}
-				}
-			}
-			notifyDataSetChanged();
-		}
 
 	}
 

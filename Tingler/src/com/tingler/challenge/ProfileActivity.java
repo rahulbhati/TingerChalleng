@@ -46,7 +46,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	Button btn_clear, btn_save;
 	ImageView imageview_profile;
 	public static EditText etxt_fname, etxt_lname, etxt_email, etxt_contact,
-			etxt_password, etxt_cpassword;
+			etxt_password, etxt_cpassword,etxt_status_msg;
 	Profile profile;
 	private static final int PICK_CAMERA = 1;
 	private static final int PICK_GALLERY = 2;
@@ -78,6 +78,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		etxt_contact = (EditText) findViewById(R.id.etxt_contact);
 		etxt_password = (EditText) findViewById(R.id.etxt_password);
 		etxt_cpassword = (EditText) findViewById(R.id.etxt_cpassword);
+		etxt_status_msg = (EditText) findViewById(R.id.etxt_status_msg);
 		setValues();
 	}
 
@@ -99,12 +100,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			String mobile = etxt_contact.getText().toString().trim();
 			String pass = etxt_password.getText().toString().trim();
 			String cpass = etxt_cpassword.getText().toString().trim();
+			String status = etxt_status_msg.getText().toString().trim();
 			Validations.isError(etxt_fname, false);
 			Validations.isError(etxt_lname, false);
 			Validations.isError(etxt_email, false);
 			Validations.isError(etxt_contact, false);
 			Validations.isError(etxt_password, false);
 			Validations.isError(etxt_cpassword, false);
+			Validations.isError(etxt_status_msg, false);
 			if (fname.length() > 0) {
 				Validations.isError(etxt_fname, false);
 				if (lname.length() > 0) {
@@ -122,7 +125,10 @@ public class ProfileActivity extends Activity implements OnClickListener {
 												false);
 										Validations.isError(etxt_cpassword,
 												false);
-
+										if (status.length() > 0) {
+											Validations.isError(etxt_status_msg, false);
+											
+											
 										Profile profile = new Profile(this);
 										Bitmap bitmap = ((BitmapDrawable) imageview_profile
 												.getDrawable()).getBitmap();
@@ -167,7 +173,9 @@ public class ProfileActivity extends Activity implements OnClickListener {
 											authentication
 													.requestProfileAPI(params);
 										}
-
+										}else{
+											Validations.isError(etxt_status_msg, true);
+										}
 									} else {
 										Validations.isError(etxt_cpassword,
 												true);
@@ -205,12 +213,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			etxt_contact.getText().clear();
 			etxt_password.getText().clear();
 			etxt_cpassword.getText().clear();
+			etxt_status_msg.getText().clear();
 			Validations.isError(etxt_fname, false);
 			Validations.isError(etxt_lname, false);
 			Validations.isError(etxt_email, false);
 			Validations.isError(etxt_contact, false);
 			Validations.isError(etxt_password, false);
 			Validations.isError(etxt_cpassword, false);
+			Validations.isError(etxt_status_msg, false);
 		} else if (v.getId() == R.id.imageview_profile) {
 			registerForContextMenu(imageview_profile);
 			openContextMenu(imageview_profile);

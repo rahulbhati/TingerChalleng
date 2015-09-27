@@ -3,6 +3,7 @@ package com.tingler.challenge.fragment.createchallenge;
 import com.tingler.challenge.R;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,5 +36,14 @@ public class Price extends Fragment implements OnClickListener{
 		// TODO Auto-generated method stub
 		String price=etxt_price_type.getText().toString();
 		String coins=etxt_coins.getText().toString();
+		
+		System.out.println(SetterGetter.getChallengeeTempArrayList().size());
+		System.out.println(SetterGetter.getWitnessTempArrayList().size());
+		
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.frame_container, new ChallengeCreated()).commit();
+		
+		
 	}
 }

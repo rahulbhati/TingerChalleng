@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 public class Details extends Fragment implements OnClickListener {
 	EditText etxt_title, etxt_description,etxt_days,etxt_hours,etxt_minutes;
@@ -52,14 +53,7 @@ public class Details extends Fragment implements OnClickListener {
 		String description = etxt_description.getText().toString().trim();
 		String regularExpression="[0-9]";
 		
-		if(days.length()==0){
-			days="0";
-		}
-		if(hours.length()==0){
-			hours="0";
-		}if(minutes.length()==0){
-			minutes="0";
-		}
+		
 		if (v.getId() == R.id.btn_next) {
 			
 			if (title.length() > 0) {
@@ -74,6 +68,16 @@ public class Details extends Fragment implements OnClickListener {
 								Validations.isError(etxt_minutes, false);
 								
 								*/
+					if(days.length()>0 || hours.length()>0 || minutes.length()>0 ){
+						if(days.length()==0){
+							days="0";
+						}
+						if(hours.length()==0){
+							hours="0";
+						}if(minutes.length()==0){
+							minutes="0";
+						}	
+						
 					SetterGetter.setTitle(title);;
 					SetterGetter.setDescription(description);
 					SetterGetter.setDays(days);
@@ -85,6 +89,10 @@ public class Details extends Fragment implements OnClickListener {
 									fragmentManager.beginTransaction()
 									.replace(R.id.frame_container, new Challengee()).commit();
 							
+					}else{
+						Toast.makeText(getActivity(), "Please enter days or hours or minutes", Toast.LENGTH_LONG).show();
+					}
+									
 									
 									/*	}else{
 								Validations.isError(etxt_minutes, true);
