@@ -1,19 +1,13 @@
 package com.tingler.challenge.fragment.createchallenge;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +25,7 @@ import android.widget.TextView;
 
 import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.WitnessAdapter;
+import com.tingler.challenge.contacts.ManageContacts;
 import com.tingler.challenge.util.ContactItem;
 
 public class Witness extends Fragment implements OnClickListener {
@@ -39,6 +34,7 @@ public class Witness extends Fragment implements OnClickListener {
 	ListView lv_witness;
 	ArrayList<ContactItem> tempArrayList;
 	public WitnessAdapter witnessAdapter;
+	int witnessCount = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,15 +91,12 @@ public class Witness extends Fragment implements OnClickListener {
 
 		public DialogContacts(Context context) {
 			this.context = context;
-
 		}
 
 		public void contactList(String title) {
 			dialog = new Dialog(context);
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			dialog.setContentView(R.layout.dialog_contact);
-			// dialog.setTitle(title);
-
 			init(dialog);
 			dialog.show();
 
@@ -111,69 +104,15 @@ public class Witness extends Fragment implements OnClickListener {
 
 		public void init(Dialog dialog) {
 			contactsArrayList = new ArrayList<ContactItem>();
-			// etxt_search = (EditText) dialog.findViewById(R.id.etxt_search);
 			lv_contacts = (ListView) dialog.findViewById(R.id.lv_contacts);
-			new ContactsAsy().execute();
-			// etxt_search.addTextChangedListener(watcher());
+			contactsAdapter = new ContactsAdapter(context,
+					ManageContacts.getWitnessContactArrayList());
+			lv_contacts.setAdapter(contactsAdapter);
+			dialog.show();
 			btn_ok = (Button) dialog.findViewById(R.id.btn_ok);
 			btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
 			btn_ok.setOnClickListener(this);
 			btn_cancel.setOnClickListener(this);
-		}
-
-		public class ContactsAsy extends AsyncTask<String, String, String> {
-
-			@Override
-			protected String doInBackground(String... params) {
-				// TODO Auto-generated method stub
-
-				android.content.ContentResolver cr = context
-						.getContentResolver();
-				Cursor c = context.getContentResolver().query(
-						ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-						null,
-						null,
-						null,
-						ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
-								+ " ASC");
-
-				// Cursor
-				// c=cr.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,Phone.DISPLAY_NAME
-				// + " ASC");
-				while (c.moveToNext() == true) {
-					String name = null;
-					String phoneNumber = null;
-					name = c.getString(c
-							.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-					phoneNumber = c
-							.getString(c
-									.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-
-					if (name.length() > 0 && phoneNumber.length() > 0) {
-					
-						ContactItem contactItem = new ContactItem(name,
-								phoneNumber, "");
-						
-					
-						contactsArrayList.add(contactItem);
-						
-					
-					}
-
-				}
-				c.close();
-				return null;
-			}
-
-			@Override
-			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
-				super.onPostExecute(result);
-				contactsAdapter = new ContactsAdapter(context,
-						contactsArrayList);
-				lv_contacts.setAdapter(contactsAdapter);
-			}
-
 		}
 
 		@Override
@@ -186,9 +125,7 @@ public class Witness extends Fragment implements OnClickListener {
 				witnessAdapter = new WitnessAdapter(getActivity(),
 						tempArrayList);
 				lv_witness.setAdapter(witnessAdapter);
-				;
 				dialog.dismiss();
-
 			} else if (v.getId() == R.id.btn_cancel) {
 				dialog.dismiss();
 			}
@@ -196,28 +133,25 @@ public class Witness extends Fragment implements OnClickListener {
 	}
 
 	public class ContactsAdapter extends BaseAdapter {
-
-		// Declare Variables
-		Context context;
+        Context context;
 		LayoutInflater inflater;
 		private ArrayList<ContactItem> contactsArrayList = null;
 		private ArrayList<ContactItem> arraylist;
 		public ArrayList<Boolean> checkBoxStatus;
-
-		public ContactsAdapter(Context context,
+        public ContactsAdapter(Context context,
 				ArrayList<ContactItem> contactItem) {
 			this.context = context;
-			this.contactsArrayList = contactItem;
+			this.contactsArrayList = ManageContacts
+					.getWitnessContactArrayList();
 			checkBoxStatus = new ArrayList<Boolean>();
 			for (int i = 0; contactsArrayList.size() > i; i++) {
-				checkBoxStatus.add(i, false);
+				checkBoxStatus.add(i, contactsArrayList.get(i)
+						.isCheckboxstatus());
 			}
 		}
-
-		public class ViewHolder {
+       public class ViewHolder {
 			TextView name;
 			TextView mobile;
-			// TextView level;
 			ImageView flag;
 		}
 
@@ -258,10 +192,19 @@ public class Witness extends Fragment implements OnClickListener {
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
 					// TODO Auto-generated method stub
+				 
 					if (isChecked) {
+						
+						
 						checkBoxStatus.set(position, isChecked);
+						ManageContacts.getWitnessContactArrayList()
+								.get(position).setCheckboxstatus(isChecked);
+
 					} else {
 						checkBoxStatus.set(position, false);
+						ManageContacts.getWitnessContactArrayList()
+								.get(position).setCheckboxstatus(isChecked);
+
 					}
 					ArrayList<ContactItem> tempArrayList = new ArrayList<ContactItem>();
 					for (int i = 0; i < checkBoxStatus.size(); i++) {
@@ -269,7 +212,8 @@ public class Witness extends Fragment implements OnClickListener {
 						if (checkBoxStatus.get(i) == true) {
 							ContactItem contactItem = new ContactItem(
 									contactsArrayList.get(i).getName(),
-									contactsArrayList.get(i).getMobile(), "1");
+									contactsArrayList.get(i).getMobile(), "1",
+									position);
 							tempArrayList.add(contactItem);
 						}
 					}
@@ -280,7 +224,6 @@ public class Witness extends Fragment implements OnClickListener {
 
 			return convertView;
 		}
-
 
 	}
 

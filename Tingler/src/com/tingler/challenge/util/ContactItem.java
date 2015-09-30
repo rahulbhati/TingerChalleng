@@ -4,13 +4,39 @@ public class ContactItem {
 	private String name;
 	private String mobile;
 	private String level;
+	//int indexCheckbox;
 	//private int flag;
+    private boolean checkboxstatus;
+	public ContactItem(){
+		
+	}
+	
 
-	public ContactItem(String name, String mobile, String level) {
+	public boolean isCheckboxstatus() {
+		return checkboxstatus;
+	}
+
+
+	public void setCheckboxstatus(boolean checkboxstatus) {
+		this.checkboxstatus = checkboxstatus;
+	}
+
+
+	/*public int getIndexCheckbox() {
+		return indexCheckbox;
+	}
+
+
+	public void setIndexCheckbox(int indexCheckbox) {
+		this.indexCheckbox = indexCheckbox;
+	}
+*/
+
+	public ContactItem(String name, String mobile, String level,int index) {
 		this.name = name;
 		this.mobile = mobile;
 		this.level = level;
-	
+	  
 	}
 
 	public String getName() {

@@ -38,6 +38,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	//	setContentView(R.layout.welcome_test);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		init();
+		
 	}
 
 	public void init() {

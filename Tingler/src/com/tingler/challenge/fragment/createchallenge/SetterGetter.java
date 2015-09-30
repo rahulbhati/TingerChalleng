@@ -9,6 +9,18 @@ public static ArrayList<ContactItem> challengeeTempArrayList=new ArrayList<Conta
 public static ArrayList<ContactItem> witnessTempArrayList=new ArrayList<ContactItem>();
 public static String title,description,days,hours,minutes;
 
+
+public ArrayList<Integer> challengeeCheckboxIndex=new ArrayList<Integer>();
+
+public ArrayList<Integer> getChallengeeCheckboxIndex() {
+	return challengeeCheckboxIndex;
+}
+
+public void setChallengeeCheckboxIndex(
+		ArrayList<Integer> challengeeCheckboxIndex) {
+	this.challengeeCheckboxIndex = challengeeCheckboxIndex;
+}
+
 public static String challengeTitle=null;
 public static String challengeDescription=null;
 public static String challengeDays=null,challengeHours=null,challengeMinutes=null;

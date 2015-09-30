@@ -1,12 +1,17 @@
 package com.tingler.challenge.util;
 
+import java.io.ByteArrayOutputStream;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 
 public class Profile {
 	public static final String MYProfile = "MyProfilePre";
@@ -33,10 +38,7 @@ public class Profile {
 	public static final String Change_Password_Code = "change_pwd_code";
 	public static final String Profile_Img = "profile_img";
 	public static final String Media_Type = "media_type";
-	public static final Bitmap Profile_Bitmap=null;
-	
-	
-	
+
 	public static String getMediaType() {
 		return sharedpreferences.getString(Media_Type, "");
 	}
@@ -46,11 +48,7 @@ public class Profile {
 	}
 
 	public static String getProfileImg() {
-		return Profile_Img;
-	}
-
-	public static Bitmap getProfileBitmap() {
-		return Profile_Bitmap;
+		return sharedpreferences.getString(Profile_Img, "");
 	}
 
 	public Context context;
@@ -74,7 +72,7 @@ public class Profile {
 			editor.putString(FIRST_NAME, jsonObject.getString(FIRST_NAME));
 			editor.putString(LAST_NAME, jsonObject.getString(LAST_NAME));
 			editor.putString(MOBILE, jsonObject.getString(MOBILE));
-			editor.putString(Profile_Img, jsonObject.getString(COINS));
+		
 			editor.putString(STATUS_MSG, jsonObject.getString(STATUS_MSG));
 			editor.putString(STATUS, jsonObject.getString(STATUS));
 			editor.putString(DATE_ADDED, jsonObject.getString(DATE_ADDED));
@@ -132,9 +130,9 @@ public class Profile {
 		editor.putString(LAST_NAME, LastName);
 		editor.commit();
 	}
-	public void setProfileBitmap(Bitmap profileBitmap){
-		Bundle key1;
-	
+	public void setProfileBit64(String profileBit64){
+		editor.putString(Profile_Img, profileBit64);
+		editor.commit();
 	}
 	public static String getFullName(){
 		return getFirstName()+" "+getLastName();
@@ -209,5 +207,21 @@ public class Profile {
 
 		return sharedpreferences.getString(Verification_Code, "");
 	}
+	public static String encodeTobase64(Bitmap image) {
+		Bitmap immagex = image;
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		immagex.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+		byte[] b = baos.toByteArray();
+		String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
 
+		Log.e("LOOK", imageEncoded);
+		return imageEncoded;
+	}
+
+	public static Bitmap decodeBase64(String input) {
+		byte[] decodedByte = Base64.decode(input, 0);
+		return BitmapFactory
+				.decodeByteArray(decodedByte, 0, decodedByte.length);
+	}
+	
 }

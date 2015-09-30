@@ -16,10 +16,10 @@
         android:fillViewport="true" >
 
         <LinearLayout
-              android:layout_marginLeft="@dimen/layout_margin_left"
-            android:layout_marginRight="@dimen/layout_margin_right"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_right"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
@@ -28,13 +28,13 @@
                 android:layout_width="@dimen/profile_picture_width"
                 android:layout_height="@dimen/profile_picture_height"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/icon_profile" />
+                android:src="@drawable/no_image_icon" />
 
             <EditText
-                 android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:id="@+id/etxt_fname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/welcome_margin_bottom_item"
                 android:background="@drawable/etxt_border"
                 android:ems="10"
                 android:hint="@string/etxt_fn"
@@ -43,8 +43,7 @@
 
             <EditText
                 android:id="@+id/etxt_lname"
-                
-              android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
                 android:background="@drawable/etxt_border"
@@ -57,19 +56,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                 android:background="@drawable/etxt_border"
                 android:hint="@string/etxt_email"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/etxt_contact"
-            android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                 android:background="@drawable/etxt_border"
                 android:hint="@string/etxt_contact"
                 android:inputType="phone"
                 android:maxLength="13"
@@ -77,10 +76,10 @@
 
             <EditText
                 android:id="@+id/etxt_password"
-               android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:background="@drawable/etxt_border"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -88,23 +87,23 @@
 
             <EditText
                 android:id="@+id/etxt_cpassword"
-               android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                 android:background="@drawable/etxt_border"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:textColor="@android:color/black" />
+
             <EditText
                 android:id="@+id/etxt_status_msg"
-               android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/welcome_margin_top"
+                android:background="@drawable/etxt_border"
                 android:ems="10"
-                 android:background="@drawable/etxt_border"
                 android:hint="Status"
-                
                 android:textColor="@android:color/black" />
 
             <LinearLayout

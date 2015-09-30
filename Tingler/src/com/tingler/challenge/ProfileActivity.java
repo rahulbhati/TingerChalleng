@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -46,7 +48,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	Button btn_clear, btn_save;
 	ImageView imageview_profile;
 	public static EditText etxt_fname, etxt_lname, etxt_email, etxt_contact,
-			etxt_password, etxt_cpassword,etxt_status_msg;
+			etxt_password, etxt_cpassword, etxt_status_msg;
 	Profile profile;
 	private static final int PICK_CAMERA = 1;
 	private static final int PICK_GALLERY = 2;
@@ -126,55 +128,61 @@ public class ProfileActivity extends Activity implements OnClickListener {
 										Validations.isError(etxt_cpassword,
 												false);
 										if (status.length() > 0) {
-											Validations.isError(etxt_status_msg, false);
+											Validations.isError(
+													etxt_status_msg, false);
+
 											
-											
-										Profile profile = new Profile(this);
-										Bitmap bitmap = ((BitmapDrawable) imageview_profile
-												.getDrawable()).getBitmap();
+											// String
+											// picbase64=encodeTobase64(bitmap);
 
-										// String
-										// picbase64=encodeTobase64(bitmap);
+											Map<String, String> params = new HashMap<String, String>();
 
-										Map<String, String> params = new HashMap<String, String>();
+											params.put(Profile.FIRST_NAME,
+													fname);
+											params.put(Profile.LAST_NAME, lname);
+											params.put(Profile.EMAIL, email);
+											params.put(Profile.MOBILE, mobile);
+											params.put(Profile.PASSWORD, pass);
 
-										params.put(Profile.FIRST_NAME, fname);
-										params.put(Profile.LAST_NAME, lname);
-										params.put(Profile.EMAIL, email);
-										params.put(Profile.MOBILE, mobile);
-										params.put(Profile.PASSWORD, pass);
-										// params.put(Profile.Profile_Img,"profile image");
-										params.put(Profile.ID, profile.getId());
-										params.put(Profile.STATUS_MSG, status);
-										if (profile.getGoogleId().length() > 0
-												|| profile.getFacebookId()
-														.length() > 0) {
+											params.put(Profile.Profile_Img,
+													profile.getProfileImg());
+											params.put(Profile.ID,
+													profile.getId());
+											params.put(Profile.STATUS_MSG,
+													status);
+											if (profile.getGoogleId().length() > 0
+													|| profile.getFacebookId()
+															.length() > 0) {
 
-											params.put(Profile.Media_Type,
-													profile.getMediaType()
-															.toString().trim());
-											if (profile.getMediaType()
-													.equalsIgnoreCase(
-															"facebook")) {
-												params.put(Profile.FACEBOOK_ID,
-														profile.getFacebookId()
+												params.put(Profile.Media_Type,
+														profile.getMediaType()
 																.toString()
 																.trim());
+												if (profile.getMediaType()
+														.equalsIgnoreCase(
+																"facebook")) {
+													params.put(
+															Profile.FACEBOOK_ID,
+															profile.getFacebookId()
+																	.toString()
+																	.trim());
+												} else {
+													params.put(
+															Profile.GOOGLE_ID,
+															profile.getGoogleId()
+																	.toString()
+																	.trim());
+
+												}
+												authentication
+														.requestSocialMediaAPI(params);
 											} else {
-												params.put(Profile.GOOGLE_ID,
-														profile.getGoogleId()
-																.toString()
-																.trim());
-
+												authentication
+														.requestProfileAPI(params);
 											}
-											authentication
-													.requestSocialMediaAPI(params);
 										} else {
-											authentication
-													.requestProfileAPI(params);
-										}
-										}else{
-											Validations.isError(etxt_status_msg, true);
+											Validations.isError(
+													etxt_status_msg, true);
 										}
 									} else {
 										Validations.isError(etxt_cpassword,
@@ -254,11 +262,12 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			startActivityForResult(photoPickerIntent, PICK_GALLERY);
 
 		} else if (item.getTitle() == "Camera") {
-			 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-			    
-			    	startActivityForResult(takePictureIntent, PICK_CAMERA);
-			    }
+			Intent takePictureIntent = new Intent(
+					MediaStore.ACTION_IMAGE_CAPTURE);
+			if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+
+				startActivityForResult(takePictureIntent, PICK_CAMERA);
+			}
 		} else if (item.getTitle() == "Cancel") {
 			return false;
 		}
@@ -270,46 +279,34 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		if (PICK_GALLERY == requestCode) {
 			try {
 				Bundle extras = data.getExtras();
 				Bitmap selectedImage = extras.getParcelable("data");
-				imageview_profile.setImageBitmap(getCroppedBitmap(selectedImage));
-             	} catch (Exception e) {
-				Toast.makeText(this, "Please try another image.",
-						Toast.LENGTH_LONG).show();
-				e.printStackTrace();
-			}
-		} else if (PICK_CAMERA== requestCode) {
-			try {
-			Bundle extras = data.getExtras();
-			Bitmap selectedImage = (Bitmap) extras.get("data");
-			imageview_profile.setImageBitmap(getCroppedBitmapCamera(selectedImage));
+				imageview_profile
+						.setImageBitmap(getCroppedBitmap(selectedImage));
+				new Bit64EncodeDecode(getCroppedBitmap(selectedImage)).execute();
+
 			} catch (Exception e) {
-			
+				Toast.makeText(this, "Please try another image.",
+						Toast.LENGTH_LONG).show();
+				e.printStackTrace();
+			}
+		} else if (PICK_CAMERA == requestCode) {
+			try {
+				Bundle extras = data.getExtras();
+				Bitmap selectedImage = (Bitmap) extras.get("data");
+				imageview_profile
+						.setImageBitmap(getCroppedBitmapCamera(selectedImage));
+				new Bit64EncodeDecode(getCroppedBitmapCamera(selectedImage)).execute();
+			} catch (Exception e) {
+
 				Toast.makeText(this, "Please try another image.",
 						Toast.LENGTH_LONG).show();
 				e.printStackTrace();
 			}
 		}
-		}
-	
-	public static String encodeTobase64(Bitmap image) {
-		Bitmap immagex = image;
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		immagex.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-		byte[] b = baos.toByteArray();
-		String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
-		Log.e("LOOK", imageEncoded);
-		return imageEncoded;
-	}
-
-	public static Bitmap decodeBase64(String input) {
-		byte[] decodedByte = Base64.decode(input, 0);
-		return BitmapFactory
-				.decodeByteArray(decodedByte, 0, decodedByte.length);
 	}
 
 	public Bitmap getCroppedBitmap(Bitmap bitmap) {
@@ -332,6 +329,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 
 		return output;
 	}
+
 	public Bitmap getCroppedBitmapCamera(Bitmap bitmap) {
 		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
 				bitmap.getHeight(), Config.ARGB_8888);
@@ -352,4 +350,38 @@ public class ProfileActivity extends Activity implements OnClickListener {
 
 		return output;
 	}
+
+	public class Bit64EncodeDecode extends AsyncTask<String, String, String> {
+		ProgressDialog progressDialog ;
+        Bitmap bitmap;
+		public Bit64EncodeDecode(Bitmap bitmap){
+			this.bitmap=bitmap;
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			progressDialog = ProgressDialog.show(
+					ProfileActivity.this, "", "loading...");
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			
+		  String bit64=	profile.encodeTobase64(bitmap);
+			profile.setProfileBit64(bit64);
+			
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			progressDialog.dismiss();
+		}
+	}
+
 }
