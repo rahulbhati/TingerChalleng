@@ -34,7 +34,7 @@ import com.tingler.challenge.contacts.ManageContacts;
 import com.tingler.challenge.util.ContactItem;
 
 public class Challengee extends Fragment implements OnClickListener {
-	Button btn_next;
+	Button btn_next,btn_back;
 	LinearLayout ly_add_challengee;
 	ListView lv_challengee;
 	ArrayList<ContactItem> tempArrayList;
@@ -54,8 +54,12 @@ public class Challengee extends Fragment implements OnClickListener {
 	public void init(View view) {
 
 		btn_next = (Button) view.findViewById(R.id.btn_next);
+		btn_back = (Button) view.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(this);
+		
 		lv_challengee = (ListView) view.findViewById(R.id.lv_challengee);
 		btn_next.setOnClickListener(this);
+		
 		View footerView = ((LayoutInflater) getActivity().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE)).inflate(
 				R.layout.footer_challengee, null, false);
@@ -93,6 +97,10 @@ public class Challengee extends Fragment implements OnClickListener {
 		} else if (v.getId() == R.id.ly_add_challengee) {
 			DialogContacts contacts = new DialogContacts(getActivity());
 			contacts.contactList("Choose Challengee");
+		}else if(v.getId()==R.id.btn_back){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Details()).commit();
 		}
 	}
 

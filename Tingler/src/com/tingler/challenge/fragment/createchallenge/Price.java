@@ -21,7 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Price extends Fragment implements OnClickListener{
-	Button btn_submit;
+	Button btn_submit,btn_back;
 	EditText etxt_price_type,etxt_coins;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,7 +33,8 @@ public class Price extends Fragment implements OnClickListener{
 	}
 	public void init(View view)
 	{
-		
+		btn_back = (Button) view.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(this);
 		btn_submit=(Button)view.findViewById(R.id.btn_submit);
 		etxt_price_type=(EditText)view.findViewById(R.id.etxt_price_type);
 		etxt_coins=(EditText)view.findViewById(R.id.etxt_coins);
@@ -42,6 +43,9 @@ public class Price extends Fragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		
+		if(v.getId()==R.id.btn_submit){
+		
 		String title=SetterGetter.getTitle();
 		String description=SetterGetter.getDescription();
 		String days=SetterGetter.getDays();
@@ -102,7 +106,11 @@ public class Price extends Fragment implements OnClickListener{
 		Authentication authentication=new Authentication(getActivity());
 		authentication.requestCreateChallengeAPI(createChallengeHashMap);
 		
-		
+		}else if(v.getId()==R.id.btn_back){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Witness()).commit();
+		}
 		
 		
 		

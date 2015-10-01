@@ -35,7 +35,7 @@ import com.tingler.challenge.contacts.ManageContacts;
 import com.tingler.challenge.util.ContactItem;
 
 public class Witness extends Fragment implements OnClickListener {
-	Button btn_next;
+	Button btn_next,btn_back;
 	LinearLayout ly_add_witness;
 	ListView lv_witness;
 	ArrayList<ContactItem> tempArrayList;
@@ -55,6 +55,9 @@ public class Witness extends Fragment implements OnClickListener {
 	public void init(View view) {
 
 		btn_next = (Button) view.findViewById(R.id.btn_next);
+		btn_back = (Button) view.findViewById(R.id.btn_back);
+		btn_back.setOnClickListener(this);
+	
 		lv_witness = (ListView) view.findViewById(R.id.lv_witness);
 		btn_next.setOnClickListener(this);
 		View footerView = ((LayoutInflater) getActivity().getSystemService(
@@ -84,6 +87,10 @@ public class Witness extends Fragment implements OnClickListener {
 		} else if (v.getId() == R.id.ly_add_witness) {
 			DialogContacts contacts = new DialogContacts(getActivity());
 			contacts.contactList("Choose witness");
+		}else if(v.getId()==R.id.btn_back){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Challengee()).commit();
 		}
 	}
 

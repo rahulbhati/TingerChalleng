@@ -46,7 +46,14 @@ public class Details extends Fragment implements OnClickListener {
 		etxt_description = (EditText) view.findViewById(R.id.etxt_description);
 		btn_next = (Button) view.findViewById(R.id.btn_next);
 		btn_next.setOnClickListener(this);
-
+		setValue();
+	}
+	public void setValue(){
+		etxt_title.setText(SetterGetter.getTitle());
+		etxt_description.setText(SetterGetter.getDescription());
+		etxt_days.setText(SetterGetter.getDays());
+		etxt_hours.setText(SetterGetter.getHours());
+		etxt_minutes.setText(SetterGetter.getMinutes());
 	}
 
 	@Override
