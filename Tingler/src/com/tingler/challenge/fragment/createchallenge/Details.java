@@ -20,9 +20,9 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 public class Details extends Fragment implements OnClickListener {
-	EditText etxt_title, etxt_description,etxt_days,etxt_hours,etxt_minutes;
+	EditText etxt_title, etxt_description, etxt_days, etxt_hours, etxt_minutes;
 	Button btn_next;
-    
+
 	// NumberPicker np_days,np_hours,np_minutes;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,10 +30,11 @@ public class Details extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		View createChalleneView = inflater.inflate(
 				R.layout.fragment__createchallenge_details, container, false);
-		
-		Intent getContactIntent=new Intent(getActivity(),ContactListService.class);
+
+		Intent getContactIntent = new Intent(getActivity(),
+				ContactListService.class);
 		getActivity().startService(getContactIntent);
-		
+
 		init(createChalleneView);
 		return createChalleneView;
 	}
@@ -48,7 +49,8 @@ public class Details extends Fragment implements OnClickListener {
 		btn_next.setOnClickListener(this);
 		setValue();
 	}
-	public void setValue(){
+
+	public void setValue() {
 		etxt_title.setText(SetterGetter.getTitle());
 		etxt_description.setText(SetterGetter.getDescription());
 		etxt_days.setText(SetterGetter.getDays());
@@ -64,68 +66,93 @@ public class Details extends Fragment implements OnClickListener {
 		String hours = etxt_hours.getText().toString().trim();
 		String minutes = etxt_minutes.getText().toString().trim();
 		String description = etxt_description.getText().toString().trim();
-		String regularExpression="[0-9]";
-		
-		
+		String regularExpression = "[0-9]";
+
 		if (v.getId() == R.id.btn_next) {
-			
+
 			if (title.length() > 0) {
 				Validations.isError(etxt_title, false);
 				if (description.length() > 0) {
 					Validations.isError(etxt_description, false);
-					 /* if (days.matches(regularExpression)) {
-						Validations.isError(etxt_days, false);
-					  if (hours.matches(regularExpression)) {
-							Validations.isError(etxt_hours, false);
-							if (minutes.matches(regularExpression)) {
-								Validations.isError(etxt_minutes, false);
-								
-								*/
-					if(days.length()>0 || hours.length()>0 || minutes.length()>0 ){
-						if(days.length()==0){
-							days="0";
-						}
-						if(hours.length()==0){
-							hours="0";
-						}if(minutes.length()==0){
-							minutes="0";
-						}	
-						
-					SetterGetter.setTitle(title);;
-					SetterGetter.setDescription(description);
-					SetterGetter.setDays(days);
-					SetterGetter.setHours(hours);
-					SetterGetter.setMinutes(minutes);
-					
-					
-						FragmentManager fragmentManager = getFragmentManager();
-									fragmentManager.beginTransaction()
-									.replace(R.id.frame_container, new Challengee()).commit();
+					/*
+					 * if (days.matches(regularExpression)) {
+					 * Validations.isError(etxt_days, false); if
+					 * (hours.matches(regularExpression)) {
+					 * Validations.isError(etxt_hours, false); if
+					 * (minutes.matches(regularExpression)) {
+					 * Validations.isError(etxt_minutes, false);
+					 */
+					if (days.length() > 0 || hours.length() > 0
+							|| minutes.length() > 0) {
+
+						if (timerValidation()) {
+
+							SetterGetter.setTitle(title);
 							
-					}else{
-						Toast.makeText(getActivity(), "Please enter days or hours or minutes", Toast.LENGTH_LONG).show();
-					}
-									
-									
-									/*	}else{
-								Validations.isError(etxt_minutes, true);
-							}
-							}else{
-							Validations.isError(etxt_hours, true);
+							SetterGetter.setDescription(description);
+							SetterGetter.setDays(days);
+							SetterGetter.setHours(hours);
+							SetterGetter.setMinutes(minutes);
+							FragmentManager fragmentManager = getFragmentManager();
+							fragmentManager
+									.beginTransaction()
+									.replace(R.id.frame_container,
+											new Challengee()).commit();
+
+						} else {
+							Toast.makeText(getActivity(), " Invalid Time ",
+									Toast.LENGTH_LONG).show();
 						}
-						
-						}else{
-						Validations.isError(etxt_days, true);
-					}*/
-					}else{
+
+					} else {
+						Toast.makeText(getActivity(),
+								"Please enter days or hours or minutes",
+								Toast.LENGTH_LONG).show();
+					}
+
+					/*
+					 * }else{ Validations.isError(etxt_minutes, true); } }else{
+					 * Validations.isError(etxt_hours, true); }
+					 * 
+					 * }else{ Validations.isError(etxt_days, true); }
+					 */
+				} else {
 					Validations.isError(etxt_description, true);
 				}
-				}else{
+			} else {
 				Validations.isError(etxt_title, true);
 			}
-		
-		
+
 		}
 	}
-	
+
+	public boolean timerValidation() {
+		boolean check = false;
+		try {
+			int hours = 0, minutes = 0;
+			
+			if(etxt_hours.getText().toString().trim().length()>0){
+				hours = Integer.parseInt(etxt_hours.getText().toString().trim());
+			}
+			if(etxt_minutes.getText().toString().trim().length()>0){
+				minutes = Integer.parseInt(etxt_minutes.getText().toString().trim());
+			}
+			
+			if (hours == 0 || hours < 24) {
+					if (minutes == 0 || minutes < 60) {
+						check = true;
+					} else {
+						check = false;
+					}
+				} else {
+					check = false;
+				
+			}
+		} catch (NumberFormatException e) {
+			check = false;
+
+		}
+		return check;
+
+	}
 }
