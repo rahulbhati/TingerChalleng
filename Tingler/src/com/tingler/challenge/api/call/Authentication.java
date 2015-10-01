@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.ProfileActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.WelcomeActivity;
+import com.tingler.challenge.fragment.createchallenge.ChallengeCreated;
 
 public class Authentication extends GoogleLogin {
 	Context context;
@@ -356,6 +358,63 @@ public class Authentication extends GoogleLogin {
 							e.printStackTrace();
 							
 						}
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+	}
+
+	public void requestCreateChallengeAPI(final Map<String, String> params) {
+
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_CREATE_CHALLENGE, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+                           System.out.println("response :"+arg0);
+						/*try {
+							JSONObject obj = new JSONObject(arg0);
+							System.out.println("Obj :" + obj);
+
+							if (obj.getString("data").length() > 0
+									&& obj.getString("error").length() == 0) {
+
+							
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
+							}
+
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+						}*/
 						progressDialog.dismiss();
 
 					}

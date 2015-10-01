@@ -9,7 +9,7 @@ public class APIS {
 	public static String CUSTOM_PROFILE = HOST+"user/create_user_profile";
 	public static String CUSTOM_Account_Active = HOST+"user/verify_user_account";
 	public static String CUSTOM_Social_Media_Login = HOST+"user/login_by_media";
-	
+	public static String CUSTOM_CREATE_CHALLENGE = HOST+"user/create_challenge";
 	
 	public static String MOBILT = "mobile";
 	public static String Is_verify = "code";
@@ -26,4 +26,15 @@ public class APIS {
 	public static String Gplus_id = "gplus_id";
 	public static String Email = "email";
 	
+	///        create challenge title/////////
+	public static String CC_title = "title";
+	public static String CC_description = "description";
+	public static String CC_days = "days";
+	public static String CC_hrs = "hrs";
+	public static String CC_mins = "mins";
+	public static String CC_challengee = "challengee";
+	public static String CC_witness = "witness";
+	public static String CC_coin = "coin";
+	public static String CC_user_id = "user_id";
+	public static String CC_prize = "prize";
 }

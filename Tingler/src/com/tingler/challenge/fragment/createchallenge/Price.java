@@ -1,6 +1,14 @@
 package com.tingler.challenge.fragment.createchallenge;
 
+import java.util.HashMap;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.tingler.challenge.R;
+import com.tingler.challenge.api.call.APIS;
+import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.util.Profile;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -34,15 +42,68 @@ public class Price extends Fragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		String price=etxt_price_type.getText().toString();
-		String coins=etxt_coins.getText().toString();
+		String title=SetterGetter.getTitle();
+		String description=SetterGetter.getDescription();
+		String days=SetterGetter.getDays();
+		String hrs=SetterGetter.getHours();
+		String mins=SetterGetter.getMinutes();
 		
-		System.out.println(SetterGetter.getChallengeeTempArrayList().size());
-		System.out.println(SetterGetter.getWitnessTempArrayList().size());
+		String prize=etxt_price_type.getText().toString();
+		String coin=etxt_coins.getText().toString();
 		
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, new ChallengeCreated()).commit();
+		Profile profile=new Profile(getActivity());
+		String user_id=profile.getId();
+		
+		JSONObject challengeeJsonObject=new JSONObject();
+		
+		
+		for (int i = 0; i < SetterGetter.getChallengeeTempArrayList().size(); i++) {
+			JSONObject tempObj=new JSONObject();
+			
+			try {
+				tempObj.put("name", SetterGetter.getChallengeeTempArrayList().get(i).getName());
+				tempObj.put("mobile", SetterGetter.getChallengeeTempArrayList().get(i).getMobile());
+				
+				challengeeJsonObject.put(""+i,tempObj);	
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		JSONObject witnessJsonObject=new JSONObject();
+		for (int i = 0; i < SetterGetter.getWitnessTempArrayList().size(); i++) {
+			JSONObject tempObj=new JSONObject();
+			
+			try {
+				tempObj.put("name", SetterGetter.getWitnessTempArrayList().get(i).getName());
+				tempObj.put("mobile", SetterGetter.getWitnessTempArrayList().get(i).getMobile());
+				
+				witnessJsonObject.put(""+i,tempObj);	
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		String challengee=challengeeJsonObject.toString();
+		String witness=witnessJsonObject.toString();
+		
+		HashMap<String, String> createChallengeHashMap = new HashMap<String, String>();
+		createChallengeHashMap.put(APIS.CC_title, title);
+		createChallengeHashMap.put(APIS.CC_description, description);
+		createChallengeHashMap.put(APIS.CC_days, days);
+		createChallengeHashMap.put(APIS.CC_hrs, hrs);
+		createChallengeHashMap.put(APIS.CC_mins, mins);
+		createChallengeHashMap.put(APIS.CC_challengee, challengee);
+		createChallengeHashMap.put(APIS.CC_witness, witness);
+		createChallengeHashMap.put(APIS.CC_coin, coin);
+		createChallengeHashMap.put(APIS.CC_user_id, user_id);
+		
+		Authentication authentication=new Authentication(getActivity());
+		authentication.requestCreateChallengeAPI(createChallengeHashMap);
+		
+		
+		
 		
 		
 	}

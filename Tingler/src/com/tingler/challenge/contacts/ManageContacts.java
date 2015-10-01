@@ -35,4 +35,25 @@ public static void setPrimaryContactArrayList(
 	ManageContacts.primaryContactArrayList = primaryContactArrayList;
 }
 
+public static ArrayList<ContactItem> getCheckedChallengee(){
+	ArrayList<ContactItem> arrayList=new ArrayList<ContactItem>();
+	
+	for(int i=0;i<getChallengeeContactArrayList().size();i++){
+		   if(getChallengeeContactArrayList().get(i).isCheckboxstatus()){
+			   arrayList.add(getChallengeeContactArrayList().get(i));
+		   }
+	}
+	return arrayList;
+}
+public static ArrayList<ContactItem> getCheckedWitness(){
+	ArrayList<ContactItem> arrayList=new ArrayList<ContactItem>();
+	
+	for(int i=0;i<getWitnessContactArrayList().size();i++){
+		   if(getWitnessContactArrayList().get(i).isCheckboxstatus()){
+			   arrayList.add(getWitnessContactArrayList().get(i));
+		   }
+	}
+	return arrayList;
+}
+
 }

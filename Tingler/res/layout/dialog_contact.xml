@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/create_challenge_layout_margin_left"
-    android:paddingRight="@dimen/create_challenge_layout_margin_right" >
+   
+    android:orientation="vertical" >
 
     <ListView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/lv_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:divider="@color/line"
+        android:dividerHeight="1px" >
     </ListView>
 
     <LinearLayout
@@ -19,21 +21,21 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:gravity="center_horizontal"
-        android:paddingBottom="10dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="10dp" >
 
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
             android:layout_marginBottom="@dimen/welcome_signup_bottom"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="@dimen/welcome_margin_top"
             android:background="@drawable/btn_primary"
             android:paddingLeft="@dimen/btn_paddding_left"
             android:paddingRight="@dimen/btn_paddding_right"
             android:text="Cancel"
             android:textAllCaps="false"
-            android:layout_marginRight="10dp"
             android:textColor="@android:color/white" />
 
         <Button
@@ -41,15 +43,14 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
             android:layout_marginBottom="@dimen/welcome_signup_bottom"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="@dimen/welcome_margin_top"
             android:background="@drawable/btn_primary"
             android:paddingLeft="@dimen/btn_paddding_left"
             android:paddingRight="@dimen/btn_paddding_right"
             android:text="Submit"
             android:textAllCaps="false"
-            android:layout_marginLeft="10dp"
             android:textColor="@android:color/white" />
-
     </LinearLayout>
 
 </LinearLayout>

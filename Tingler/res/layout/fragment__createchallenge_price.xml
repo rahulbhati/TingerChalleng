@@ -59,6 +59,7 @@
                 android:drawableLeft="@drawable/prize_coins"
                 android:ems="10"
                 android:hint="Minimum 500 coins"
+                android:inputType="phone"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 

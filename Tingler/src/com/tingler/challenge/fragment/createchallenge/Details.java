@@ -1,12 +1,14 @@
 package com.tingler.challenge.fragment.createchallenge;
 
 import com.tingler.challenge.R;
+import com.tingler.challenge.contacts.ContactListService;
 import com.tingler.challenge.fragment.EditProfile;
 import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.Validations;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,10 @@ public class Details extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		View createChalleneView = inflater.inflate(
 				R.layout.fragment__createchallenge_details, container, false);
+		
+		Intent getContactIntent=new Intent(getActivity(),ContactListService.class);
+		getActivity().startService(getContactIntent);
+		
 		init(createChalleneView);
 		return createChalleneView;
 	}

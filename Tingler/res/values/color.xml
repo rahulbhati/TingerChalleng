@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-<color name="etxt_border">#989898</color>
+
+    <color name="etxt_border">#989898</color>
     <color name="error_bg">#FF4000</color>
     <color name="primaryColor">#40C49D</color>
     <color name="primaryColorDark">#00BA8B</color>
@@ -19,6 +20,10 @@
     <color name="darkBlue">#020A15</color>
     <color name="circle_border">#FF4500</color>
     <color name="tabsScrollColor">#8a140e</color>
-<color name="slidingTabBackground">#ECF0F1</color>
-<color name="darkGray">#787878</color>
+    <color name="slidingTabBackground">#ECF0F1</color>
+    <color name="darkGray">#787878</color>
+    <color name="bottle_green_color">#2A394C</color>
+    <color name="green">#00be90</color>
+    <color name="line">#4A6C87</color>
+
 </resources>
