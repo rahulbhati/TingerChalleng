@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import com.tingler.challenge.R;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.fragment.VoteForWitness;
 import com.tingler.challenge.util.Profile;
 
 import android.app.Fragment;
@@ -46,6 +47,10 @@ public class Price extends Fragment implements OnClickListener{
 		
 		if(v.getId()==R.id.btn_submit){
 		
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new VoteForWitness()).commit();
+	/*		
 		String title=SetterGetter.getTitle();
 		String description=SetterGetter.getDescription();
 		String days=SetterGetter.getDays();
@@ -104,7 +109,7 @@ public class Price extends Fragment implements OnClickListener{
 		createChallengeHashMap.put(APIS.CC_user_id, user_id);
 		
 		Authentication authentication=new Authentication(getActivity());
-		authentication.requestCreateChallengeAPI(createChallengeHashMap);
+		authentication.requestCreateChallengeAPI(createChallengeHashMap);*/
 		
 		}else if(v.getId()==R.id.btn_back){
 			FragmentManager fragmentManager = getFragmentManager();

@@ -53,14 +53,16 @@ public class Dashboard extends Fragment {
 
 		tabs = (SlidingTabLayout) dashboardView.findViewById(R.id.slidingTabs);
 		tabs.setDistributeEvenly(true);
+		
 		tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 			@Override
 			public int getIndicatorColor(int position) {
 				
 				
-				return getResources().getColor(R.color.tabsScrollColor);
+				return getResources().getColor(R.color.bottle_green_color);
 			}
 			
+		
 		});
 
 		// Setting the ViewPager For the SlidingTabsLayout

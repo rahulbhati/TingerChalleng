@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryBackground"
+    android:background="@color/bottle_green_color"
     android:fillViewport="true" >
 
     <RelativeLayout
@@ -34,11 +34,20 @@
                     android:text="  Level  "
                     android:textColor="@color/primaryColor" />
 
-                <ImageView
-                    android:id="@+id/imv_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher" />
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/gold_level_shield"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/txt_level_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/levelTxtColor"
+                        android:textSize="@dimen/levelTxtColor" />
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -59,15 +68,16 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryBackground"
+                  
+
                     android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_launcher" />
+                   <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/coin_width"
+                android:layout_height="@dimen/coin_height"
+                android:src="@drawable/icon_coins" />
 
                     <TextView
                         android:id="@+id/txt_coins"
@@ -94,17 +104,21 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/layout"
             android:layout_margin="10dp"
+            android:background="@android:color/white"
             android:orientation="vertical" >
 
-            <com.tingler.challenge.util.SlidingTabLayout
+            
+                 <com.tingler.challenge.util.SlidingTabLayout
                 android:id="@+id/slidingTabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp" />
+            
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
+                
                 android:layout_height="match_parent" >
             </android.support.v4.view.ViewPager>
         </LinearLayout>
@@ -116,7 +130,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/welcome_signup_bottom"
-            android:layout_marginTop="@dimen/welcome_margin_top"
+            android:layout_marginTop="30dp"
             android:background="@drawable/btn_primary"
             android:paddingLeft="@dimen/btn_paddding_left"
             android:paddingRight="@dimen/btn_paddding_right"
