@@ -9,6 +9,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.Bitmap.Config;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -133,10 +139,15 @@ public class Profile {
 		editor.putString(LAST_NAME, LastName);
 		editor.commit();
 	}
-	public void setProfileBit64(String profileBit64){
+	public void setProfileBase64(String profileBit64){
 		editor.putString(Profile_Img, profileBit64);
 		editor.commit();
 	}
+	
+	public String getProfileBase64(){
+		return sharedpreferences.getString(Profile_Img, "");
+	}
+	
 	public static String getFullName(){
 		return getFirstName()+" "+getLastName();
 	}
@@ -226,5 +237,46 @@ public class Profile {
 		return BitmapFactory
 				.decodeByteArray(decodedByte, 0, decodedByte.length);
 	}
-	
+	public Bitmap getCroppedBitmap(Bitmap bitmap) {
+		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+				bitmap.getHeight(), Config.ARGB_8888);
+		Canvas canvas = new Canvas(output);
+
+		final int color = 0xff424242;
+		final Paint paint = new Paint();
+		final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+
+		canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, 100,
+				paint);
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
+
+		return output;
+	}
+
+	public Bitmap getCroppedBitmapCamera(Bitmap bitmap) {
+		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+				bitmap.getHeight(), Config.ARGB_8888);
+		Canvas canvas = new Canvas(output);
+
+		final int color = 0xff424242;
+		final Paint paint = new Paint();
+		final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+
+		canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, 70,
+				paint);
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
+
+		return output;
+	}
+
 }

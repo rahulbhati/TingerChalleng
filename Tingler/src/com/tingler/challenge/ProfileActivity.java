@@ -145,7 +145,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 											params.put(Profile.PASSWORD, pass);
 
 											params.put(Profile.Profile_Img,
-													profile.getProfileImg());
+													profile.getProfileBase64());
 											params.put(Profile.ID,
 													profile.getId());
 											params.put(Profile.STATUS_MSG,
@@ -371,7 +371,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			
 		  String bit64=	profile.encodeTobase64(bitmap);
-			profile.setProfileBit64(bit64);
+			profile.setProfileBase64(bit64);
 			
 			return null;
 		}
@@ -381,6 +381,8 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			progressDialog.dismiss();
+			
+			System.out.println(profile.getProfileBase64());
 		}
 	}
 

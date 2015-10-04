@@ -46,10 +46,12 @@ public class Price extends Fragment implements OnClickListener{
 		// TODO Auto-generated method stub
 		
 		if(v.getId()==R.id.btn_submit){
-		
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
-					.replace(R.id.frame_container, new VoteForWitness()).commit();
+					.replace(R.id.frame_container, new ChallengeCreated()).commit();
+			/*FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new VoteForWitness()).commit();*/
 	/*		
 		String title=SetterGetter.getTitle();
 		String description=SetterGetter.getDescription();

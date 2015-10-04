@@ -60,7 +60,7 @@ ImageView profile_img;
 
 		txt_username.setText(profile.getFullName());
 		txt_status.setText(profile.getStatusMsg());
-//	new Bit64EncodeDecode(profile.getProfileImg()).execute();
+	new Bit64EncodeDecode(profile.getProfileBase64()).execute();
 	
 	}
 
@@ -132,8 +132,8 @@ ImageView profile_img;
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			
-			bitmap=	profile.decodeBase64(this.bit64);
-			
+			bitmap=	profile.decodeBase64(profile.getProfileBase64());
+			bitmap=profile.getCroppedBitmap(bitmap);
 			
 			return null;
 		}
@@ -143,8 +143,7 @@ ImageView profile_img;
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			progressDialog.dismiss();
-	//		profile_img
-	//		.setImageBitmap(profile.bitmap);
+			profile_img	.setImageBitmap(bitmap);
 		}
 	}
 }
