@@ -179,7 +179,6 @@ public class Authentication extends GoogleLogin {
 
 	}
 
-	
 	public void requestLoginAPI(final Map<String, String> params) {
 
 		progressDialog = ProgressDialog.show(context, "", "loading...");
@@ -415,6 +414,69 @@ public class Authentication extends GoogleLogin {
 							e.printStackTrace();
 							
 						}*/
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+	}
+	
+	public void requestForgotAPI(final Map<String, String> params) {
+
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_FORGOTPASSWORD, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("JsonObject :" + arg0);
+						try {
+							JSONObject obj = new JSONObject(arg0);
+							if (obj.getString("error").length() == 0) {
+								com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
+										context);
+								
+							
+								
+								profile.setMobile(params.get(APIS.MOBILT));
+								
+								Intent intent = new Intent(context,
+										AccountActiveActivity.class);
+								context.startActivity(intent);
+								((Activity)context).finish();
+								
+							}else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
+							}
+
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						progressDialog.dismiss();
 
 					}

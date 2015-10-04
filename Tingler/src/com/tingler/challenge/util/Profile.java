@@ -100,7 +100,10 @@ public class Profile {
 		return sharedpreferences.getString(ID, "");
 	}
 
-	
+	public void setMobile(String mobile){
+		editor.putString(MOBILE,mobile);
+		editor.commit();
+	}
 
 	public static String getMobile() {
 

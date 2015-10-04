@@ -5,6 +5,7 @@ public class APIS {
 	public static String HOST="http://rahulparmar.com/ta/api/";
 	
 	public static String CUSTOM_LOGIN = HOST+"user/login";
+	public static String CUSTOM_FORGOTPASSWORD = HOST+"user/forgot_password";
 	public static String CUSTOM_SIGNUP = HOST+"user/register_by_mobile";
 	public static String CUSTOM_PROFILE = HOST+"user/create_user_profile";
 	public static String CUSTOM_Account_Active = HOST+"user/verify_user_account";

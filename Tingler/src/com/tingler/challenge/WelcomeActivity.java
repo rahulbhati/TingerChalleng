@@ -27,7 +27,7 @@ import com.tingler.challenge.util.Validations;
 
 public class WelcomeActivity extends Activity implements
 		android.view.View.OnClickListener {
-	TextView toolbar_title;
+	TextView toolbar_title,txt_forgot;
 	Button btn_fb, btn_google, btn_signup, btn_login;
 	public static EditText etxt_mobile_signup, etxt_mobile_login, etxt_pass;
 	Authentication authentication;
@@ -84,6 +84,7 @@ public class WelcomeActivity extends Activity implements
 	public void init() {
 		authentication = new Authentication(this);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+		txt_forgot = (TextView) findViewById(R.id.txt_forgot);
 		toolbar_title.setText("Welcome");
 		btn_fb = (Button) findViewById(R.id.btn_fb);
 		btn_google = (Button) findViewById(R.id.btn_google);
@@ -96,7 +97,7 @@ public class WelcomeActivity extends Activity implements
 
 		btn_signup.setOnClickListener(this);
 		btn_login.setOnClickListener(this);
-
+		txt_forgot.setOnClickListener(this);
 		/*btn_fb.setOnClickListener(authentication
 				.loginAuthentication(FACBOOK_TAG));*/
 		btn_fb.setOnClickListener(this);
@@ -167,7 +168,22 @@ public class WelcomeActivity extends Activity implements
 			} else {
 				 Validations.isError(etxt_mobile_login, true);
 			}
+		}else if(v.getId()==R.id.txt_forgot){
+			String mobile = etxt_mobile_login.getText().toString().trim();
+			if (mobile.length() > 0 && mobile.length() > 9) {
+				 Validations.isError(etxt_mobile_login, false);
+				 Map<String, String> params = new HashMap<String, String>();
+					params.put(APIS.MOBILT, mobile);
+					authentication.requestForgotAPI(params);
+					
+				 
+			}else{
+				 Validations.isError(etxt_mobile_login, true);
+			}
+		
 		}
+       
+       
 	}
 	public void pkghash() {
 		try {
