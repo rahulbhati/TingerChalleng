@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -74,6 +75,8 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		etxt_cpassword = (EditText) findViewById(R.id.etxt_cpassword);
 		etxt_status_msg = (EditText) findViewById(R.id.etxt_status_msg);
 		setValues();
+		Typeface robotoBoldTF = Typeface.createFromAsset(getAssets(),"fonts/roboto_bold.ttf"); 
+		toolbar_title.setTypeface(robotoBoldTF);
 	}
 
 	public void setValues() {

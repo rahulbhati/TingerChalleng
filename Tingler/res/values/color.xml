@@ -22,8 +22,11 @@
     <color name="tabsScrollColor">#8a140e</color>
     <color name="slidingTabBackground">#ECF0F1</color>
     <color name="darkGray">#787878</color>
+    <color name="lightGray">#E1E1ED</color>
     <color name="bottle_green_color">#2A394C</color>
     <color name="green">#00be90</color>
     <color name="line">#4A6C87</color>
+    <color name="progressbar_progress_line_first_step">#B1BC39</color>
+     <color name="progressbar_progress_line_second_step">#E29400</color>
 
 </resources>

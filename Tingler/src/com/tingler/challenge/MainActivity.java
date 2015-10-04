@@ -28,8 +28,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	DrawerLayout drawerLayout;
 	ImageView imv_action_menu;
 	TextView txt_profile, txt_dashboard, txt_notification, txt_helpcenter,
-			txt_aboutus, txt_update, txt_signout,toolbar_title;
+			txt_aboutus, txt_update, txt_signout;
 	ImageView etxt_setting;
+	public static TextView toolbar_title;
     Button btn_createchallenge;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			displayView(4);
 			toolbar_title.setText("About Us");
 		}else if(v.getId()==R.id.btn_createchallenge){
+			toolbar_title.setText("Create Challenge");
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new Details()).commit();

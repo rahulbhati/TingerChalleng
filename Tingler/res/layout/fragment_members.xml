@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/lv_challenge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/lightGray"
+        android:dividerHeight="1px"
+        android:padding="5dp" >
+    </ListView>
+
+</LinearLayout>

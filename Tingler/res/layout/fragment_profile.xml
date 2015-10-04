@@ -146,6 +146,7 @@
             android:paddingRight="30dp"
             android:text="Lorem Ipsum is simply dummy text of the printing"
             android:textColor="@android:color/white"
+            android:gravity="center"
             android:textSize="@dimen/profile_status_txt_size" />
 
         <Button

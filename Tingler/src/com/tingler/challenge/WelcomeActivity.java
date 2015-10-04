@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -103,7 +104,8 @@ public class WelcomeActivity extends Activity implements
 		btn_fb.setOnClickListener(this);
 		btn_google.setOnClickListener(authentication
 				.loginAuthentication(GOOGLE_LOGIN_TAG));
-
+		Typeface robotoBoldTF = Typeface.createFromAsset(getAssets(),"fonts/roboto_bold.ttf"); 
+		toolbar_title.setTypeface(robotoBoldTF);
 	}
 
 	@Override

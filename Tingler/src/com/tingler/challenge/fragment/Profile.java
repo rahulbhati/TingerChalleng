@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.ProfileActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.fragment.createchallenge.Details;
@@ -106,6 +107,8 @@ ImageView profile_img;
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new EditProfile()).commit();
 		}else if(v.getId()==R.id.btn_challenge){
+			MainActivity.toolbar_title.setText("Create Challenge");
+			
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new Details()).commit();

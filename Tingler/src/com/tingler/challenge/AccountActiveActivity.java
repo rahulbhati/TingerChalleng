@@ -9,6 +9,7 @@ import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.Validations;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,6 +45,8 @@ public class AccountActiveActivity extends Activity implements OnClickListener {
 		etxt_otp = (EditText) findViewById(R.id.etxt_otp);
 
 		btn_account_active.setOnClickListener(this);
+		Typeface robotoBoldTF = Typeface.createFromAsset(getAssets(),"fonts/roboto_bold.ttf"); 
+		toolbar_title.setTypeface(robotoBoldTF);
 	}
 
 	@Override
