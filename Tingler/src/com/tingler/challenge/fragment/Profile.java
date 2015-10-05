@@ -52,7 +52,7 @@ ImageView profile_img;
 		btn_challenge=(Button)view.findViewById(R.id.btn_challenge);
 		profile_img=(ImageView)view.findViewById(R.id.profile_img);
 		btn_challenge.setOnClickListener(this);
-		txt_edit.setOnClickListener(this);
+	//	txt_edit.setOnClickListener(this);
 		setValues();
 		progressBarLevel();
 	}

@@ -116,7 +116,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Profile();
 			break;
 		case 1:
-			fragment = new Dashboard();
+			fragment = new Help();
+		//	fragment = new Dashboard();
 			break;
 		case 2:
 			fragment = new Notification();
