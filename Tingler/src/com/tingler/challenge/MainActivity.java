@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tingler.challenge.fragment.About;
+import com.tingler.challenge.fragment.AcceptReject;
 import com.tingler.challenge.fragment.ChallengeMembers;
 import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.fragment.Help;
@@ -123,7 +124,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Notification();
 			break;
 		case 3:
-			fragment = new Help();
+			
+			fragment = new AcceptReject();
+			//fragment = new Help();
 			break;
 		case 4:
 		//	fragment = new About();

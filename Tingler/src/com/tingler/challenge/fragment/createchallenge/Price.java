@@ -46,13 +46,13 @@ public class Price extends Fragment implements OnClickListener{
 		// TODO Auto-generated method stub
 		
 		if(v.getId()==R.id.btn_submit){
-			FragmentManager fragmentManager = getFragmentManager();
+		/*	FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new ChallengeCreated()).commit();
-			/*FragmentManager fragmentManager = getFragmentManager();
+	*/		/*FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new VoteForWitness()).commit();*/
-	/*		
+			
 		String title=SetterGetter.getTitle();
 		String description=SetterGetter.getDescription();
 		String days=SetterGetter.getDays();
@@ -65,39 +65,27 @@ public class Price extends Fragment implements OnClickListener{
 		Profile profile=new Profile(getActivity());
 		String user_id=profile.getId();
 		
-		JSONObject challengeeJsonObject=new JSONObject();
-		
+		String challengee=null;
 		
 		for (int i = 0; i < SetterGetter.getChallengeeTempArrayList().size(); i++) {
-			JSONObject tempObj=new JSONObject();
+		   if(challengee!=null){
+			challengee=challengee+","+SetterGetter.getChallengeeTempArrayList().get(i).getMobile();
+		   }else{
+			   challengee=SetterGetter.getChallengeeTempArrayList().get(i).getMobile();
+		   }
 			
-			try {
-				tempObj.put("name", SetterGetter.getChallengeeTempArrayList().get(i).getName());
-				tempObj.put("mobile", SetterGetter.getChallengeeTempArrayList().get(i).getMobile());
-				
-				challengeeJsonObject.put(""+i,tempObj);	
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
-		JSONObject witnessJsonObject=new JSONObject();
+		String witness=null;
 		for (int i = 0; i < SetterGetter.getWitnessTempArrayList().size(); i++) {
-			JSONObject tempObj=new JSONObject();
 			
-			try {
-				tempObj.put("name", SetterGetter.getWitnessTempArrayList().get(i).getName());
-				tempObj.put("mobile", SetterGetter.getWitnessTempArrayList().get(i).getMobile());
-				
-				witnessJsonObject.put(""+i,tempObj);	
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+			 if(witness!=null){
+				 witness=witness+","+SetterGetter.getWitnessTempArrayList().get(i).getMobile();
+				   }else{
+					   witness=SetterGetter.getWitnessTempArrayList().get(i).getMobile();
+				   }
 		
-		String challengee=challengeeJsonObject.toString();
-		String witness=witnessJsonObject.toString();
+		}
 		
 		HashMap<String, String> createChallengeHashMap = new HashMap<String, String>();
 		createChallengeHashMap.put(APIS.CC_title, title);
@@ -105,13 +93,14 @@ public class Price extends Fragment implements OnClickListener{
 		createChallengeHashMap.put(APIS.CC_days, days);
 		createChallengeHashMap.put(APIS.CC_hrs, hrs);
 		createChallengeHashMap.put(APIS.CC_mins, mins);
-		createChallengeHashMap.put(APIS.CC_challengee, challengee);
+		createChallengeHashMap.put(APIS.CC_challengee,challengee);
 		createChallengeHashMap.put(APIS.CC_witness, witness);
 		createChallengeHashMap.put(APIS.CC_coin, coin);
 		createChallengeHashMap.put(APIS.CC_user_id, user_id);
 		
+		System.out.println("input :"+createChallengeHashMap);
 		Authentication authentication=new Authentication(getActivity());
-		authentication.requestCreateChallengeAPI(createChallengeHashMap);*/
+		authentication.requestCreateChallengeAPI(createChallengeHashMap);
 		
 		}else if(v.getId()==R.id.btn_back){
 			FragmentManager fragmentManager = getFragmentManager();
