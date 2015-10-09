@@ -33,7 +33,7 @@ import com.tingler.challenge.util.MembersItems;
 public class ChallengeMembers extends Fragment implements OnClickListener {
 	ArrayList<MembersItems> memberArrayList;
 	LinearLayout layout_lv_members;
-    ImageView imv_uparrow;
+  
     Authentication authentication;
     TextView txt_challengename,txt_challengeDescription,txt_challengetime,txt_pize,txt_coins;
     EditText etxt_days,etxt_hours,etxt_minutes;
@@ -51,7 +51,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	public View init(View view) {
 		layout_lv_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
-		imv_uparrow=(ImageView)view.findViewById(R.id.imv_uparrow);
+	
 		txt_challengename=(TextView)view.findViewById(R.id.txt_challengename);
 		txt_challengeDescription=(TextView)view.findViewById(R.id.txt_challengeDescription);
 		txt_challengetime=(TextView)view.findViewById(R.id.txt_challengetime);
@@ -60,7 +60,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		etxt_days=(EditText)view.findViewById(R.id.etxt_days);
 		etxt_hours=(EditText)view.findViewById(R.id.etxt_hours);
 		etxt_minutes=(EditText)view.findViewById(R.id.etxt_minutes);
-		imv_uparrow.setOnClickListener(this);
+		
 		etxt_days.setEnabled(false);
 		etxt_hours.setEnabled(false);
 		etxt_minutes.setEnabled(false);
@@ -121,9 +121,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if(v.getId()==R.id.imv_uparrow){
-			
-		}else if(v.getId()==R.id.imv_cross){
+		if(v.getId()==R.id.imv_cross){
 			Toast.makeText(getActivity(), ""+v.getTag(), Toast.LENGTH_LONG).show();
 		}
 	}

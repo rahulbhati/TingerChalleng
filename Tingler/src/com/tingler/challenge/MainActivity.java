@@ -126,8 +126,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case 3:
 			
-			fragment = new ChallengeWithChat();
-			//fragment = new Help();
+			//fragment = new ChallengeWithChat();
+			fragment = new Help();
 			break;
 		case 4:
 		//	fragment = new About();

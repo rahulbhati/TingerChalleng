@@ -605,7 +605,7 @@ public class Authentication extends GoogleLogin {
 								FragmentManager fragmentManager = ((FragmentActivity) context).getFragmentManager();
 							
 								fragmentManager.beginTransaction()
-										.replace(R.id.frame_container, new ChallengeWithChat()).commit();
+										.replace(R.id.frame_container, new ChallengeMembers()).commit();
 								
 							}
 							else{
