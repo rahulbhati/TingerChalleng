@@ -19,11 +19,11 @@
             android:layout_margin="10dp"
             android:orientation="vertical" >
 
-            <ImageView
+            <com.android.volley.toolbox.NetworkImageView
                 android:id="@+id/imv_icon"
                 android:layout_width="@dimen/challengee_picture_width"
                 android:layout_height="@dimen/challengee_picture_width"
-                android:src="@drawable/icon_profile" />
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:textSize="@dimen/profile_un_txt_size" />
 
             <TextView
-                android:id="@+id/txt_mobile"
+                android:id="@+id/txt_challengee_witness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

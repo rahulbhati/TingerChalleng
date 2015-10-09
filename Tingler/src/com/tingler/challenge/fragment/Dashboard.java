@@ -25,9 +25,6 @@ public class Dashboard extends Fragment {
 
 	}
 
-	/*public Dashboard(Context context) {
-		this.context = (FragmentActivity) context;
-	}*/
 	@Override
 	public void onAttach(Activity activity) {
 		fragmentActivity=(FragmentActivity) activity;
@@ -57,15 +54,13 @@ public class Dashboard extends Fragment {
 		tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 			@Override
 			public int getIndicatorColor(int position) {
-				
-				
 				return getResources().getColor(R.color.bottle_green_color);
 			}
-			
-		
-		});
+			});
 
 		// Setting the ViewPager For the SlidingTabsLayout
 		tabs.setViewPager(viewPager);
+		
+		
 	}
 }

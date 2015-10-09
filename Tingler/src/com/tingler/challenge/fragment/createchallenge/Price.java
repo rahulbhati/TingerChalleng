@@ -20,10 +20,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Price extends Fragment implements OnClickListener{
 	Button btn_submit,btn_back;
 	EditText etxt_price_type,etxt_coins;
+	Profile profile;	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class Price extends Fragment implements OnClickListener{
 		etxt_price_type=(EditText)view.findViewById(R.id.etxt_price_type);
 		etxt_coins=(EditText)view.findViewById(R.id.etxt_coins);
 		btn_submit.setOnClickListener(this);
+		profile=new Profile(getActivity());	
 	}
 	@Override
 	public void onClick(View v) {
@@ -52,17 +55,43 @@ public class Price extends Fragment implements OnClickListener{
 	*/		/*FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new VoteForWitness()).commit();*/
+			try {
+				int coin=Integer.parseInt(etxt_coins.getText().toString());
+				if(coin>=200 && coin<=Integer.parseInt(profile.getCoins())){
+					submitChallenge();
+				}else{
+					 Toast.makeText(getActivity(), "Please enter minimum 200 coin or less then your current coin", Toast.LENGTH_LONG).show();
+				}
+					
+			} catch (Exception e) {
+				// TODO: handle exception
+			   Toast.makeText(getActivity(), "Please enter valid Coin", Toast.LENGTH_LONG).show();
+			}
 			
+			
+		
+		}else if(v.getId()==R.id.btn_back){
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Witness()).commit();
+		}
+
+		
+	}
+	public void submitChallenge(){
+
+		
+
+		String prize=etxt_price_type.getText().toString();
+	//	int coin=Integer.parseInt(etxt_coins.getText().toString());
+		String coin=etxt_coins.getText().toString();
 		String title=SetterGetter.getTitle();
 		String description=SetterGetter.getDescription();
 		String days=SetterGetter.getDays();
 		String hrs=SetterGetter.getHours();
 		String mins=SetterGetter.getMinutes();
 		
-		String prize=etxt_price_type.getText().toString();
-		String coin=etxt_coins.getText().toString();
-		
-		Profile profile=new Profile(getActivity());
+	
 		String user_id=profile.getId();
 		
 		String challengee=null;
@@ -102,13 +131,7 @@ public class Price extends Fragment implements OnClickListener{
 		Authentication authentication=new Authentication(getActivity());
 		authentication.requestCreateChallengeAPI(createChallengeHashMap);
 		
-		}else if(v.getId()==R.id.btn_back){
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction()
-					.replace(R.id.frame_container, new Witness()).commit();
 		}
 		
-		
-		
-	}
+
 }

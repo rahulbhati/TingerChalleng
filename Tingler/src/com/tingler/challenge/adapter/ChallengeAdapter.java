@@ -63,7 +63,8 @@ public class ChallengeAdapter extends BaseAdapter {
 			 setProgressBarLineColor(progressbar_profileLevel, R.drawable.style_progresss_line_first);
 		}
 		
-
+		view.setTag(position);
+		
 		return view;
 	}
 

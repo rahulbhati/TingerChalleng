@@ -12,6 +12,7 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -25,7 +26,10 @@ import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.ProfileActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.WelcomeActivity;
+import com.tingler.challenge.fragment.ChallengeMembers;
+import com.tingler.challenge.fragment.ChallengeWithChat;
 import com.tingler.challenge.fragment.createchallenge.ChallengeCreated;
+import com.tingler.challenge.util.GetChallengeDetailsItems;
 
 public class Authentication extends GoogleLogin {
 	Context context;
@@ -574,5 +578,72 @@ public class Authentication extends GoogleLogin {
 		AppController.getInstance().addToRequestQueue(stringRequest);
 
 	}
+	
+	public void requestGetChallengeDetailsAPI(final Map<String, String> params) {
+
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_GET_Challenge_Details, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("data :" + arg0);
+						try {
+
+							JSONObject obj = new JSONObject(arg0);
+							
+							if (obj.getString("data").length() > 0
+									&& obj.getString("error").length() == 0) {
+								
+								
+								GetChallengeDetailsItems items=new GetChallengeDetailsItems();
+								
+								items.addGetChallengeDetails(arg0);
+								
+								FragmentManager fragmentManager = ((FragmentActivity) context).getFragmentManager();
+							
+								fragmentManager.beginTransaction()
+										.replace(R.id.frame_container, new ChallengeWithChat()).commit();
+								
+							}
+							else{
+								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+	}
+	
+	
 	
 }

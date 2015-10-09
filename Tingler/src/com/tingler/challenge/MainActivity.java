@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.tingler.challenge.fragment.About;
 import com.tingler.challenge.fragment.AcceptReject;
 import com.tingler.challenge.fragment.ChallengeMembers;
+import com.tingler.challenge.fragment.ChallengeWithChat;
 import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.fragment.Help;
 import com.tingler.challenge.fragment.Notification;
@@ -117,15 +118,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Profile();
 			break;
 		case 1:
-			fragment = new Help();
-		//	fragment = new Dashboard();
+			//fragment = new Help();
+			fragment = new Dashboard();
 			break;
 		case 2:
 			fragment = new Notification();
 			break;
 		case 3:
 			
-			fragment = new AcceptReject();
+			fragment = new ChallengeWithChat();
 			//fragment = new Help();
 			break;
 		case 4:
