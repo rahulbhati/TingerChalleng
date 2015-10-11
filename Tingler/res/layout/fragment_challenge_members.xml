@@ -66,6 +66,7 @@
                 android:drawableLeft="@drawable/green_circle"
                 android:hint="Chat"
                 android:maxLines="3"
+                android:id="@+id/etxt_chat"
                 android:textColor="@android:color/black" >
 
                 <requestFocus />

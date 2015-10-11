@@ -1,23 +1,22 @@
 package com.tingler.challenge.fragment.createchallenge;
 
-import com.tingler.challenge.R;
-import com.tingler.challenge.contacts.ContactListService;
-import com.tingler.challenge.fragment.EditProfile;
-import com.tingler.challenge.util.Profile;
-import com.tingler.challenge.util.Validations;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Toast;
+
+import com.tingler.challenge.R;
+import com.tingler.challenge.contacts.ContactListService;
+import com.tingler.challenge.util.Validations;
 
 public class Details extends Fragment implements OnClickListener {
 	EditText etxt_title, etxt_description, etxt_days, etxt_hours, etxt_minutes;
@@ -61,6 +60,13 @@ public class Details extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+	  
+		View view = getActivity().getCurrentFocus();
+		if (view != null) {  
+		    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+		}
+		
 		String title = etxt_title.getText().toString().trim();
 		String days = etxt_days.getText().toString().trim();
 		String hours = etxt_hours.getText().toString().trim();
