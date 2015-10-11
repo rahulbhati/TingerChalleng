@@ -787,7 +787,7 @@ int id action_menu_presenter 0x7f0b0007
 int id action_mode_bar 0x7f0b005a
 int id action_mode_bar_stub 0x7f0b0059
 int id action_mode_close_button 0x7f0b0042
-int id action_settings 0x7f0b0114
+int id action_settings 0x7f0b0113
 int id activity_chooser_view_content 0x7f0b0043
 int id adjust_height 0x7f0b000d
 int id adjust_width 0x7f0b000e
@@ -811,7 +811,6 @@ int id btn_login 0x7f0b008d
 int id btn_next 0x7f0b00c3
 int id btn_ok 0x7f0b00b2
 int id btn_reject 0x7f0b00d9
-int id btn_removeme 0x7f0b0113
 int id btn_save 0x7f0b0075
 int id btn_signup 0x7f0b0089
 int id btn_stopnotifi 0x7f0b0112

@@ -28,6 +28,7 @@ import com.tingler.challenge.R;
 import com.tingler.challenge.WelcomeActivity;
 import com.tingler.challenge.fragment.ChallengeMembers;
 import com.tingler.challenge.fragment.ChallengeWithChat;
+import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.fragment.createchallenge.ChallengeCreated;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 
@@ -401,14 +402,16 @@ public class Authentication extends GoogleLogin {
 					public void onResponse(String arg0) {
 						// TODO Auto-generated method stub
                            System.out.println("response :"+arg0);
-						/*try {
+						try {
 							JSONObject obj = new JSONObject(arg0);
 							System.out.println("Obj :" + obj);
 
 							if (obj.getString("data").length() > 0
 									&& obj.getString("error").length() == 0) {
-
-							
+								FragmentManager fragmentManager = ((FragmentActivity) context).getFragmentManager();
+								fragmentManager.beginTransaction()
+										.replace(R.id.frame_container, new Dashboard()).commit();
+								Toast.makeText(context, "Challenge created successfully", Toast.LENGTH_LONG).show();
 							}else{
 								Toast.makeText(context, obj.getString("error"), Toast.LENGTH_LONG).show();
 							}
@@ -416,8 +419,9 @@ public class Authentication extends GoogleLogin {
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							Toast.makeText(context, ""+e, Toast.LENGTH_LONG).show();
 							
-						}*/
+						}
 						progressDialog.dismiss();
 
 					}

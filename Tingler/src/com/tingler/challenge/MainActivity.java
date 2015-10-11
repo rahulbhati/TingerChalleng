@@ -130,8 +130,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Help();
 			break;
 		case 4:
-		//	fragment = new About();
-			fragment = new ChallengeMembers();
+			fragment = new About();
+		//	fragment = new ChallengeMembers();
 			break;
 		case 5:
 			fragment = new Details();

@@ -14,6 +14,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SlidingDrawer;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
+import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
     TextView txt_challengename,txt_challengeDescription,txt_challengetime,txt_pize,txt_coins;
     EditText etxt_days,etxt_hours,etxt_minutes;
     GetChallengeDetailsItems getChallengeDetailsItems;
+    SlidingDrawer slidingDrawer;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 				.findViewById(R.id.layout_lv_members);
 		bottomLayout = (LinearLayout) view
 				.findViewById(R.id.bottomLayout);
-	
+		slidingDrawer=(SlidingDrawer)view.findViewById(R.id.slidingDrawer);
 		txt_challengename=(TextView)view.findViewById(R.id.txt_challengename);
 		txt_challengeDescription=(TextView)view.findViewById(R.id.txt_challengeDescription);
 		txt_challengetime=(TextView)view.findViewById(R.id.txt_challengetime);
@@ -63,6 +67,8 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		etxt_minutes.setEnabled(false);
 	
 		setValue();
+		slidingDrawer.setOnDrawerOpenListener(openDrawer());
+		slidingDrawer.setOnDrawerCloseListener(closeDrawer());
 		return view;
 	}
 
@@ -120,13 +126,30 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		if(v.getId()==R.id.imv_cross){
 			Toast.makeText(getActivity(), ""+v.getTag(), Toast.LENGTH_LONG).show();
-			Animation bottomDown = AnimationUtils.loadAnimation(getActivity(),
-	                R.animator.bottom_down);
-			bottomLayout.startAnimation(bottomDown);
-			bottomLayout.setGravity(View.INVISIBLE);
+		
+		bottomLayout.setVisibility(View.INVISIBLE);
 		}
 	}
-	
+	public OnDrawerOpenListener openDrawer(){
+		return new OnDrawerOpenListener() {
+			
+			@Override
+			public void onDrawerOpened() {
+				// TODO Auto-generated method stub
+				bottomLayout.setVisibility(View.INVISIBLE);
+			}
+		};
+	}
+	public OnDrawerCloseListener closeDrawer(){
+		return new OnDrawerCloseListener() {
+			
+			@Override
+			public void onDrawerClosed() {
+				// TODO Auto-generated method stub
+				bottomLayout.setVisibility(View.VISIBLE);
+			}
+		};
+	}
 	
 	
 

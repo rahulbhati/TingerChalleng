@@ -14,7 +14,7 @@ public class Help extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View helpView=inflater.inflate(R.layout.fragment_challenge_members,container,false);
+		View helpView=inflater.inflate(R.layout.fragment_help,container,false);
 		return helpView;
 	}
 

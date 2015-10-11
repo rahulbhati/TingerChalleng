@@ -83,6 +83,12 @@ public class Price extends Fragment implements OnClickListener{
 		
 
 		String prize=etxt_price_type.getText().toString();
+		
+		if(prize.length()<=0)
+		{
+			prize=null;
+		}
+		
 	//	int coin=Integer.parseInt(etxt_coins.getText().toString());
 		String coin=etxt_coins.getText().toString();
 		String title=SetterGetter.getTitle();
@@ -124,6 +130,7 @@ public class Price extends Fragment implements OnClickListener{
 		createChallengeHashMap.put(APIS.CC_mins, mins);
 		createChallengeHashMap.put(APIS.CC_challengee,challengee);
 		createChallengeHashMap.put(APIS.CC_witness, witness);
+		createChallengeHashMap.put(APIS.CC_prize, prize);
 		createChallengeHashMap.put(APIS.CC_coin, coin);
 		createChallengeHashMap.put(APIS.CC_user_id, user_id);
 		
