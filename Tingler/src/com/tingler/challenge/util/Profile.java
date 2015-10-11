@@ -238,7 +238,9 @@ public class Profile {
 				.decodeByteArray(decodedByte, 0, decodedByte.length);
 	}
 	public Bitmap getCroppedBitmap(Bitmap bitmap) {
-		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+		Bitmap output = null;
+		try {
+		 output = Bitmap.createBitmap(bitmap.getWidth(),
 				bitmap.getHeight(), Config.ARGB_8888);
 		Canvas canvas = new Canvas(output);
 
@@ -254,12 +256,19 @@ public class Profile {
 				paint);
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 		canvas.drawBitmap(bitmap, rect, rect, paint);
-
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
 		return output;
 	}
 
 	public Bitmap getCroppedBitmapCamera(Bitmap bitmap) {
-		Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+		Bitmap output = null ;
+		try {
+			
+		
+		output = Bitmap.createBitmap(bitmap.getWidth(),
 				bitmap.getHeight(), Config.ARGB_8888);
 		Canvas canvas = new Canvas(output);
 
@@ -275,7 +284,11 @@ public class Profile {
 				paint);
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 		canvas.drawBitmap(bitmap, rect, rect, paint);
-
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+			
+		}
 		return output;
 	}
 

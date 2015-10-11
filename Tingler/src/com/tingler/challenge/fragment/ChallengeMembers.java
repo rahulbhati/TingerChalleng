@@ -1,8 +1,6 @@
 package com.tingler.challenge.fragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -11,20 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 import com.tingler.challenge.R;
-import com.tingler.challenge.adapter.ChallengeMembersAdapter;
-import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.AppController;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
@@ -32,7 +27,7 @@ import com.tingler.challenge.util.MembersItems;
 
 public class ChallengeMembers extends Fragment implements OnClickListener {
 	ArrayList<MembersItems> memberArrayList;
-	LinearLayout layout_lv_members;
+	LinearLayout layout_lv_members,bottomLayout;
   
     Authentication authentication;
     TextView txt_challengename,txt_challengeDescription,txt_challengetime,txt_pize,txt_coins;
@@ -51,6 +46,8 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	public View init(View view) {
 		layout_lv_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
+		bottomLayout = (LinearLayout) view
+				.findViewById(R.id.bottomLayout);
 	
 		txt_challengename=(TextView)view.findViewById(R.id.txt_challengename);
 		txt_challengeDescription=(TextView)view.findViewById(R.id.txt_challengeDescription);
@@ -123,6 +120,10 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		if(v.getId()==R.id.imv_cross){
 			Toast.makeText(getActivity(), ""+v.getTag(), Toast.LENGTH_LONG).show();
+			Animation bottomDown = AnimationUtils.loadAnimation(getActivity(),
+	                R.animator.bottom_down);
+			bottomLayout.startAnimation(bottomDown);
+			bottomLayout.setGravity(View.INVISIBLE);
 		}
 	}
 	
