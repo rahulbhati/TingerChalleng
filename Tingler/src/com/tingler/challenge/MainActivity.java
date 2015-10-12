@@ -23,6 +23,7 @@ import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.fragment.Help;
 import com.tingler.challenge.fragment.Notification;
 import com.tingler.challenge.fragment.Profile;
+import com.tingler.challenge.fragment.VoteForWitness;
 import com.tingler.challenge.fragment.createchallenge.Details;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
@@ -118,7 +119,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Profile();
 			break;
 		case 1:
-			//fragment = new Help();
+		
 			fragment = new Dashboard();
 			break;
 		case 2:
@@ -126,8 +127,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case 3:
 			
-			//fragment = new ChallengeWithChat();
-			fragment = new Help();
+			fragment = new VoteForWitness();
+			//fragment = new Help();
 			break;
 		case 4:
 			fragment = new About();

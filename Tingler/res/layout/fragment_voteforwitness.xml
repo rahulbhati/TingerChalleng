@@ -19,30 +19,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="One Step to go..." />
-         <TextView
+
+        <TextView
             android:id="@+id/txt_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="5dp"
             android:text="One Step to go..." />
 
-        <LinearLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-          <ListView
-                android:id="@+id/lv_witness"
+      
+            <LinearLayout
+                android:id="@+id/layout_members"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="@dimen/challengee_lv_divider_height" >
-            </ListView>
-          
-        </LinearLayout>
-
+                  android:layout_weight="1" 
+                android:orientation="vertical" >
+            </LinearLayout>
+     
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,18 +44,7 @@
             android:paddingBottom="@dimen/create_challenge_btn_margin_bottom"
             android:paddingTop="@dimen/create_challenge_btn_margin_bottom" >
 
-       <!--      <Button
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btn_height"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginRight="@dimen/create_challenge_btn_margin_bottom"
-                android:background="@drawable/btn_primary"
-                android:paddingLeft="@dimen/btn_paddding_left"
-                android:paddingRight="@dimen/btn_paddding_right"
-                android:text="BACK"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white" /> -->
+          
 
             <Button
                 android:id="@+id/btn_next"

@@ -27,6 +27,10 @@
     <color name="green">#00be90</color>
     <color name="line">#4A6C87</color>
     <color name="progressbar_progress_line_first_step">#B1BC39</color>
-     <color name="progressbar_progress_line_second_step">#E29400</color>
-
+    <color name="progressbar_progress_line_second_step">#E29400</color>
+<color name="darkBlue_txt">#3692D1</color>
+<color name="white_txt">#FFFFFF</color>
+<color name="border_gray">#D1D2D4</color>
+ <color name="black_txt">#000000</color>   
+    
 </resources>

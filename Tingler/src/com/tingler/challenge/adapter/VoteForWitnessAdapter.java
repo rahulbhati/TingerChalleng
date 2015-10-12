@@ -55,41 +55,8 @@ public class VoteForWitnessAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		final View view = mInflater.inflate(R.layout.row_votforwitness, null);
-		TextView txt_name=(TextView)view.findViewById(R.id.txt_name);
-		 final RadioButton radioBtn=(RadioButton)view.findViewById(R.id.radioBtn);
-		 radioBtn.setId(position);
-		 
-		 txt_name.setText(witnessForVoteArrayList.get(position).getName());
-		
-		radioButtonsArrayList.add(radioBtn);
-		 radioBtn.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				// TODO Auto-generated method stub
-				
-				
-				for (int i = 0; i < 3; i++) {
-					
-					
-		 //     ((Checkable)(RelativeLayout)VoteForWitness.lv_witness.getChildAt(i)).getChildAt(0));
-					
-					try {
-						 ((Checkable) (RelativeLayout)VoteForWitness.lv_witness.getChildAt(i)).setChecked(false);
-								
-					} catch (Exception e) {
-						// TODO: handle exception
-						System.out.println(e);
-					}
-					
-				}
-				
-				radioBtn.setChecked(isChecked);
-			}
-		});
-		 
-		 
+		final View view = mInflater.inflate(R.layout.row_witness_vote, null);
+
 		return view;
 		
 	}
