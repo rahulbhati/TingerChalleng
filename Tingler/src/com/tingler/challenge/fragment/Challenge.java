@@ -14,10 +14,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.ChallengeAdapter;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.ProfileMemberItems;
 
 public class Challenge extends Fragment {
@@ -25,6 +27,12 @@ public class Challenge extends Fragment {
 	public static ChallengeAdapter challengeeAdapter;
 	ArrayList<ProfileMemberItems> challengeMemberArrayList;
 	  Authentication authentication;
+	  
+	  public Challenge() {
+		// TODO Auto-generated constructor stub
+		  this.challengeMemberArrayList=DashboardTabSetterGetter.getChallengeArrayList();
+	}
+	  
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -36,16 +44,7 @@ public class Challenge extends Fragment {
 	public View init(View view) {
 		View challengeView = view;
 		lv_challenge = (ListView) view.findViewById(R.id.lv_challenge);
-		challengeMemberArrayList = new ArrayList<ProfileMemberItems>();
-
-		for (int i = 0; i < 5; i++) {
-			ProfileMemberItems items = new ProfileMemberItems();
-			items.setName("Rahul");
-			items.setProgressBarLevel(20 * i);
-			challengeMemberArrayList.add(items);
-		}
-
-		challengeeAdapter = new ChallengeAdapter(getActivity(),
+	challengeeAdapter = new ChallengeAdapter(getActivity(),
 				challengeMemberArrayList);
 		lv_challenge.setAdapter(challengeeAdapter);
 		
@@ -56,11 +55,13 @@ public class Challenge extends Fragment {
 					int position, long id) {
 				// TODO Auto-generated method stub
 			//	Toast.makeText(getActivity(), ""+view.getTag(), Toast.LENGTH_LONG).show();
-				
+				com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(getActivity());
+				System.out.println("profiile id" + profile.getId());
 				authentication=new Authentication(getActivity());
 				Map<String, String> params = new HashMap<String, String>();
-				params.put(APIS.Challenge_id, "5");
-				authentication.requestGetChallengeDetailsAPI(params);
+				params.put(APIS.Challenge_id, challengeMemberArrayList.get(position).getChallenge_id());
+				params.put(APIS.CC_user_id,profile.getId());
+				authentication.requestGetChallengeDetailsAPI(params, new ChallengeMembers());
 				
 			}
 		});

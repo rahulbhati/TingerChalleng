@@ -1,8 +1,11 @@
 package com.tingler.challenge.adapter;
 
+import java.util.ArrayList;
+
 import com.tingler.challenge.fragment.Challenge;
 import com.tingler.challenge.fragment.Watchers;
 import com.tingler.challenge.fragment.Witness;
+import com.tingler.challenge.util.ProfileMemberItems;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +15,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  * Created by hp1 on 21-01-2015.
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-
+	
 	CharSequence Titles[]; // This will Store the Titles of the Tabs which are
 							// Going to be passed when ViewPagerAdapter is
 							// created
@@ -24,7 +27,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 	public ViewPagerAdapter(FragmentManager fm, CharSequence mTitles[],
 			int mNumbOfTabsumb) {
 		super(fm);
-
+		
 		this.Titles = mTitles;
 		this.NumbOfTabs = mNumbOfTabsumb;
 

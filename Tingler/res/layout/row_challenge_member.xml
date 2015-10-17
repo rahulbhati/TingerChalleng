@@ -13,14 +13,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <ImageView
+       <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/imv_icon"
             android:layout_width="@dimen/challengee_picture_width"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.10"
-           
-            android:src="@drawable/icon_profile" />
+            ></com.android.volley.toolbox.NetworkImageView>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,26 +29,22 @@
             android:gravity="center_vertical"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/TextView02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rahul Bhati"
-                android:textColor="@android:color/black"
-                android:textSize="12sp" />
+          
 
             <TextView
-                android:id="@+id/TextView01"
+                android:id="@+id/txt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:lines="2"
+                android:lines="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:text="Challenge to create school name as AIB "
                 android:textColor="@android:color/black"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/txt_name"
+                android:id="@+id/txt_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Challengee"

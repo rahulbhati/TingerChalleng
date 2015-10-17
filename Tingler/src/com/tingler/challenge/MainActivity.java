@@ -1,5 +1,8 @@
 package com.tingler.challenge;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.graphics.Typeface;
@@ -15,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tingler.challenge.api.call.APIS;
+import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.fragment.About;
 import com.tingler.challenge.fragment.AcceptReject;
 import com.tingler.challenge.fragment.ChallengeMembers;
@@ -23,12 +28,13 @@ import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.fragment.Help;
 import com.tingler.challenge.fragment.Notification;
 import com.tingler.challenge.fragment.Profile;
+import com.tingler.challenge.fragment.SelectWinner;
 import com.tingler.challenge.fragment.VoteForWitness;
 import com.tingler.challenge.fragment.createchallenge.Details;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	Toolbar toolbar;
-	DrawerLayout drawerLayout;
+	public static DrawerLayout drawerLayout;
 	ImageView imv_action_menu;
 	TextView txt_profile, txt_dashboard, txt_notification, txt_helpcenter,
 			txt_aboutus, txt_update, txt_signout;
@@ -119,8 +125,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragment = new Profile();
 			break;
 		case 1:
-		
-			fragment = new Dashboard();
+			//fragment = new Dashboard();
+			com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(MainActivity.this);
+			System.out.println("profiile id" + profile.getId());
+			Authentication authentication = new Authentication(this);
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(APIS.CC_user_id, profile.getId());
+			authentication.requestGetUserDashboardAPI(params);
+			
 			break;
 		case 2:
 			fragment = new Notification();
@@ -131,7 +143,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			//fragment = new Help();
 			break;
 		case 4:
-			fragment = new About();
+			//fragment = new About();
+			fragment=new SelectWinner();
 		//	fragment = new ChallengeMembers();
 			break;
 		case 5:

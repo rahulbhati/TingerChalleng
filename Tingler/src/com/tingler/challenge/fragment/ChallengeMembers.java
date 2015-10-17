@@ -1,6 +1,7 @@
 package com.tingler.challenge.fragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -28,10 +29,12 @@ import android.widget.Toast;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.tingler.challenge.R;
+import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.AppController;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.MembersItems;
+import com.tingler.challenge.util.Profile;
 
 public class ChallengeMembers extends Fragment implements OnClickListener {
 	ArrayList<MembersItems> memberArrayList;
@@ -59,6 +62,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	}
 
 	public View init(View view) {
+		getChallengeDetailsItems = new GetChallengeDetailsItems();
 		layout_lv_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
 		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
@@ -103,7 +107,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	}
 
 	public void setValue() {
-		getChallengeDetailsItems = new GetChallengeDetailsItems();
+	
 		txt_challengename.setText(getChallengeDetailsItems.getTitle());
 		txt_challengeDescription.setText(getChallengeDetailsItems
 				.getDescription());
@@ -148,7 +152,8 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 			imv_icon.setImageUrl(getChallengeDetailsItems
 					.getParticipantItemsArrayList().get(i).getProfile_img(),
 					mImageLoader);
-			imv_cross.setTag(i);
+			imv_cross.setTag(getChallengeDetailsItems
+					.getParticipantItemsArrayList().get(i).getUser_id());
 
 			imv_cross.setOnClickListener(this);
 
@@ -161,10 +166,15 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.imv_cross) {
-		//	Toast.makeText(getActivity(), "" + v.getTag(), Toast.LENGTH_LONG)
-		//			.show();
-
-			
+			//Toast.makeText(getActivity(), "" + v.getTag(), Toast.LENGTH_LONG)
+			//		.show();
+			  Profile profile=new Profile(getActivity());
+	     		String user_id=profile.getId();
+	     		HashMap<String, String> params = new HashMap<String, String>();
+	 			params.put(APIS.Challenge_id, getChallengeDetailsItems.getChallenger_id());
+	 			params.put(APIS.CC_user_id,user_id);
+	 			System.out.println("input :"+params);
+	 			//authentication.requestChallengeRemoveUserFromChallengeAPI(params);
 		}
 	}
 

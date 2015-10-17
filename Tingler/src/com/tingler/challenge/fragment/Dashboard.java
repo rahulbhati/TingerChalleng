@@ -11,25 +11,25 @@ import android.view.ViewGroup;
 
 import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.ViewPagerAdapter;
+import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.SlidingTabLayout;
 
 public class Dashboard extends Fragment {
 	ViewPager viewPager;
-	ViewPagerAdapter viewPagerAdapter;
+	Authentication authentication;
+	public static ViewPagerAdapter viewPagerAdapter;
 	SlidingTabLayout tabs;
 	CharSequence Titles[] = { "Challenge", "Witness", "Watchers" };
 	int Numboftabs = 3;
-	//Context context;
+	// Context context;
 	private FragmentActivity fragmentActivity;
-	public Dashboard() {
-
-	}
 
 	@Override
 	public void onAttach(Activity activity) {
-		fragmentActivity=(FragmentActivity) activity;
-	    super.onAttach(activity);
+		fragmentActivity = (FragmentActivity) activity;
+		super.onAttach(activity);
 	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -37,30 +37,26 @@ public class Dashboard extends Fragment {
 		View dashboardView = inflater.inflate(R.layout.fragment_dashboard,
 				container, false);
 		init(dashboardView);
-
 		return dashboardView;
 	}
 
 	public void init(View dashboardView) {
 		viewPager = (ViewPager) dashboardView.findViewById(R.id.viewPager);
-
 		viewPagerAdapter = new ViewPagerAdapter(
-				fragmentActivity.getSupportFragmentManager(), Titles, Numboftabs);
+				fragmentActivity.getSupportFragmentManager(), Titles,
+				Numboftabs);
 		viewPager.setAdapter(viewPagerAdapter);
-
 		tabs = (SlidingTabLayout) dashboardView.findViewById(R.id.slidingTabs);
 		tabs.setDistributeEvenly(true);
-		
 		tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 			@Override
 			public int getIndicatorColor(int position) {
 				return getResources().getColor(R.color.bottle_green_color);
 			}
-			});
-
+		});
 		// Setting the ViewPager For the SlidingTabsLayout
 		tabs.setViewPager(viewPager);
-		
-		
+
 	}
+
 }

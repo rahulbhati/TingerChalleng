@@ -175,7 +175,7 @@
             android:paddingTop="@dimen/create_challenge_btn_margin_bottom" >
 
             <Button
-                android:id="@+id/btn_stopnotifi"
+                android:id="@+id/btn_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/btn_height"
                 android:layout_gravity="bottom|center_horizontal"

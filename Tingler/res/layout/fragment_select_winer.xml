@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomLayout"
+        android:content="@+id/content"
+        android:gravity="center_horizontal"
+        android:handle="@+id/handle"
+        android:orientation="vertical"
+        android:rotation="180"
+        android:scaleType="fitCenter" >
+
+        <LinearLayout
+            android:id="@+id/handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timerLayout"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imv_uparrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_half"
+                android:padding="2dp"
+                android:src="@drawable/icon_uparrow" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/slide_content_select_winner"
+            android:gravity="top"
+            android:rotation="180" >
+        </include>
+
+    </SlidingDrawer>
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="bottom|center"
+        android:background="@color/lightGray"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/layout_chat_border"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/etxt_chat"
+                android:drawableLeft="@drawable/green_circle"
+                android:hint="Chat"
+                android:maxLines="3"
+                android:id="@+id/etxt_chat"
+                android:textColor="@android:color/black" >
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/btn_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="SEND"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
