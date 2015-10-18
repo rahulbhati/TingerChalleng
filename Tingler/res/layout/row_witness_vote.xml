@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Witness Option"
+                android:text="Witness"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 

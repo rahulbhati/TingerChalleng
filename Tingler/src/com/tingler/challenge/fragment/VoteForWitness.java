@@ -2,6 +2,7 @@ package com.tingler.challenge.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.VoteForWitnessAdapter;
 import com.tingler.challenge.api.call.APIS;
@@ -93,7 +95,7 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 
 		if (view.getId() == R.id.btn_submit) {
 			authentication = new Authentication(getActivity());
-			getChallengeDetailsItems = new GetChallengeDetailsItems();
+			/*getChallengeDetailsItems = new GetChallengeDetailsItems();
 			Profile profile = new Profile(getActivity());
 			String user_id = profile.getId();
 			String witness_id;
@@ -103,9 +105,14 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 			params.put(APIS.CC_user_id, user_id);
 			params.put(APIS.Witness_id, "0");
 			System.out.println("input :" + params);
-			// authentication.requestChallengeVoteForWitnessAPI(params);
-
-		} else {
+			authentication.requestChallengeVoteForWitnessAPI(params);
+			*/
+			com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(getActivity());
+			System.out.println("profiile id" + profile.getId());
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(APIS.CC_user_id, profile.getId());
+			authentication.requestGetUserDashboardAPI(params);
+			} else {
 
 			for (int i = 0; i < 5; i++) {
 				View relative = layout_members.getChildAt(i);

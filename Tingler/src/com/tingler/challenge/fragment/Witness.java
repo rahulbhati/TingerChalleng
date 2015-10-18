@@ -64,7 +64,7 @@ public class Witness extends Fragment {
 				 */
 				com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 						getActivity());
-				if (witnessMemberArrayList.get(position).getUser_type() == 3) {
+				if (witnessMemberArrayList.get(position).getUser_type() == 2) {
 
 					if (witnessMemberArrayList.get(position).getC_status() == 0) {
 						authentication = new Authentication(getActivity());
