@@ -1,6 +1,5 @@
 package com.tingler.challenge.api.call;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,14 +27,12 @@ import com.tingler.challenge.AccountActiveActivity;
 import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.ProfileActivity;
 import com.tingler.challenge.R;
-import com.tingler.challenge.WelcomeActivity;
-import com.tingler.challenge.fragment.ChallengeMembers;
-import com.tingler.challenge.fragment.ChallengeWithChat;
 import com.tingler.challenge.fragment.Dashboard;
-import com.tingler.challenge.fragment.createchallenge.ChallengeCreated;
 import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.ProfileMemberItems;
+import com.tingler.challenge.util.VoteForWitnessSetterGetter;
+import com.tingler.challenge.util.WitnessForVote;
 
 public class Authentication extends GoogleLogin {
 	Context context;
@@ -643,21 +640,21 @@ public class Authentication extends GoogleLogin {
 									JSONObject object = challengeList
 											.getJSONObject(i);
 									ProfileMemberItems items = new ProfileMemberItems();
-									items.setChallenge_id(object
-											.getString("challenge_id"));
+									items.setChallenge_id(Integer.parseInt(object
+											.getString("challenge_id")));
 									items.setTitle(object.getString("title"));
 									items.setProfile_img(object
 											.getString("profile_img"));
-									items.setUser_type(object
-											.getString("user_type"));
-									items.setC_status(object
-											.getString("c_status"));
-									items.setC_progress(object
-											.getString("c_progress"));
+									items.setUser_type(Integer.parseInt(object
+											.getString("user_type")));
+									items.setC_status(Integer.parseInt(object
+											.getString("c_status")));
+									items.setC_progress(Integer.parseInt(object
+											.getString("c_progress")));
 									items.setC_time_limit(object
 											.getString("c_time_limit"));
-									items.setIs_active(object
-											.getString("is_active"));
+									items.setIs_active(Integer.parseInt(object
+											.getString("is_active")));
 									items.setStart_date(object
 											.getString("start_date"));
 									items.setEnd_date(object
@@ -671,21 +668,21 @@ public class Authentication extends GoogleLogin {
 									JSONObject object = witnessList
 											.getJSONObject(i);
 									ProfileMemberItems items = new ProfileMemberItems();
-									items.setChallenge_id(object
-											.getString("challenge_id"));
+									items.setChallenge_id(Integer.parseInt(object
+											.getString("challenge_id")));
 									items.setTitle(object.getString("title"));
 									items.setProfile_img(object
 											.getString("profile_img"));
-									items.setUser_type(object
-											.getString("user_type"));
-									items.setC_status(object
-											.getString("c_status"));
-									items.setC_progress(object
-											.getString("c_progress"));
+									items.setUser_type(Integer.parseInt(object
+											.getString("user_type")));
+									items.setC_status(Integer.parseInt(object
+											.getString("c_status")));
+									items.setC_progress(Integer.parseInt(object
+											.getString("c_progress")));
 									items.setC_time_limit(object
 											.getString("c_time_limit"));
-									items.setIs_active(object
-											.getString("is_active"));
+									items.setIs_active(Integer.parseInt(object
+											.getString("is_active")));
 									items.setStart_date(object
 											.getString("start_date"));
 									items.setEnd_date(object
@@ -699,21 +696,21 @@ public class Authentication extends GoogleLogin {
 											.getJSONObject(i);
 								
 									ProfileMemberItems items = new ProfileMemberItems();
-									items.setChallenge_id(object
-											.getString("challenge_id"));
+									items.setChallenge_id(Integer.parseInt(object
+											.getString("challenge_id")));
 									items.setTitle(object.getString("title"));
 									items.setProfile_img(object
 											.getString("profile_img"));
-									items.setUser_type(object
-											.getString("user_type"));
-									items.setC_status(object
-											.getString("c_status"));
-									items.setC_progress(object
-											.getString("c_progress"));
+									items.setUser_type(Integer.parseInt(object
+											.getString("user_type")));
+									items.setC_status(Integer.parseInt(object
+											.getString("c_status")));
+									items.setC_progress(Integer.parseInt(object
+											.getString("c_progress")));
 									items.setC_time_limit(object
 											.getString("c_time_limit"));
-									items.setIs_active(object
-											.getString("is_active"));
+									items.setIs_active(Integer.parseInt(object
+											.getString("is_active")));
 									items.setStart_date(object
 											.getString("start_date"));
 									items.setEnd_date(object
@@ -840,7 +837,7 @@ public class Authentication extends GoogleLogin {
 
 	}
 
-	public void requestChallengeAcceptAPI(final Map<String, String> params) {
+	public void requestChallengeAcceptAPI(final Map<String, String> params,final Fragment fragmentPage) {
 
 		progressDialog = ProgressDialog.show(context, "", "loading...");
 
@@ -851,7 +848,7 @@ public class Authentication extends GoogleLogin {
 					public void onResponse(String arg0) {
 						// TODO Auto-generated method stub
 						System.out.println("data :" + arg0);
-						try {
+						/*try {
 
 							JSONObject obj = new JSONObject(arg0);
 
@@ -865,7 +862,19 @@ public class Authentication extends GoogleLogin {
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}*/
+						ArrayList<WitnessForVote> arrayList=new ArrayList<WitnessForVote>();
+						for (int i = 0; i < 5; i++) {
+							WitnessForVote items = new WitnessForVote();
+						
+							items.setName("Rahul Bhati "+i);
+							items.setProfile_img("http://www.jacobrogelberg.com/wp-content/uploads/2014/10/JakeCircleProfile.png");
+							arrayList.add(items);
 						}
+						VoteForWitnessSetterGetter.setVoteForWitnessArrayList(arrayList);
+						FragmentManager fragmentManager = ((FragmentActivity) context)
+								.getFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.frame_container,fragmentPage).commit();
 						progressDialog.dismiss();
 
 					}
@@ -909,20 +918,19 @@ public class Authentication extends GoogleLogin {
 						try {
 
 							JSONObject obj = new JSONObject(arg0);
-
-							if (obj.getString("data").length() > 0
-									&& obj.getString("error").length() == 0) {
-
-							} else {
-								Toast.makeText(context, obj.getString("error"),
+                          Toast.makeText(context, obj.getString("message"),
 										Toast.LENGTH_LONG).show();
-							}
+							
+                      
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						progressDialog.dismiss();
-
+						  com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(context);
+	              			Map<String, String> params = new HashMap<String, String>();
+	              			params.put(APIS.CC_user_id, profile.getId());
+	              			requestGetUserDashboardAPI(params);
 					}
 
 				}, new Response.ErrorListener() {

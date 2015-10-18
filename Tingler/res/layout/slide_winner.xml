@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:rotation="180" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/bottle_green_color"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" >
+
+            <LinearLayout
+                android:id="@+id/timerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bottle_green_color"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/txt_select_winner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="Winner"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="@dimen/profile_un_txt_size" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/imv_icon"
+            android:layout_width="@dimen/challengee_picture_width"
+            android:layout_height="@dimen/challengee_picture_width"
+            android:background="@drawable/icon_profile" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Winner Name"
+            android:textColor="#296FA6"
+            android:textSize="@dimen/profile_un_txt_size" />
+
+        <TextView
+            android:id="@+id/txt_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Challengee"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/secondary_txt_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color" />
+
+        <ImageView
+            android:id="@+id/icon_prize"
+            android:layout_width="@dimen/shield_width"
+            android:layout_height="@dimen/shield_height"
+            android:src="@drawable/price_icon" />
+<TextView
+            android:id="@+id/txt_challengeDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="Google Inc. is an American multinational technology company specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software."
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_challenge_description" />
+<TextView
+                    android:id="@+id/txt_challengetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="10dp"
+                    android:text="Created 25 Feb 2016 | 10:50AP"
+                    android:textColor="@color/darkGray"
+                    android:textSize="@dimen/txt_challenge_description" />
+        <TextView
+            android:id="@+id/txt_na1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Hangout coffee at AP-Pune"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/profile_un_txt_size" />
+    </LinearLayout>
+
+</ScrollView>

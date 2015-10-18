@@ -18,6 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textSize="15sp"
+            android:textColor="@color/black_txt"
             android:text="One Step to go..." />
 
         <TextView
@@ -25,8 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="One Step to go..." />
-
+            android:text="Vote for witness in your challenge"
+            android:textColor="@color/black_txt" />
       
             <LinearLayout
                 android:id="@+id/layout_members"

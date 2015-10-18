@@ -104,7 +104,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			toolbar_title.setText("Help Center");
 		}else if (v.getId() == R.id.txt_aboutus) {
 			displayView(4);
-			toolbar_title.setText("About Us");
+			//toolbar_title.setText("About Us");
+			toolbar_title.setText("Select a winner");
 		}else if (v.getId() == R.id.txt_aboutus) {
 			displayView(4);
 			toolbar_title.setText("About Us");

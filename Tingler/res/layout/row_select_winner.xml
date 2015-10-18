@@ -20,6 +20,8 @@
 
             <com.android.volley.toolbox.NetworkImageView
                 android:id="@+id/imv_icon"
+            
+                android:background="@drawable/icon_profile"
                 android:layout_width="@dimen/challengee_picture_width"
                 android:layout_height="@dimen/challengee_picture_width" />
         </LinearLayout>
@@ -48,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Witness Option"
+                android:text="Challengee"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
@@ -68,7 +70,7 @@
 
             <RadioButton
                 android:id="@+id/radioBtn"
-              
+              android:clickable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

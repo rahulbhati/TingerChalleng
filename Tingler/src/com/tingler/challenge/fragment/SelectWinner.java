@@ -1,9 +1,11 @@
 package com.tingler.challenge.fragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -24,10 +27,14 @@ import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 
+import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.R;
+import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.fragment.createchallenge.Details;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.MembersItems;
+import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.WitnessForVote;
 
 public class SelectWinner extends Fragment implements OnClickListener {
@@ -43,7 +50,7 @@ public class SelectWinner extends Fragment implements OnClickListener {
 	FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
-
+     Button btn_sub;
 	ArrayList<WitnessForVote> selectwinnerArrayList = null;
 	
 	
@@ -60,7 +67,8 @@ public class SelectWinner extends Fragment implements OnClickListener {
 	public View init(View view) {
 		layout_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
-
+        btn_sub=(Button)view.findViewById(R.id.btn_sub);
+        btn_sub.setOnClickListener(this);
 		slidingDrawer = (SlidingDrawer) view.findViewById(R.id.slidingDrawer);
 		txt_challengename = (TextView) view
 				.findViewById(R.id.txt_challengename);
@@ -109,20 +117,49 @@ public class SelectWinner extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
-		for (int i = 0; i < 5; i++) {
-			View relative=layout_members.getChildAt(i);
-			LinearLayout v = (LinearLayout) relative
-					.findViewById(R.id.layout);
-		if(view.getTag().equals(v.getTag()))
-		{
-			RadioButton radioBtn=(RadioButton)v.findViewById(R.id.radioBtn);
-			radioBtn.setChecked(true);
-		}else{
-			RadioButton radioBtn=(RadioButton)v.findViewById(R.id.radioBtn);
-			radioBtn.setChecked(false);
-		}
+		if (view.getId() == R.id.btn_sub) {
+		//	authentication = new Authentication(getActivity());
+			MainActivity.toolbar_title.setText("Challenge Winner");
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, new Winner()).commit();
 			
-		
+
+		} else {
+
+			for (int i = 0; i < 5; i++) {
+				View relative = layout_members.getChildAt(i);
+				LinearLayout v = (LinearLayout) relative
+						.findViewById(R.id.layout);
+				if (view.getTag().equals(v.getTag())) {
+					v.setBackgroundResource(R.drawable.border_blue);
+					TextView txt_name = (TextView) v
+							.findViewById(R.id.txt_name);
+					TextView txt_witness_option = (TextView) v
+							.findViewById(R.id.txt_witness_option);
+					txt_name.setTextColor(getActivity().getResources()
+							.getColor(R.color.darkBlue_txt));
+					txt_witness_option.setTextColor(getActivity()
+							.getResources().getColor(R.color.white_txt));
+					RadioButton radioBtn = (RadioButton) v
+							.findViewById(R.id.radioBtn);
+					radioBtn.setChecked(true);
+				} else {
+					v.setBackgroundResource(R.drawable.border_gray);
+					TextView txt_name = (TextView) v
+							.findViewById(R.id.txt_name);
+					TextView txt_witness_option = (TextView) v
+							.findViewById(R.id.txt_witness_option);
+					txt_name.setTextColor(getActivity().getResources()
+							.getColor(R.color.black_txt));
+					txt_witness_option.setTextColor(getActivity()
+							.getResources().getColor(R.color.black_txt));
+					RadioButton radioBtn = (RadioButton) v
+							.findViewById(R.id.radioBtn);
+					radioBtn.setChecked(false);
+				}
+
+			}
 		}
 	}
 

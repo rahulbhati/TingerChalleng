@@ -20,8 +20,7 @@ TextView txt_challengename;
 EditText etxt_days,etxt_hours,etxt_minutes;
 ImageView imv_uparrow;
 GetChallengeDetailsItems getChallengeDetailsItems;
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View challengeWithChatView=inflater.inflate(R.layout.fragment_challenge_with_chat,container,false);
@@ -57,5 +56,4 @@ public void onClick(View v) {
 	
 	}
 }
-
 }

@@ -43,7 +43,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
 			txt_pize, txt_coins;
-	EditText etxt_days, etxt_hours, etxt_minutes,etxt_chat;
+	EditText etxt_days, etxt_hours, etxt_minutes, etxt_chat;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
 
@@ -79,7 +79,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		etxt_hours = (EditText) view.findViewById(R.id.etxt_hours);
 		etxt_minutes = (EditText) view.findViewById(R.id.etxt_minutes);
 		etxt_chat = (EditText) view.findViewById(R.id.etxt_chat);
-		
+
 		etxt_days.setEnabled(false);
 		etxt_hours.setEnabled(false);
 		etxt_minutes.setEnabled(false);
@@ -100,14 +100,14 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		slidingDrawer.setLayoutParams(layoutParams);
 		slidingDrawer.open();
 		bottomLayout.setVisibility(View.VISIBLE);
-		
+
 		etxt_chat.setOnFocusChangeListener(focus());
-		
+
 		return view;
 	}
 
 	public void setValue() {
-	
+
 		txt_challengename.setText(getChallengeDetailsItems.getTitle());
 		txt_challengeDescription.setText(getChallengeDetailsItems
 				.getDescription());
@@ -166,15 +166,16 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.imv_cross) {
-			//Toast.makeText(getActivity(), "" + v.getTag(), Toast.LENGTH_LONG)
-			//		.show();
-			  Profile profile=new Profile(getActivity());
-	     		String user_id=profile.getId();
-	     		HashMap<String, String> params = new HashMap<String, String>();
-	 			params.put(APIS.Challenge_id, getChallengeDetailsItems.getChallenger_id());
-	 			params.put(APIS.CC_user_id,user_id);
-	 			System.out.println("input :"+params);
-	 			//authentication.requestChallengeRemoveUserFromChallengeAPI(params);
+			// Toast.makeText(getActivity(), "" + v.getTag(), Toast.LENGTH_LONG)
+			// .show();
+			Profile profile = new Profile(getActivity());
+			String user_id = profile.getId();
+			HashMap<String, String> params = new HashMap<String, String>();
+			params.put(APIS.Challenge_id,
+					getChallengeDetailsItems.getChallenger_id());
+			params.put(APIS.CC_user_id, user_id);
+			System.out.println("input :" + params);
+			// authentication.requestChallengeRemoveUserFromChallengeAPI(params);
 		}
 	}
 
@@ -195,26 +196,27 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 			@Override
 			public void onDrawerClosed() {
 				// TODO Auto-generated method stub
-				layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-						LayoutParams.MATCH_PARENT);
+				layoutParams = new FrameLayout.LayoutParams(
+						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 				slidingDrawer.setLayoutParams(layoutParams);
 				bottomLayout.setVisibility(View.VISIBLE);
 			}
 		};
 	}
- public OnFocusChangeListener focus(){
-	 return new OnFocusChangeListener() {
-		
-		@Override
-		public void onFocusChange(View v, boolean hasFocus) {
-			// TODO Auto-generated method stub
-			if(hasFocus){
-			
-			     slidingDrawer.close();
-			}else{
-				
+
+	public OnFocusChangeListener focus() {
+		return new OnFocusChangeListener() {
+
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if (hasFocus) {
+
+					slidingDrawer.close();
+				} else {
+
+				}
 			}
-		}
-	};
- }
+		};
+	}
 }

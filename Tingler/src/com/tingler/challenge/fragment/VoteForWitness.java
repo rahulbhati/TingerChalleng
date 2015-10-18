@@ -16,12 +16,18 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.tingler.challenge.R;
 import com.tingler.challenge.adapter.VoteForWitnessAdapter;
 import com.tingler.challenge.api.call.APIS;
+import com.tingler.challenge.api.call.AppController;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.ProfileMemberItems;
+import com.tingler.challenge.util.VoteForWitnessSetterGetter;
 import com.tingler.challenge.util.WitnessForVote;
 
 public class VoteForWitness extends Fragment implements OnClickListener {
@@ -30,8 +36,14 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 	VoteForWitnessAdapter votforwitnessAdapter;
 	ArrayList<WitnessForVote> witnessForVoteArrayList = null;
 	LinearLayout layout_members;
-	  Authentication authentication;
-	  GetChallengeDetailsItems getChallengeDetailsItems;
+	Authentication authentication;
+	GetChallengeDetailsItems getChallengeDetailsItems;
+
+	public VoteForWitness() {
+		// TODO Auto-generated constructor stub
+	
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -43,26 +55,33 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 	}
 
 	public void init(View view) {
-
+		this.witnessForVoteArrayList = VoteForWitnessSetterGetter
+				.getVoteForWitnessArrayList();
 		btn_submit = (Button) view.findViewById(R.id.btn_submit);
 		layout_members = (LinearLayout) view.findViewById(R.id.layout_members);
 
 		btn_submit.setOnClickListener(this);
-		witnessForVoteArrayList = new ArrayList<WitnessForVote>();
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < witnessForVoteArrayList.size(); i++) {
 
-			WitnessForVote vote = new WitnessForVote();
-			vote.setName("Item :" + i);
-			witnessForVoteArrayList.add(vote);
 			LayoutInflater mInflater = (LayoutInflater) getActivity()
 					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 			View rowview = mInflater.inflate(R.layout.row_witness_vote, null);
+			TextView txt_name = (TextView) rowview.findViewById(R.id.txt_name);
+			txt_name.setText(witnessForVoteArrayList.get(i).getName());
+			NetworkImageView imv_icon = (NetworkImageView) rowview
+					.findViewById(R.id.imv_icon);
+			ImageLoader mImageLoader = null;
+			mImageLoader = AppController.getInstance().getImageLoader();
+			imv_icon.setImageUrl(witnessForVoteArrayList.get(i)
+					.getProfile_img(), mImageLoader);
+
 			LinearLayout layout = (LinearLayout) rowview
 					.findViewById(R.id.layout);
 			layout.setOnClickListener(this);
 
 			layout.setTag(i);
+
 			layout_members.addView(rowview);
 		}
 
@@ -71,20 +90,21 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
-		
+
 		if (view.getId() == R.id.btn_submit) {
-			authentication=new Authentication(getActivity());
+			authentication = new Authentication(getActivity());
 			getChallengeDetailsItems = new GetChallengeDetailsItems();
-             Profile profile=new Profile(getActivity());
-     		String user_id=profile.getId();
-             String witness_id;
-             HashMap<String, String> params = new HashMap<String, String>();
- 			params.put(APIS.Challenge_id, getChallengeDetailsItems.getChallenger_id());
- 			params.put(APIS.CC_user_id,user_id);
- 			params.put(APIS.Witness_id,"0");
- 			System.out.println("input :"+params);
- 			//authentication.requestChallengeVoteForWitnessAPI(params);
-			
+			Profile profile = new Profile(getActivity());
+			String user_id = profile.getId();
+			String witness_id;
+			HashMap<String, String> params = new HashMap<String, String>();
+			params.put(APIS.Challenge_id,
+					getChallengeDetailsItems.getChallenger_id());
+			params.put(APIS.CC_user_id, user_id);
+			params.put(APIS.Witness_id, "0");
+			System.out.println("input :" + params);
+			// authentication.requestChallengeVoteForWitnessAPI(params);
+
 		} else {
 
 			for (int i = 0; i < 5; i++) {

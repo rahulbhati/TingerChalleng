@@ -3,16 +3,6 @@ package com.tingler.challenge.fragment;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.tingler.challenge.R;
-import com.tingler.challenge.api.call.APIS;
-import com.tingler.challenge.api.call.AppController;
-import com.tingler.challenge.api.call.Authentication;
-import com.tingler.challenge.util.GetChallengeDetailsItems;
-import com.tingler.challenge.util.MembersItems;
-import com.tingler.challenge.util.Profile;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -31,9 +21,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SlidingDrawer;
-import android.widget.TextView;
 import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
+import android.widget.TextView;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.tingler.challenge.R;
+import com.tingler.challenge.api.call.APIS;
+import com.tingler.challenge.api.call.AppController;
+import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.util.GetChallengeDetailsItems;
+import com.tingler.challenge.util.MembersItems;
+import com.tingler.challenge.util.Profile;
 
 public class AcceptReject extends Fragment implements OnClickListener{
 	ArrayList<MembersItems> memberArrayList;
@@ -115,8 +115,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			}
 		};
 	}
-
-	public OnDrawerCloseListener closeDrawer() {
+    public OnDrawerCloseListener closeDrawer() {
 		return new OnDrawerCloseListener() {
 
 			@Override
@@ -192,15 +191,23 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		
 		if(v.getId()==R.id.btn_accept){
 			HashMap<String, String> params = new HashMap<String, String>();
-			params.put(APIS.Challenge_id, getChallengeDetailsItems.getChallenger_id());
+			params.put(APIS.Challenge_id, getChallengeDetailsItems.getC_id());
 			params.put(APIS.CC_user_id,user_id);
 			System.out.println("input :"+params);
-			authentication.requestChallengeAcceptAPI(params);
 			
+			int votefor=0;
+			Fragment fragment=null;
+			if(votefor==0){
+				fragment=new VoteForWitness();
+			}else{
+				//fragment=new Chall;
+			}
+			authentication.requestChallengeAcceptAPI(params,fragment);
+			}
+		else if(v.getId()==R.id.btn_reject){
 			
-		}else if(v.getId()==R.id.btn_reject){
 			HashMap<String, String> params = new HashMap<String, String>();
-			params.put(APIS.Challenge_id, getChallengeDetailsItems.getChallenger_id());
+			params.put(APIS.Challenge_id, getChallengeDetailsItems.getC_id());
 			params.put(APIS.CC_user_id,user_id);
 			System.out.println("input :"+params);
 			authentication.requestChallengeRejecctAPI(params);

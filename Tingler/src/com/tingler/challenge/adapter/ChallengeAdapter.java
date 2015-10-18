@@ -72,7 +72,7 @@ public class ChallengeAdapter extends BaseAdapter {
 		txt_time.setText(challengeMemberArrayList.get(position).getC_time_limit());
 		
 		ProgressBar progressbar_profileLevel = (ProgressBar) view.findViewById(R.id.progressbar_profileLevel);
-		int level = Integer.parseInt(challengeMemberArrayList.get(position).getC_progress());
+		int level = challengeMemberArrayList.get(position).getC_progress();
 		progressbar_profileLevel.setProgress(level);
 		if (level > 50) {
            setProgressBarLineColor(progressbar_profileLevel, R.drawable.style_progresss_line_second);

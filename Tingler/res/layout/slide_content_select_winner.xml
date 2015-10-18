@@ -28,32 +28,16 @@
                 android:padding="10dp" >
 
                 <TextView
-                    android:id="@+id/txt_challengename"
+                    android:id="@+id/txt_select_winner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:text="Challenge text will be here"
+                    android:text="Select a winner"
                     android:textColor="@color/primaryColor"
                     android:textSize="@dimen/profile_un_txt_size" />
-
-                <TextView
-                    android:id="@+id/txt_challengeDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:ellipsize="end"
-                    android:lines="3"
-                    android:text="Google Inc. is an American multinational technology company specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software."
-                    android:textColor="@color/white_txt"
-                    android:textSize="@dimen/txt_challenge_description" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/divider_color" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
