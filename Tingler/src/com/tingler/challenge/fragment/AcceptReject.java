@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SlidingDrawer;
+import android.widget.Toast;
 import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
@@ -49,7 +50,8 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
-	Button btn_accept,btn_reject;
+	Button btn_accept,btn_reject,btn_removeme;
+	Profile profile;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -58,19 +60,22 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		return init(aboutView) ;
 	}
 	public View init(View view) {
+		 profile=new Profile(getActivity());
 		layout_lv_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
 		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
 		
 		btn_accept=(Button)view.findViewById(R.id.btn_accept);
+		btn_removeme=(Button)view.findViewById(R.id.btn_removeme);
 		btn_reject=(Button)view.findViewById(R.id.btn_reject);
-		
 		btn_accept.setOnClickListener(this);
 		btn_reject.setOnClickListener(this);
+		btn_removeme.setOnClickListener(this);
 		
 		slidingDrawer = (SlidingDrawer) view.findViewById(R.id.slidingDrawer);
 		txt_challengename = (TextView) view
 				.findViewById(R.id.txt_challengename);
+		txt_challengename.setText(profile.getFullName());
 		txt_challengeDescription = (TextView) view
 				.findViewById(R.id.txt_challengeDescription);
 		txt_challengetime = (TextView) view
@@ -174,8 +179,8 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			imv_icon.setImageUrl(getChallengeDetailsItems
 					.getParticipantItemsArrayList().get(i).getProfile_img(),
 					mImageLoader);
-			imv_cross.setTag(i);
-
+			//imv_cross.setTag(i);
+			imv_cross.setVisibility(View.INVISIBLE);
 			
 
 			layout_lv_members.addView(rowView);
@@ -185,7 +190,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		Profile profile=new Profile(getActivity());
+	
 		String user_id=profile.getId();
 		authentication=new Authentication(getActivity());
 		
@@ -212,6 +217,13 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			System.out.println("input :"+params);
 			authentication.requestChallengeRejecctAPI(params);
 			
+		}else if(v.getId()==R.id.btn_removeme){
+			HashMap<String, String> params = new HashMap<String, String>();
+			params.put(APIS.Challenge_id, getChallengeDetailsItems.getC_id());
+			params.put(APIS.CC_user_id,user_id);
+			System.out.println("input :"+params);
+			Toast.makeText(getActivity(), "Removed successfully!", Toast.LENGTH_LONG).show();
+			//authentication.requestChallengeRemoveUserFromChallengeAPI(params, null);
 		}
 	}
 }

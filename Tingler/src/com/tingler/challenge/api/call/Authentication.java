@@ -1013,7 +1013,7 @@ public class Authentication extends GoogleLogin {
 
 	}
 
-	public void requestChallengeRemoveUserFromChallengeAPI(final Map<String, String> params) {
+	public void requestChallengeRemoveUserFromChallengeAPI(final Map<String, String> params,final Fragment fragmentPage) {
 
 		progressDialog = ProgressDialog.show(context, "", "loading...");
 

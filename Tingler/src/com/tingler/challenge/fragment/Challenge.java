@@ -96,7 +96,7 @@ public class Challenge extends Fragment {
 									.getChallenge_id());
 					params.put(APIS.CC_user_id, profile.getId());
 					authentication.requestGetChallengeDetailsAPI(params,
-							new ChallengeMembers());
+							new ChallengeTimer());
 				}
 			}
 		});
