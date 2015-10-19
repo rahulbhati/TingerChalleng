@@ -102,6 +102,11 @@ public class Profile {
 		}
 	}
 
+	public void signOut(){
+		editor.clear();
+		editor.commit();
+	}
+	
 	public static String getId() {
 		return sharedpreferences.getString(ID, "");
 	}

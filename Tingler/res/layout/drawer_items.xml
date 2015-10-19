@@ -27,14 +27,14 @@
             <Button
                 android:id="@+id/btn_createchallenge"
                 android:layout_width="wrap_content"
-                 android:layout_height="@dimen/btn_height"
+                android:layout_height="@dimen/btn_height"
                 android:layout_marginBottom="@dimen/drawer_btn_maring_top_bottom"
                 android:layout_marginTop="@dimen/drawer_btn_maring_top_bottom"
                 android:background="@drawable/btn_drawer"
                 android:paddingLeft="@dimen/btn_paddding_left"
                 android:paddingRight="@dimen/btn_paddding_right"
-                android:textColor="@android:color/white"
-                android:text="CREATE CHALLENGE" />
+                android:text="CREATE CHALLENGE"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:id="@+id/txt_profile"
@@ -93,7 +93,7 @@
                 android:id="@+id/txt_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/drawer_layout_margin_top_bottom"
+              
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
                 android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
@@ -102,22 +102,20 @@
 
             <ImageView
                 android:id="@+id/etxt_setting"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
-                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
-                android:src="@drawable/action_menu" />
+                android:src="@drawable/ic_action_settings" />
 
             <TextView
                 android:id="@+id/txt_signout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/drawer_layout_margin_top_bottom"
+             
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
                 android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
-                android:text="SIGN OUT"
+                android:text="Sign Out"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </ScrollView>

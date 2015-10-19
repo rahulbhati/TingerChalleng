@@ -416,12 +416,17 @@ public class Authentication extends GoogleLogin {
 
 							if (obj.getString("data").length() > 0
 									&& obj.getString("error").length() == 0) {
-								FragmentManager fragmentManager = ((FragmentActivity) context)
+								/*FragmentManager fragmentManager = ((FragmentActivity) context)
 										.getFragmentManager();
 								fragmentManager
 										.beginTransaction()
 										.replace(R.id.frame_container,
-												new Dashboard()).commit();
+												new Dashboard()).commit();*/
+								progressDialog.dismiss();
+								com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(context);
+							    Map<String, String> params = new HashMap<String, String>();
+								params.put(APIS.CC_user_id, profile.getId());
+								requestGetUserDashboardAPI(params);
 								Toast.makeText(context,
 										"Challenge created successfully",
 										Toast.LENGTH_LONG).show();
@@ -437,6 +442,7 @@ public class Authentication extends GoogleLogin {
 									.show();
 
 						}
+						if(progressDialog.isShowing())
 						progressDialog.dismiss();
 
 					}

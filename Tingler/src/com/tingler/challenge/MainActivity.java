@@ -5,6 +5,7 @@ import java.util.Map;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
@@ -115,6 +117,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new Details()).commit();
 			drawerLayout.closeDrawers();
+		}else if(v.getId()==R.id.txt_signout){
+			com.tingler.challenge.util.Profile profile=new com.tingler.challenge.util.Profile(MainActivity.this);
+			profile.signOut();
+			Intent intent=new Intent(MainActivity.this,WelcomeActivity.class);
+			MainActivity.this.startActivity(intent);
+			MainActivity.this.finish();
+			Toast.makeText(MainActivity.this, "Sign out successfully!", Toast.LENGTH_LONG).show();
 		}
 
 	}

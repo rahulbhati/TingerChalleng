@@ -27,32 +27,28 @@ import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.R;
+import com.tingler.challenge.adapter.VoteForWitnessAdapter;
 import com.tingler.challenge.api.call.APIS;
+import com.tingler.challenge.api.call.AppController;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.fragment.createchallenge.Details;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.MembersItems;
 import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.VoteForWitnessSetterGetter;
 import com.tingler.challenge.util.WitnessForVote;
 
 public class SelectWinner extends Fragment implements OnClickListener {
-	ArrayList<MembersItems> memberArrayList;
-	LinearLayout layout_members, bottomLayout;
+	Button btn_submit;
 
-	Authentication authentication;
-	TextView txt_challengename, txt_challengeDescription;
-	EditText etxt_chat;
-	GetChallengeDetailsItems getChallengeDetailsItems;
-	SlidingDrawer slidingDrawer;
-
-	FrameLayout.LayoutParams layoutParams;
-	InputMethodManager imm;
-	int height;
-     Button btn_sub;
-	ArrayList<WitnessForVote> selectwinnerArrayList = null;
 	
+	ArrayList<WitnessForVote> selectforwinnerArrayList = null;
+	LinearLayout layout_members;
+	Authentication authentication;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,59 +61,40 @@ public class SelectWinner extends Fragment implements OnClickListener {
 	}
 
 	public View init(View view) {
-		layout_members = (LinearLayout) view
-				.findViewById(R.id.layout_lv_members);
-        btn_sub=(Button)view.findViewById(R.id.btn_sub);
-        btn_sub.setOnClickListener(this);
-		slidingDrawer = (SlidingDrawer) view.findViewById(R.id.slidingDrawer);
-		txt_challengename = (TextView) view
-				.findViewById(R.id.txt_challengename);
-		txt_challengeDescription = (TextView) view
-				.findViewById(R.id.txt_challengeDescription);
-		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
-		etxt_chat = (EditText) view.findViewById(R.id.etxt_chat);
-
-		slidingDrawer.setOnDrawerOpenListener(openDrawer());
-		slidingDrawer.setOnDrawerCloseListener(closeDrawer());
-		Display display = getActivity().getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-
-		height = size.y;
-		imm = (InputMethodManager) getActivity().getSystemService(
-				Context.INPUT_METHOD_SERVICE);
-
-		layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				height / 2);
-		slidingDrawer.setLayoutParams(layoutParams);
-		slidingDrawer.open();
-		bottomLayout.setVisibility(View.VISIBLE);
 		
-		etxt_chat.setOnFocusChangeListener(focus());
-		selectwinnerArrayList = new ArrayList<WitnessForVote>();
-		
+		btn_submit = (Button) view.findViewById(R.id.btn_submit);
+		layout_members = (LinearLayout) view.findViewById(R.id.layout_members);
+
+		btn_submit.setOnClickListener(this);
+
 		for (int i = 0; i < 5; i++) {
 
-			WitnessForVote vote = new WitnessForVote();
-			vote.setName("Item :" + i);
-			selectwinnerArrayList.add(vote);
 			LayoutInflater mInflater = (LayoutInflater) getActivity()
 					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-			View rowview = mInflater.inflate(R.layout.row_select_winner, null);
+			View rowview = mInflater.inflate(R.layout.row_witness_vote, null);
+			NetworkImageView imv_icon = (NetworkImageView) rowview
+					.findViewById(R.id.imv_icon);
+			ImageLoader mImageLoader = null;
+			mImageLoader = AppController.getInstance().getImageLoader();
+			imv_icon.setImageUrl("http://mycruisecareer.com/wp-content/uploads/2014/03/noelle-profile-pic-in-circle-200x200.png", mImageLoader);
+
 			LinearLayout layout = (LinearLayout) rowview
 					.findViewById(R.id.layout);
 			layout.setOnClickListener(this);
-			
+
 			layout.setTag(i);
+
 			layout_members.addView(rowview);
-		} 
+		}
+
+		
 		return view;
 	}
 
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
-		if (view.getId() == R.id.btn_sub) {
+		if (view.getId() == R.id.btn_submit) {
 		//	authentication = new Authentication(getActivity());
 			MainActivity.toolbar_title.setText("Challenge Winner");
 			FragmentManager fragmentManager = getFragmentManager();
@@ -163,44 +140,6 @@ public class SelectWinner extends Fragment implements OnClickListener {
 		}
 	}
 
-	public OnDrawerOpenListener openDrawer() {
-		return new OnDrawerOpenListener() {
 
-			@Override
-			public void onDrawerOpened() {
-				// TODO Auto-generated method stub
-				bottomLayout.setVisibility(View.INVISIBLE);
-			}
-		};
-	}
-
-	public OnDrawerCloseListener closeDrawer() {
-		return new OnDrawerCloseListener() {
-
-			@Override
-			public void onDrawerClosed() {
-				// TODO Auto-generated method stub
-				layoutParams = new FrameLayout.LayoutParams(
-						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-				slidingDrawer.setLayoutParams(layoutParams);
-				bottomLayout.setVisibility(View.VISIBLE);
-			}
-		};
-	}
-
-	public OnFocusChangeListener focus() {
-		return new OnFocusChangeListener() {
-
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				// TODO Auto-generated method stub
-				if (hasFocus) {
-
-					slidingDrawer.close();
-				} else {
-
-				}
-			}
-		};
-	}
+	
 }
