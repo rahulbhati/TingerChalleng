@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/create_challenge_layout_margin_left"
+        android:paddingRight="@dimen/create_challenge_layout_margin_right" >
+
+        <EditText
+            android:id="@+id/etxt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/etxt_border"
+            android:ems="10"
+            android:hint="Challenge title"
+            android:textColor="@android:color/black" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/etxt_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+             android:layout_marginBottom="30dp"
+            android:background="@drawable/etxt_border"
+            android:ems="10"
+            android:hint="Challenge description"
+            android:lines="3"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="30dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="CANCEL"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@drawable/btn_primary"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="SUBMIT"
+                android:textAllCaps="false"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -32,6 +32,7 @@ import com.tingler.challenge.R;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.AppController;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.util.EditChallenge;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.MembersItems;
 import com.tingler.challenge.util.Profile;
@@ -42,7 +43,7 @@ public class ChallengeTimer extends Fragment implements OnClickListener{
 
 	Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
-			txt_pize, txt_coins;
+			txt_pize, txt_coins,txt_edit;
 	EditText etxt_days, etxt_hours, etxt_minutes;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
@@ -82,7 +83,8 @@ public class ChallengeTimer extends Fragment implements OnClickListener{
 		etxt_days = (EditText) view.findViewById(R.id.etxt_days);
 		etxt_hours = (EditText) view.findViewById(R.id.etxt_hours);
 		etxt_minutes = (EditText) view.findViewById(R.id.etxt_minutes);
-		
+		txt_edit = (TextView) view.findViewById(R.id.txt_edit);
+		txt_edit.setOnClickListener(this);
 		etxt_days.setEnabled(false);
 		etxt_hours.setEnabled(false);
 		etxt_minutes.setEnabled(false);
@@ -210,6 +212,9 @@ public class ChallengeTimer extends Fragment implements OnClickListener{
 				Toast.makeText(getActivity(), "User removed successfully!",Toast.LENGTH_LONG).show();
 				//authentication.requestChallengeRemoveUserFromChallengeAPI(params, null);
 				
+			}else if(v.getId()==R.id.txt_edit){
+				EditChallenge editChallenge=new EditChallenge(getActivity());
+				editChallenge.showDialogBox();
 			}
 	
 	}

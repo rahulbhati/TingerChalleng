@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:rotation="180"
-    android:fillViewport="true" >
+    android:fillViewport="true"
+    android:rotation="180" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,15 +22,14 @@
                 android:id="@+id/error_request_pending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-          
                 layout="@layout/error_request_pending" >
             </include>
 
             <LinearLayout
-                android:layout_below="@+id/error_request_pending"
                 android:id="@+id/timerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/error_request_pending"
                 android:background="@color/bottle_green_color"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -47,6 +46,17 @@
                     android:text="Challenge text will be here"
                     android:textColor="@color/primaryColor"
                     android:textSize="@dimen/profile_un_txt_size" />
+
+                <TextView
+                    android:id="@+id/txt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/edit_border"
+                    android:gravity="right"
+                    android:padding="3dp"
+                    android:text="  Edit  "
+                    android:textColor="@color/primaryColor" />
 
                 <TextView
                     android:id="@+id/txt"
@@ -162,7 +172,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical" >
-
             </LinearLayout>
         </ScrollView>
 
@@ -184,20 +193,10 @@
                 android:paddingRight="@dimen/btn_paddding_right"
                 android:text="STOP NOTIFICATION"
                 android:textAllCaps="false"
-                android:textSize="@dimen/btn_text_size"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/btn_text_size" />
 
-          <!--   <Button
-                android:id="@+id/btn_removeme"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btn_height"
-                android:layout_gravity="bottom|center_horizontal"
-                android:background="@drawable/btn_reject"
-                android:paddingLeft="@dimen/btn_paddding_left"
-                android:paddingRight="@dimen/btn_paddding_right"
-                android:text="REMOVE ME"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white" /> -->
+       
         </LinearLayout>
     </LinearLayout>
 
