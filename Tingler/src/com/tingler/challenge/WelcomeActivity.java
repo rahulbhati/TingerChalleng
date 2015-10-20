@@ -23,6 +23,7 @@ import com.facebook.Session;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.api.call.FacebookLogin;
+import com.tingler.challenge.gcm.RegistrationIntentService;
 import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.Validations;
 
@@ -44,6 +45,8 @@ public class WelcomeActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		Intent intent=new Intent(this,RegistrationIntentService.class);
+		startService(intent);
 		checkLogin();
 		setContentView(R.layout.activity_welcome);
 		pkghash();
