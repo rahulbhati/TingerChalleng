@@ -57,18 +57,9 @@ public class WelcomeActivity extends Activity implements
 	public void checkLogin() {
 		profile = new Profile(this);
 		System.out.println("profiile id" + profile.getId());
-		if (profile.getId().length() > 0) { // check first time start app
-			if (Profile.getIsVarify().equalsIgnoreCase("1")) { // check if
-																// is_varity =1
-																// then user
-																// account
-																// activated
-				if (Profile.getStatus().equalsIgnoreCase("1")) { // check if
-																	// status =1
-																	// then user
-																	// completed
-																	// profile
-																	// info
+		if (profile.getId().length() > 0) { 
+			if (Profile.getIsVarify().equalsIgnoreCase("1")) { 
+				if (Profile.getStatus().equalsIgnoreCase("1")) { 
 					Intent intent = new Intent(this, MainActivity.class);
 					startActivity(intent);
 					finish();

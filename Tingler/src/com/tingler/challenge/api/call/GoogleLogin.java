@@ -3,6 +3,8 @@ package com.tingler.challenge.api.call;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
@@ -25,12 +27,13 @@ public class GoogleLogin implements ConnectionCallbacks,
     private boolean mIntentInProgress;
     Context context;
 	private ConnectionResult mConnectionResult;
-
+    ProgressDialog progressDialog;
 	public GoogleLogin(Context context) {
 		this.context = context;
 	}
 
 	public void googleLogin() {
+		progressDialog= ProgressDialog.show(context, null, "Loading...");
 		mGoogleApiClient = new GoogleApiClient.Builder(context)
 				.addConnectionCallbacks(this)
 				.addOnConnectionFailedListener(this).addApi(Plus.API)
@@ -49,6 +52,7 @@ public class GoogleLogin implements ConnectionCallbacks,
 				mConnectionResult = result;
 				mConnectionResult.startResolutionForResult((Activity) context,
 						GOOGLE_LOGIN_TAG);
+				
 			} catch (SendIntentException e) {
 				mIntentInProgress = false;
 				mGoogleApiClient.connect();
@@ -73,6 +77,7 @@ public class GoogleLogin implements ConnectionCallbacks,
         Intent intent=new Intent(context,ProfileActivity.class);
         context.startActivity(intent);
         ((Activity)context).finish();
+        progressDialog.dismiss();
 	}
 
 	@Override
@@ -95,6 +100,7 @@ public class GoogleLogin implements ConnectionCallbacks,
 		} else {
 			googleLogout();
 			mIntentInProgress = true;
+			progressDialog.dismiss();
 		}
 	}
 
@@ -106,7 +112,6 @@ public class GoogleLogin implements ConnectionCallbacks,
 			if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
 				Person currentPerson = Plus.PeopleApi
 						.getCurrentPerson(mGoogleApiClient);
-				System.out.println("Curent Person :" + currentPerson);
 				//String name = currentPerson.getDisplayName();
 				String photoUrl = currentPerson.getImage().getUrl();
 				String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
@@ -117,6 +122,7 @@ public class GoogleLogin implements ConnectionCallbacks,
 				profileHashMap.put(Profile.EMAIL, email);
 				profileHashMap.put(APIS.Gplus_id, currentPerson.getId());
 				profileHashMap.put(APIS.Media_type, "google_plus");
+               
 			} else {
 				Toast.makeText(context, "Person information is null",
 						Toast.LENGTH_LONG).show();

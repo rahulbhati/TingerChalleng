@@ -6,6 +6,7 @@ import java.util.Map;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -21,8 +22,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.android.Facebook;
 import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
+import com.tingler.challenge.api.call.FacebookLogin;
+import com.tingler.challenge.api.call.GoogleLogin;
 import com.tingler.challenge.fragment.About;
 import com.tingler.challenge.fragment.AcceptReject;
 import com.tingler.challenge.fragment.ChallengeMembers;
@@ -41,7 +45,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	ImageView imv_action_menu;
 	TextView txt_profile, txt_dashboard, txt_notification, txt_helpcenter,
 			txt_aboutus, txt_update, txt_signout;
-	ImageView etxt_setting;
+	ImageView etxt_setting,imageview_profile;
 	public static TextView toolbar_title;
     Button btn_createchallenge;
     LinearLayout layout_notifi;
@@ -73,6 +77,18 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 		layout_notifi=(LinearLayout)findViewById(R.id.layout_notifi);
 		toolbar_title.setTypeface(robotoBoldTF);
+		
+		imageview_profile=(ImageView)findViewById(R.id.imageview_profile);
+		com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(MainActivity.this);
+		try {
+			Bitmap bitmap=	profile.decodeBase64(profile.getProfileBase64());
+			bitmap=profile.getCroppedBitmap(bitmap);
+			imageview_profile.setImageBitmap(bitmap);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		
 		etxt_setting = (ImageView) findViewById(R.id.etxt_setting);
 		btn_createchallenge=(Button)findViewById(R.id.btn_createchallenge);
@@ -128,6 +144,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			MainActivity.this.startActivity(intent);
 			MainActivity.this.finish();
 			Toast.makeText(MainActivity.this, "Sign out successfully!", Toast.LENGTH_LONG).show();
+			
+			if(profile.getMediaType().equalsIgnoreCase("google_plus")){
+				GoogleLogin googleLogin=new GoogleLogin(MainActivity.this);
+				googleLogin.googleLogout();
+			
+			}else if(profile.getMediaType().equalsIgnoreCase("facebook")){
+				FacebookLogin.callFacebookLogout(MainActivity.this);
+			}
+			
 		}
 
 	}

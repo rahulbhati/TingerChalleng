@@ -145,7 +145,7 @@ public class Authentication extends GoogleLogin {
 								com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 										context);
 								profile.addProfileInfo(arg0);
-								System.out.println("Id :" + profile.getId());
+								
 								Intent intent = new Intent(context,
 										MainActivity.class);
 								context.startActivity(intent);

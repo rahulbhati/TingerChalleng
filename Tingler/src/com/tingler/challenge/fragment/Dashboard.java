@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.R;
@@ -27,6 +28,7 @@ public class Dashboard extends Fragment implements OnClickListener {
 	SlidingTabLayout tabs;
 	CharSequence Titles[] = { "Challenge", "Witness", "Watchers" };
 	int Numboftabs = 3;
+	TextView txt_username,txt_level_number,txt_coins;
 	// Context context;
 	private FragmentActivity fragmentActivity;
 
@@ -48,6 +50,13 @@ public class Dashboard extends Fragment implements OnClickListener {
 
 	public void init(View dashboardView) {
 		viewPager = (ViewPager) dashboardView.findViewById(R.id.viewPager);
+		txt_username=(TextView)dashboardView.findViewById(R.id.txt_username);
+		txt_level_number=(TextView)dashboardView.findViewById(R.id.txt_level_number);
+		txt_coins=(TextView)dashboardView.findViewById(R.id.txt_coins);
+		com.tingler.challenge.util.Profile	profile = new com.tingler.challenge.util.Profile(getActivity());
+		txt_username.setText(profile.getFullName());
+		txt_coins.setText(profile.getCoins());
+		txt_level_number.setText(profile.getLevel());
 		viewPagerAdapter = new ViewPagerAdapter(
 				fragmentActivity.getSupportFragmentManager(), Titles,
 				Numboftabs);

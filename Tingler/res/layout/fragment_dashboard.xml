@@ -44,6 +44,7 @@
                         android:id="@+id/txt_level_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:hint="0"
                         android:text="1"
                         android:textColor="@color/levelTxtColor"
                         android:textSize="@dimen/levelTxtColor" />
@@ -68,16 +69,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                  
-
                     android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
-                   <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="@dimen/coin_width"
-                android:layout_height="@dimen/coin_height"
-                android:src="@drawable/icon_coins" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="@dimen/coin_width"
+                        android:layout_height="@dimen/coin_height"
+                        android:src="@drawable/icon_coins" />
 
                     <TextView
                         android:id="@+id/txt_coins"
@@ -107,18 +106,16 @@
             android:background="@android:color/white"
             android:orientation="vertical" >
 
-            
-                 <com.tingler.challenge.util.SlidingTabLayout
+            <com.tingler.challenge.util.SlidingTabLayout
                 android:id="@+id/slidingTabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="2dp" />
-            
+                android:elevation="2dp" >
+            </com.tingler.challenge.util.SlidingTabLayout>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                
                 android:layout_height="match_parent" >
             </android.support.v4.view.ViewPager>
         </LinearLayout>

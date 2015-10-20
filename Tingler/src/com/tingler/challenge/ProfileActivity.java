@@ -139,10 +139,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 											params.put(Profile.MOBILE, mobile);
 											params.put(Profile.PASSWORD, pass);
 
-											params.put(Profile.Profile_Img,
-													profile.getProfileBase64());
-											params.put(Profile.ID,
-													profile.getId());
+											
 											params.put(Profile.STATUS_MSG,
 													status);
 											if (profile.getGoogleId().length() > 0
@@ -169,9 +166,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 																	.trim());
 
 												}
+												System.out.println("Social Profile :"+params);
 												authentication
 														.requestSocialMediaAPI(params);
 											} else {
+												params.put(Profile.Profile_Img,
+														profile.getProfileBase64());
+												params.put(Profile.ID,
+														profile.getId());
 												authentication
 														.requestProfileAPI(params);
 											}
