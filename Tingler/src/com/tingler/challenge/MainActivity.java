@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	ImageView etxt_setting;
 	public static TextView toolbar_title;
     Button btn_createchallenge;
+    LinearLayout layout_notifi;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,6 +71,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		txt_update = (TextView) findViewById(R.id.txt_update);
 		txt_signout = (TextView) findViewById(R.id.txt_signout);
 		toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+		layout_notifi=(LinearLayout)findViewById(R.id.layout_notifi);
 		toolbar_title.setTypeface(robotoBoldTF);
 		
 		etxt_setting = (ImageView) findViewById(R.id.etxt_setting);
@@ -76,13 +79,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		imv_action_menu.setOnClickListener(this);
 		txt_profile.setOnClickListener(this);
 		txt_dashboard.setOnClickListener(this);
-		txt_notification.setOnClickListener(this);
+		
 		txt_helpcenter.setOnClickListener(this);
 		txt_aboutus.setOnClickListener(this);
 		txt_update.setOnClickListener(this);
 		txt_signout.setOnClickListener(this);
 		etxt_setting.setOnClickListener(this);
 		btn_createchallenge.setOnClickListener(this);
+		layout_notifi.setOnClickListener(this);
 		displayView(0);
 		toolbar_title.setText("Profile");
 	}
@@ -98,7 +102,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		} else if (v.getId() == R.id.txt_dashboard) {
 			displayView(1);
 			toolbar_title.setText("Dashboard");
-		}else if (v.getId() == R.id.txt_notification) {
+		}else if (v.getId() == R.id.layout_notifi) {
 			displayView(2);
 			toolbar_title.setText("Notification");
 		}else if (v.getId() == R.id.txt_helpcenter) {
@@ -149,7 +153,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			break;
 		case 3:
 			
-			fragment = new VoteForWitness();
+			//fragment = new VoteForWitness();
 			//fragment = new Help();
 			break;
 		case 4:

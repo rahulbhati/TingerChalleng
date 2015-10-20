@@ -34,13 +34,12 @@ import com.tingler.challenge.contacts.ManageContacts;
 import com.tingler.challenge.util.ContactItem;
 
 public class Challengee extends Fragment implements OnClickListener {
-	Button btn_next,btn_back;
+	Button btn_next, btn_back;
 	LinearLayout ly_add_challengee;
 	ListView lv_challengee;
 	ArrayList<ContactItem> tempArrayList;
 	public static ChallengeeAdapter challengeeAdapter;
-	
-	@Override
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
@@ -50,17 +49,14 @@ public class Challengee extends Fragment implements OnClickListener {
 		init(challengeeView);
 		return challengeeView;
 	}
-
-	public void init(View view) {
+    public void init(View view) {
 
 		btn_next = (Button) view.findViewById(R.id.btn_next);
 		btn_back = (Button) view.findViewById(R.id.btn_back);
 		btn_back.setOnClickListener(this);
-		
-		lv_challengee = (ListView) view.findViewById(R.id.lv_challengee);
+        lv_challengee = (ListView) view.findViewById(R.id.lv_challengee);
 		btn_next.setOnClickListener(this);
-		
-		View footerView = ((LayoutInflater) getActivity().getSystemService(
+ 		View footerView = ((LayoutInflater) getActivity().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE)).inflate(
 				R.layout.footer_challengee, null, false);
 		ly_add_challengee = (LinearLayout) footerView
@@ -71,15 +67,13 @@ public class Challengee extends Fragment implements OnClickListener {
 		tempArrayList = SetterGetter.getChallengeeTempArrayList();
 		challengeeAdapter = new ChallengeeAdapter(getActivity(), tempArrayList);
 		lv_challengee.setAdapter(challengeeAdapter);
-		
-	}
+ 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.btn_next) {
-
-			ArrayList<ContactItem> arrayList = new ArrayList<ContactItem>();
+        	ArrayList<ContactItem> arrayList = new ArrayList<ContactItem>();
 			for (int i = 0; i < ManageContacts.getChallengeeContactArrayList()
 					.size(); i++) {
 				ContactItem object = new ContactItem();
@@ -97,7 +91,7 @@ public class Challengee extends Fragment implements OnClickListener {
 		} else if (v.getId() == R.id.ly_add_challengee) {
 			DialogContacts contacts = new DialogContacts(getActivity());
 			contacts.contactList("Choose Challengee");
-		}else if(v.getId()==R.id.btn_back){
+		} else if (v.getId() == R.id.btn_back) {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, new Details()).commit();
@@ -127,18 +121,20 @@ public class Challengee extends Fragment implements OnClickListener {
 
 		public void init(Dialog dialog) {
 			lv_contacts = (ListView) dialog.findViewById(R.id.lv_contacts);
-			dialogContactsAdapter = new DialogContactsAdapter(context,ManageContacts.getChallengeeContactArrayList());
+			dialogContactsAdapter = new DialogContactsAdapter(context,
+					ManageContacts.getChallengeeContactArrayList());
 			lv_contacts.setAdapter(dialogContactsAdapter);
 			btn_ok = (Button) dialog.findViewById(R.id.btn_ok);
 			btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
 			btn_ok.setOnClickListener(this);
 			btn_cancel.setOnClickListener(this);
 		}
-        @Override
+
+		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			if (v.getId() == R.id.btn_ok) {
-             
+
 				new LoadChallengee().execute();
 				dialog.dismiss();
 
@@ -154,24 +150,19 @@ public class Challengee extends Fragment implements OnClickListener {
 		Context context;
 		LayoutInflater inflater;
 		private ArrayList<ContactItem> contactsArrayList = null;
-		
-		//public ArrayList<Boolean> checkBoxStatus;
+
+		// public ArrayList<Boolean> checkBoxStatus;
 
 		public DialogContactsAdapter(Context context,
 				ArrayList<ContactItem> contactItem) {
 			this.context = context;
 			this.contactsArrayList = contactItem;
-			/*checkBoxStatus = new ArrayList<Boolean>();
-			for (int i = 0; contactsArrayList.size() > i; i++) {
-				checkBoxStatus.add(i, contactsArrayList.get(i)
-						.isCheckboxstatus());
-			}*/
+
 		}
 
 		public class ViewHolder {
 			TextView name;
-			//TextView mobile;
-			// TextView level;
+
 			ImageView flag;
 		}
 
@@ -192,13 +183,13 @@ public class Challengee extends Fragment implements OnClickListener {
 
 		public View getView(final int position, View convertView1,
 				ViewGroup parent) {
-			
+
 			LayoutInflater mInflater = (LayoutInflater) context
 					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 			View convertView = mInflater
 					.inflate(R.layout.row_dialog_item, null);
 			TextView name = (TextView) convertView.findViewById(R.id.txt_name);
-			
+
 			CheckBox checkBox = (CheckBox) convertView
 					.findViewById(R.id.checkBox);
 			name.setText(contactsArrayList.get(position).getName());
@@ -210,15 +201,15 @@ public class Challengee extends Fragment implements OnClickListener {
 						boolean isChecked) {
 					// TODO Auto-generated method stub
 					if (isChecked) {
-					
+
 						ManageContacts.getChallengeeContactArrayList()
 								.get(position).setCheckboxstatus(isChecked);
 					} else {
-					
+
 						ManageContacts.getChallengeeContactArrayList()
 								.get(position).setCheckboxstatus(isChecked);
 					}
-					
+
 				}
 			});
 
@@ -244,29 +235,32 @@ public class Challengee extends Fragment implements OnClickListener {
 		return number;
 	}
 
-    public class LoadChallengee extends AsyncTask<String, String, String> {
+	public class LoadChallengee extends AsyncTask<String, String, String> {
 		ProgressDialog progressDialog;
 		ArrayList<ContactItem> challengeeArrayList = new ArrayList<ContactItem>();
+
 		@Override
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
-			progressDialog = ProgressDialog.show(getActivity(), "", "loading...");
+			progressDialog = ProgressDialog.show(getActivity(), "",
+					"loading...");
 			super.onPreExecute();
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-		   for(int i=0;i<ManageContacts.getCheckedChallengee().size();i++){
-			   String name=ManageContacts.getCheckedChallengee().get(i).getName();
-			   String mobile=getNumberByName(name);
-			   if(mobile!=null){
-				   ContactItem object=new ContactItem();
-				   object.setName(name);
-				   object.setMobile(mobile);
-				   challengeeArrayList.add(object) ;
-			   }
-		   }
+			for (int i = 0; i < ManageContacts.getCheckedChallengee().size(); i++) {
+				String name = ManageContacts.getCheckedChallengee().get(i)
+						.getName();
+				String mobile = getNumberByName(name);
+				if (mobile != null) {
+					ContactItem object = new ContactItem();
+					object.setName(name);
+					object.setMobile(mobile);
+					challengeeArrayList.add(object);
+				}
+			}
 			return null;
 		}
 
@@ -275,11 +269,12 @@ public class Challengee extends Fragment implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			SetterGetter.setChallengeeTempArrayList(challengeeArrayList);
-			
-			challengeeAdapter = new ChallengeeAdapter(getActivity(),challengeeArrayList);
+
+			challengeeAdapter = new ChallengeeAdapter(getActivity(),
+					challengeeArrayList);
 			lv_challengee.setAdapter(challengeeAdapter);
-		    progressDialog.dismiss();
-		
+			progressDialog.dismiss();
+
 		}
 
 	}

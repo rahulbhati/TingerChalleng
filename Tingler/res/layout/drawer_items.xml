@@ -57,16 +57,39 @@
                 android:text="Dashboard"
                 android:textColor="@android:color/white" />
 
-            <TextView
-                android:id="@+id/txt_notification"
+            <LinearLayout
+                android:id="@+id/layout_notifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/itme_one"
-                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+             
                 android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
-                android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
-                android:text="Notification"
-                android:textColor="@android:color/white" />
+                android:paddingTop="@dimen/drawer_txt_maring_top_bottom" >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/txt_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notification"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                     android:layout_weight="0.02"
+                     android:layout_marginRight="15dp"
+                    android:id="@+id/txt_notifi_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_notification"
+                    android:gravity="end"
+                    android:padding="5dp"
+                    android:text="99"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txt_helpcenter"
@@ -93,7 +116,6 @@
                 android:id="@+id/txt_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-              
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
                 android:paddingTop="@dimen/drawer_txt_maring_top_bottom"
@@ -111,7 +133,6 @@
                 android:id="@+id/txt_signout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-             
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/drawer_txt_maring_top_bottom"
                 android:paddingTop="@dimen/drawer_txt_maring_top_bottom"

@@ -22,14 +22,24 @@ public class ContactListService extends IntentService {
 	protected void onHandleIntent(Intent intent) {
 		// TODO Auto-generated method stub
 		ContentResolver cr = getContentResolver();
+		String[] selectionArgs = new String[]{ContactsContract.Contacts.DISPLAY_NAME};
+		String[] projection    = new String[] { ContactsContract.Contacts._ID,
+                Phone.DISPLAY_NAME,
+                Phone.NUMBER};
+		//String sql="select "+projection+" from "+ContactsContract.Contacts.CONTENT_URI+" where "+Phone.DISPLAY_NAME+" is not null and "+Phone.NUMBER+" is not null";
+	
 		Cursor namecursor = cr.query(ContactsContract.Contacts.CONTENT_URI,
-				null, null, null, Phone.DISPLAY_NAME + " ASC");
+				null, ContactsContract.Contacts.DISPLAY_NAME +" is not null and "+ContactsContract.Contacts.HAS_PHONE_NUMBER+" is not null and "+ContactsContract.Contacts.HAS_PHONE_NUMBER+" != 0", null, ContactsContract.Contacts.DISPLAY_NAME + " ASC");
+		
+	/*	Cursor namecursor = cr.query(ContactsContract.Contacts.CONTENT_URI,
+				projection, null, null, Phone.DISPLAY_NAME + " ASC");*/
 		while (namecursor.moveToNext()) {
 			String contactName = null;
 			contactName = namecursor.getString(namecursor
 					.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-
-			if (contactName != null) {
+             
+			
+			if (contactName != null ) {
 				ContactItem items = new ContactItem();
 				items.setName(contactName);
 				items.setCheckboxstatus(false);
