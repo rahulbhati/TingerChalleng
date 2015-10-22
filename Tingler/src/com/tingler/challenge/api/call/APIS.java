@@ -33,6 +33,9 @@ public class APIS {
 	public static String Gplus_id = "gplus_id";
 	public static String Email = "email";
 	
+	public static String Device_Token = "device_token";
+	
+	
 	///        create challenge title/////////
 	public static String CC_title = "title";
 	public static String CC_description = "description";

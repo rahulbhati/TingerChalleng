@@ -45,8 +45,7 @@ public class WelcomeActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		Intent intent=new Intent(this,RegistrationIntentService.class);
-		startService(intent);
+		
 		checkLogin();
 		setContentView(R.layout.activity_welcome);
 		pkghash();
@@ -73,6 +72,9 @@ public class WelcomeActivity extends Activity implements
 				startActivity(intent);
 				finish();
 			}
+		}else{
+			Intent intent=new Intent(this,RegistrationIntentService.class);
+			startService(intent);
 		}
 	}
 

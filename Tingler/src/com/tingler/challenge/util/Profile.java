@@ -44,6 +44,7 @@ public class Profile {
 	public static final String Change_Password_Code = "change_pwd_code";
 	public static final String Profile_Img = "profile_img";
 	public static final String Media_Type = "media_type";
+	public static final String Device_Token_GCM = "device_token";
 
 	public static String getMediaType() {
 		return sharedpreferences.getString(Media_Type, "");
@@ -53,8 +54,21 @@ public class Profile {
 		return Change_Password_Code;
 	}
 
+	public static String getDeviceTokenGcm() {
+		return sharedpreferences.getString(Device_Token_GCM, "");
+	}
+	public void setDeviceTokenGcm(String device_token){
+		editor.putString(Device_Token_GCM,device_token);
+		editor.commit();
+	}
+
+
 	public static String getProfileImg() {
 		return sharedpreferences.getString(Profile_Img, "");
+	}
+
+	public static String getMyprofile() {
+		return MYProfile;
 	}
 
 	public Context context;

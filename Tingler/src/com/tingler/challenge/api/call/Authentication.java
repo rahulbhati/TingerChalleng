@@ -30,6 +30,7 @@ import com.tingler.challenge.R;
 import com.tingler.challenge.fragment.Dashboard;
 import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
+import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.ProfileMemberItems;
 import com.tingler.challenge.util.VoteForWitnessSetterGetter;
 import com.tingler.challenge.util.WitnessForVote;
@@ -117,6 +118,8 @@ public class Authentication extends GoogleLogin {
 			protected Map<String, String> getParams() {
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters = params;
+				Profile profile=new Profile(context);
+				parameters.put(APIS.Device_Token, profile.getDeviceTokenGcm());
 				return parameters;
 			}
 		};
@@ -180,6 +183,8 @@ public class Authentication extends GoogleLogin {
 			protected Map<String, String> getParams() {
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters = params;
+				Profile profile=new Profile(context);
+				parameters.put(APIS.Device_Token, profile.getDeviceTokenGcm());
 				return parameters;
 			}
 		};
@@ -258,6 +263,8 @@ public class Authentication extends GoogleLogin {
 			protected Map<String, String> getParams() {
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters = params;
+				Profile profile=new Profile(context);
+				parameters.put(APIS.Device_Token, profile.getDeviceTokenGcm());
 				return parameters;
 			}
 		};
