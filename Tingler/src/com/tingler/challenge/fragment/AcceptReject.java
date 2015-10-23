@@ -101,11 +101,14 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		imm = (InputMethodManager) getActivity().getSystemService(
 				Context.INPUT_METHOD_SERVICE);
 
-		layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				height / 2);
-		slidingDrawer.setLayoutParams(layoutParams);
+	//	layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+	//			height / 2);
+	//	layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+	//			height );
+	//	slidingDrawer.setLayoutParams(layoutParams);
+		bottomLayout.setVisibility(View.INVISIBLE);
 		slidingDrawer.open();
-		bottomLayout.setVisibility(View.VISIBLE);
+		bottomLayout.setVisibility(View.INVISIBLE);
 		
 		
 		return view;
@@ -126,9 +129,9 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			@Override
 			public void onDrawerClosed() {
 				// TODO Auto-generated method stub
-				layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-						LayoutParams.MATCH_PARENT);
-				slidingDrawer.setLayoutParams(layoutParams);
+			//	layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+			//			LayoutParams.MATCH_PARENT);
+			//	slidingDrawer.setLayoutParams(layoutParams);
 				bottomLayout.setVisibility(View.VISIBLE);
 			}
 		};
