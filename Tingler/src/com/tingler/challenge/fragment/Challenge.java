@@ -21,6 +21,7 @@ import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.ProfileMemberItems;
+import com.tingler.challenge.util.SetterGetter;
 
 public class Challenge extends Fragment {
 	ListView lv_challenge;
@@ -50,9 +51,7 @@ public class Challenge extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
-				// Toast.makeText(getActivity(), ""+view.getTag(),
-				// Toast.LENGTH_LONG).show();
+				 
 				com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 						getActivity());
 				/**
@@ -61,7 +60,7 @@ public class Challenge extends Fragment {
 				 */
 
 				if (challengeMemberArrayList.get(position).getUser_type() == 1) {
-					
+					 SetterGetter.setUserType(1);
 					if (challengeMemberArrayList.get(position).getC_status() == 0) {
 						authentication = new Authentication(getActivity());
 						Map<String, String> params = new HashMap<String, String>();
@@ -89,6 +88,7 @@ public class Challenge extends Fragment {
 
 				} else if (challengeMemberArrayList.get(position)
 						.getUser_type() == 4) {
+					 SetterGetter.setUserType(4);
 					authentication = new Authentication(getActivity());
 					Map<String, String> params = new HashMap<String, String>();
 					params.put(APIS.Challenge_id, ""
@@ -96,7 +96,7 @@ public class Challenge extends Fragment {
 									.getChallenge_id());
 					params.put(APIS.CC_user_id, profile.getId());
 					authentication.requestGetChallengeDetailsAPI(params,
-							new ChallengeTimer());
+							new ChallengePendding());
 				}
 			}
 		});

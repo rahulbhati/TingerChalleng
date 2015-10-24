@@ -10,6 +10,7 @@ import com.tingler.challenge.api.call.APIS;
 import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.ProfileMemberItems;
+import com.tingler.challenge.util.SetterGetter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,7 @@ public class Watchers extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				
 				/**
 				 * User Type- > 1= challengee,2=witness,3=watchers,4=challenger
 				 * C_Status - > 0=Pending, 1=Accepted,2=Reject
@@ -62,7 +64,7 @@ public class Watchers extends Fragment {
 				com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 						getActivity());
 				if (watcherMemberArrayList.get(position).getUser_type() == 3) {
-
+					 SetterGetter.setUserType(3);
 					authentication = new Authentication(getActivity());
 					Map<String, String> params = new HashMap<String, String>();
 					params.put(APIS.Challenge_id, ""

@@ -1042,20 +1042,20 @@ public class Authentication extends GoogleLogin {
 						System.out.println("data :" + arg0);
 						try {
 
+							
+
 							JSONObject obj = new JSONObject(arg0);
-
-							if (obj.getString("data").length() > 0
-									&& obj.getString("error").length() == 0) {
-
-							} else {
-								Toast.makeText(context, obj.getString("error"),
-										Toast.LENGTH_LONG).show();
-							}
+	                          Toast.makeText(context, obj.getString("message"),
+											Toast.LENGTH_LONG).show();
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						progressDialog.dismiss();
+						  com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(context);
+	              			Map<String, String> params = new HashMap<String, String>();
+	              			params.put(APIS.CC_user_id, profile.getId());
+	              			requestGetUserDashboardAPI(params);
 
 					}
 

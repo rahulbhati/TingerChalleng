@@ -69,7 +69,7 @@
                 android:id="@+id/etxt_chat"
                 android:textColor="@android:color/black" >
 
-                <requestFocus />
+                
             </EditText>
 
             <Button

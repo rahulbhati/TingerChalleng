@@ -184,7 +184,7 @@
             android:paddingTop="@dimen/create_challenge_btn_margin_bottom" >
 
             <Button
-                android:id="@+id/btn_sub"
+                android:id="@+id/btn_stop_notifi"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/btn_height"
                 android:layout_gravity="bottom|center_horizontal"
@@ -195,7 +195,18 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/btn_text_size" />
-
+            <Button
+                android:id="@+id/btn_removeme"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@drawable/btn_reject"
+                android:paddingLeft="@dimen/btn_paddding_left"
+                android:paddingRight="@dimen/btn_paddding_right"
+                android:text="REMOVE ME"
+                android:textAllCaps="false"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/white" /> 
        
         </LinearLayout>
     </LinearLayout>

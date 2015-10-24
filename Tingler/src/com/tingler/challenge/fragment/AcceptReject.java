@@ -35,6 +35,7 @@ import com.tingler.challenge.api.call.Authentication;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.MembersItems;
 import com.tingler.challenge.util.Profile;
+import com.tingler.challenge.util.SetterGetter;
 
 public class AcceptReject extends Fragment implements OnClickListener{
 	ArrayList<MembersItems> memberArrayList;
@@ -42,7 +43,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 
 	Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
-			txt_pize, txt_coins;
+			txt_pize, txt_coins,txt_request;
 	EditText etxt_days, etxt_hours, etxt_minutes;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
@@ -50,7 +51,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
-	Button btn_accept,btn_reject,btn_removeme;
+	Button btn_accept,btn_reject;
 	Profile profile;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +67,11 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
 		
 		btn_accept=(Button)view.findViewById(R.id.btn_accept);
-		btn_removeme=(Button)view.findViewById(R.id.btn_removeme);
+		
 		btn_reject=(Button)view.findViewById(R.id.btn_reject);
 		btn_accept.setOnClickListener(this);
 		btn_reject.setOnClickListener(this);
-		btn_removeme.setOnClickListener(this);
+		
 		
 		slidingDrawer = (SlidingDrawer) view.findViewById(R.id.slidingDrawer);
 		txt_challengename = (TextView) view
@@ -85,6 +86,13 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		etxt_days = (EditText) view.findViewById(R.id.etxt_days);
 		etxt_hours = (EditText) view.findViewById(R.id.etxt_hours);
 		etxt_minutes = (EditText) view.findViewById(R.id.etxt_minutes);
+		txt_request = (TextView) view.findViewById(R.id.txt_request);
+		
+		if(SetterGetter.getUserType()==2){
+			txt_request.setText("You got request as a witness");
+		}else{
+			txt_request.setText("You got request as a challengee");
+		}
 		
 		etxt_days.setEnabled(false);
 		etxt_hours.setEnabled(false);
@@ -202,12 +210,13 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			params.put(APIS.CC_user_id,user_id);
 			System.out.println("input :"+params);
 			
-			int votefor=0;
-			Fragment fragment=null;
-			if(votefor==0){
-				fragment=new VoteForWitness();
+			
+			Fragment fragment=null; 
+			//usertype==2==witness
+			if(SetterGetter.getUserType()==2){
+				fragment=new ChallengePendding();
 			}else{
-				//fragment=new Chall;
+				fragment=new VoteForWitness();
 			}
 			authentication.requestChallengeAcceptAPI(params,fragment);
 			}
@@ -219,13 +228,6 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			System.out.println("input :"+params);
 			authentication.requestChallengeRejecctAPI(params);
 			
-		}else if(v.getId()==R.id.btn_removeme){
-			HashMap<String, String> params = new HashMap<String, String>();
-			params.put(APIS.Challenge_id, getChallengeDetailsItems.getC_id());
-			params.put(APIS.CC_user_id,user_id);
-			System.out.println("input :"+params);
-			Toast.makeText(getActivity(), "Removed successfully!", Toast.LENGTH_LONG).show();
-			//authentication.requestChallengeRemoveUserFromChallengeAPI(params, null);
 		}
 	}
 }
