@@ -106,10 +106,9 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	//	layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
 	//			height );
 	//	slidingDrawer.setLayoutParams(layoutParams);
-		bottomLayout.setVisibility(View.INVISIBLE);
+		
 		slidingDrawer.open();
 		bottomLayout.setVisibility(View.INVISIBLE);
-		
 		
 		return view;
 	}

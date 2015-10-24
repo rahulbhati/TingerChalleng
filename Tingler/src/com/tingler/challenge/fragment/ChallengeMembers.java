@@ -95,11 +95,11 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		imm = (InputMethodManager) getActivity().getSystemService(
 				Context.INPUT_METHOD_SERVICE);
 
-		layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-				height / 2);
-		slidingDrawer.setLayoutParams(layoutParams);
+	//	layoutParams = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+	//			height / 2);
+//		slidingDrawer.setLayoutParams(layoutParams);
 		slidingDrawer.open();
-		bottomLayout.setVisibility(View.VISIBLE);
+		bottomLayout.setVisibility(View.INVISIBLE);
 
 		etxt_chat.setOnFocusChangeListener(focus());
 

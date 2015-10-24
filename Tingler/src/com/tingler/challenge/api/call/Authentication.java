@@ -28,8 +28,11 @@ import com.tingler.challenge.MainActivity;
 import com.tingler.challenge.ProfileActivity;
 import com.tingler.challenge.R;
 import com.tingler.challenge.fragment.Dashboard;
+import com.tingler.challenge.fragment.Notification;
 import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
+import com.tingler.challenge.util.NotificationItems;
+import com.tingler.challenge.util.NotificationSetterGetter;
 import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.ProfileMemberItems;
 import com.tingler.challenge.util.VoteForWitnessSetterGetter;
@@ -1081,5 +1084,89 @@ public class Authentication extends GoogleLogin {
 
 	}
 
+	public void requestNotificationAPI(final Map<String, String> params,final Fragment fragmentPage) {
 
+		progressDialog = ProgressDialog.show(context, "", "loading...");
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST,
+				APIS.CUSTOM_Notification, new Response.Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						// TODO Auto-generated method stub
+						System.out.println("data :"+arg0);
+						
+						try {
+
+							JSONObject obj = new JSONObject(arg0);
+
+							if (obj.getString("data").length() > 0
+									&& obj.getString("error").length() == 0) {
+
+								JSONArray jsonArray = obj.getJSONArray("data");	
+								ArrayList<NotificationItems> itemaArrayList=new ArrayList<NotificationItems>();
+								System.out.println("array length :"+jsonArray.length());
+								
+							    for (int i = 0; i < jsonArray.length(); i++) {
+							    	JSONObject objItem = jsonArray.getJSONObject(i);
+							    	NotificationItems items=new NotificationItems();
+							    	items.setN_id(Integer.parseInt(objItem.get("n_id").toString()));
+							    	items.setNotification_type(Integer.parseInt(objItem.get("notification_type").toString()));
+							    	items.setMessage(objItem.get("message").toString().trim());
+							    	items.setSub_message(objItem.get("sub_message").toString().trim());
+							    	items.setUser_id(Integer.parseInt(objItem.get("user_id").toString()));
+							    	items.setSend_date(objItem.get("send_date").toString());
+							    	items.setStatus(Integer.parseInt(objItem.get("status").toString()));
+							    	itemaArrayList.add(items);
+								}		
+							NotificationSetterGetter.setArrayList(itemaArrayList);
+							
+							FragmentManager fragmentManager = ((Activity) context)
+									.getFragmentManager();
+							fragmentManager
+									.beginTransaction()
+									.replace(R.id.frame_container,
+											new Notification()).commit();
+
+							MainActivity.drawerLayout.closeDrawers();	
+								
+							} else {
+								Toast.makeText(context, obj.getString("error"),
+										Toast.LENGTH_LONG).show();
+							}
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						progressDialog.dismiss();
+
+					}
+
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						Toast.makeText(context,
+								"Please check internet connection",
+								Toast.LENGTH_LONG).show();
+						System.out.println("Volley Error :" + arg0);
+
+						progressDialog.dismiss();
+					}
+				}) {
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> parameters = new HashMap<String, String>();
+				parameters = params;
+				return parameters;
+			}
+		};
+
+		AppController.getInstance().addToRequestQueue(stringRequest);
+
+	}
+
+	
+	
 }

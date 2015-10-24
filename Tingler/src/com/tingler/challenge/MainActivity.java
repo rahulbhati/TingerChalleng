@@ -103,8 +103,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		etxt_setting.setOnClickListener(this);
 		btn_createchallenge.setOnClickListener(this);
 		layout_notifi.setOnClickListener(this);
-		displayView(0);
+	
 		toolbar_title.setText("Profile");
+		if(getIntent().getExtras()!=null){
+			displayView(2);
+		}
+		displayView(0);
 	}
 
 	@Override
@@ -159,22 +163,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	public void displayView(int position) {
 		Fragment fragment = null;
+		com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(MainActivity.this);
+		Authentication authentication = new Authentication(this);
+		
 		switch (position) {
 		case 0:
 			fragment = new Profile();
 			break;
 		case 1:
 			//fragment = new Dashboard();
-			com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(MainActivity.this);
 			System.out.println("profiile id" + profile.getId());
-			Authentication authentication = new Authentication(this);
 			Map<String, String> params = new HashMap<String, String>();
 			params.put(APIS.CC_user_id, profile.getId());
 			authentication.requestGetUserDashboardAPI(params);
 			
 			break;
 		case 2:
-			fragment = new Notification();
+		//	fragment = new Notification();
+			Map<String, String> paramsnoti = new HashMap<String, String>();
+			paramsnoti.put(APIS.CC_user_id, profile.getId());
+			authentication.requestNotificationAPI(paramsnoti, null);
 			break;
 		case 3:
 			

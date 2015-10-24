@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tingler.challenge.R;
 import com.tingler.challenge.util.NotificationItems;
 
 public class NotificationAdapter extends BaseAdapter {
@@ -55,9 +57,41 @@ public class NotificationAdapter extends BaseAdapter {
 		TextView txt_time = (TextView) convertView
 				.findViewById(com.tingler.challenge.R.id.txt_time);
 
-		txt_title.setText(notificationArrayList.get(position).getTitle());
-		txt_time.setText(notificationArrayList.get(position).getHours());
+		txt_title.setText(notificationArrayList.get(position).getMessage());
+		txt_time.setText(notificationArrayList.get(position).getSend_date());
+		ImageView imv_icon=(ImageView)convertView.findViewById(R.id.imv_icon);
+		
+		imv_icon.setImageResource(getNotificationIcon(notificationArrayList.get(position).getNotification_type()));
+		
 		return convertView;
 	}
 
+	public int getNotificationIcon(int type) {
+		int notificationtype = 0;
+		switch (type) {
+		
+		case 1:
+			notificationtype = R.drawable.icon_new_challenge_notification;
+			break;
+		case 2:
+			notificationtype = R.drawable.icon_levelup_notification;
+			break;
+		case 3:
+			notificationtype = R.drawable.icon_winner_notification;
+			break;
+		case 4:
+			notificationtype = R.drawable.icon_loss_notification;
+			break;
+		case 5:
+			notificationtype = R.drawable.icon_chat_notification;
+			break;
+		case 6:
+			notificationtype = R.drawable.icon_image_notification;
+			break;
+		default:
+
+			break;
+		}
+		return notificationtype;
+	}
 }

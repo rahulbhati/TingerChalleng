@@ -18,6 +18,9 @@ public class APIS {
 	public static String CUSTOM_Challgenge_VoteForWitness = HOST+"challenge/vote_for_witness";
 	public static String CUSTOM_Challgenge_Remove_User = HOST+"challenge/remove_user_from_challenge";
 	
+	public static String CUSTOM_Notification = HOST+"user/get_all_notifications";
+	
+	
 	public static String MOBILT = "mobile";
 	public static String Is_verify = "code";
 	
