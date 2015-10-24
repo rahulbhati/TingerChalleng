@@ -72,6 +72,8 @@ public class Challenge extends Fragment {
 								new AcceptReject());
 					}else if (challengeMemberArrayList.get(position)
 							.getC_status() == 1) {
+						
+						
 						authentication = new Authentication(getActivity());
 						Map<String, String> params = new HashMap<String, String>();
 						params.put(APIS.Challenge_id, ""
@@ -80,6 +82,8 @@ public class Challenge extends Fragment {
 						params.put(APIS.CC_user_id, profile.getId());
 						authentication.requestGetChallengeDetailsAPI(params,
 								new ChallengeMembers());
+					
+					
 					}
 					else if(challengeMemberArrayList.get(position)
 							.getC_status() == 2){

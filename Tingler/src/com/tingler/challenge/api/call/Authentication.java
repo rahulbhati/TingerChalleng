@@ -864,34 +864,46 @@ public class Authentication extends GoogleLogin {
 					public void onResponse(String arg0) {
 						// TODO Auto-generated method stub
 						System.out.println("data :" + arg0);
-						/*try {
+						try {
 
 							JSONObject obj = new JSONObject(arg0);
 
 							if (obj.getString("data").length() > 0
 									&& obj.getString("error").length() == 0) {
 
+								ArrayList<WitnessForVote> arrayList=new ArrayList<WitnessForVote>();
+								JSONObject dataObj = new JSONObject(arg0).getJSONObject("data");
+								JSONArray voteforwitnesList = dataObj.getJSONArray("witness_list_for_vote");
+								
+								
+								for (int i = 0; i < voteforwitnesList.length(); i++) {
+									WitnessForVote items = new WitnessForVote();
+									JSONObject objitem=voteforwitnesList.getJSONObject(i);
+									items.setUser_type(objitem.getString("user_type"));
+									items.setUser_id(objitem.getString("user_id"));
+									items.setContact(objitem.getString("contact"));
+									items.setC_status(objitem.getString("c_status"));
+									
+									items.setName(objitem.getString("name"));
+									items.setProfile_img(objitem.getString("profile_img"));
+									arrayList.add(items);
+								}
+								progressDialog.dismiss(); 
+								VoteForWitnessSetterGetter.setVoteForWitnessArrayList(arrayList);
+								FragmentManager fragmentManager = ((FragmentActivity) context)
+										.getFragmentManager();
+		                        fragmentManager.beginTransaction().replace(R.id.frame_container,fragmentPage).commit();
+							
 							} else {
+								progressDialog.dismiss(); 
 								Toast.makeText(context, obj.getString("error"),
 										Toast.LENGTH_LONG).show();
 							}
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}*/
-						ArrayList<WitnessForVote> arrayList=new ArrayList<WitnessForVote>();
-						for (int i = 0; i < 5; i++) {
-							WitnessForVote items = new WitnessForVote();
-						
-							items.setName("Rahul Bhati "+i);
-							items.setProfile_img("http://www.jacobrogelberg.com/wp-content/uploads/2014/10/JakeCircleProfile.png");
-							arrayList.add(items);
 						}
-						VoteForWitnessSetterGetter.setVoteForWitnessArrayList(arrayList);
-						FragmentManager fragmentManager = ((FragmentActivity) context)
-								.getFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.frame_container,fragmentPage).commit();
-						progressDialog.dismiss();
+						
 
 					}
 

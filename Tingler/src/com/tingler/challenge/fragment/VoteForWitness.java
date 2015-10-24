@@ -75,8 +75,11 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 					.findViewById(R.id.imv_icon);
 			ImageLoader mImageLoader = null;
 			mImageLoader = AppController.getInstance().getImageLoader();
-			imv_icon.setImageUrl(witnessForVoteArrayList.get(i)
-					.getProfile_img(), mImageLoader);
+		
+			//	imv_icon.setImageUrl(witnessForVoteArrayList.get(i)
+			//			.getProfile_img(), mImageLoader);
+			
+			
 
 			LinearLayout layout = (LinearLayout) rowview
 					.findViewById(R.id.layout);
