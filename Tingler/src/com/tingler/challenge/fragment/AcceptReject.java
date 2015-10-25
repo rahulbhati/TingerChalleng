@@ -53,6 +53,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	int height;
 	Button btn_accept,btn_reject;
 	Profile profile;
+	ImageView imv_updown;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 		layout_lv_members = (LinearLayout) view
 				.findViewById(R.id.layout_lv_members);
 		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
-		
+		imv_updown=(ImageView)view.findViewById(R.id.imv_updown);
 		btn_accept=(Button)view.findViewById(R.id.btn_accept);
 		
 		btn_reject=(Button)view.findViewById(R.id.btn_reject);
@@ -127,6 +128,8 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			public void onDrawerOpened() {
 				// TODO Auto-generated method stub
 				bottomLayout.setVisibility(View.INVISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_up);
+				
 			}
 		};
 	}
@@ -140,6 +143,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 			//			LayoutParams.MATCH_PARENT);
 			//	slidingDrawer.setLayoutParams(layoutParams);
 				bottomLayout.setVisibility(View.VISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_down);
 			}
 		};
 	}

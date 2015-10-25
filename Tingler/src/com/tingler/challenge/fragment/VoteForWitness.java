@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
@@ -40,7 +41,7 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 	LinearLayout layout_members;
 	Authentication authentication;
 	GetChallengeDetailsItems getChallengeDetailsItems;
-
+    String witness_id=null;
 	public VoteForWitness() {
 		// TODO Auto-generated constructor stub
 	
@@ -98,26 +99,25 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 
 		if (view.getId() == R.id.btn_submit) {
 			authentication = new Authentication(getActivity());
-			/*getChallengeDetailsItems = new GetChallengeDetailsItems();
+			getChallengeDetailsItems = new GetChallengeDetailsItems();
 			Profile profile = new Profile(getActivity());
 			String user_id = profile.getId();
-			String witness_id;
+			if(witness_id!=null && witness_id.length()>0){
 			HashMap<String, String> params = new HashMap<String, String>();
 			params.put(APIS.Challenge_id,
-					getChallengeDetailsItems.getChallenger_id());
+					getChallengeDetailsItems.getC_id());
 			params.put(APIS.CC_user_id, user_id);
-			params.put(APIS.Witness_id, "0");
-			System.out.println("input :" + params);
-			authentication.requestChallengeVoteForWitnessAPI(params);
-			*/
-			com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(getActivity());
-			System.out.println("profiile id" + profile.getId());
-			Map<String, String> params = new HashMap<String, String>();
-			params.put(APIS.CC_user_id, profile.getId());
-			authentication.requestGetUserDashboardAPI(params);
+			params.put(APIS.Witness_id, witness_id);
+			System.out.println("vote input :" + params);
+			Toast.makeText(getActivity(),""+ params, Toast.LENGTH_LONG).show();
+			//authentication.requestChallengeVoteForWitnessAPI(params);
+			}else{
+				Toast.makeText(getActivity(), "Please select witness", Toast.LENGTH_LONG).show();
+			}
+			
 			} else {
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < witnessForVoteArrayList.size(); i++) {
 				View relative = layout_members.getChildAt(i);
 				LinearLayout v = (LinearLayout) relative
 						.findViewById(R.id.layout);
@@ -134,6 +134,7 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 					RadioButton radioBtn = (RadioButton) v
 							.findViewById(R.id.radioBtn);
 					radioBtn.setChecked(true);
+					witness_id=witnessForVoteArrayList.get(i).getUser_id();
 				} else {
 					v.setBackgroundResource(R.drawable.border_gray);
 					TextView txt_name = (TextView) v

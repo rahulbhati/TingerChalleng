@@ -55,5 +55,7 @@
     <dimen name="prize_coins_icon_height">30dp</dimen>
     <dimen name="contact_dialogbox_txt_size">15sp</dimen>
     <dimen name="txt_challenge_description">15sp</dimen>
-<dimen name="btn_text_size">12sp</dimen>
+    <dimen name="btn_text_size">12sp</dimen>
+<dimen name="up_down_width">80dp</dimen>
+<dimen name="up_down_height">30dp</dimen>
 </resources>
