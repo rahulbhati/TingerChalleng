@@ -48,6 +48,7 @@ public class AcceptReject extends Fragment implements OnClickListener{
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
 
+	
 	FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
