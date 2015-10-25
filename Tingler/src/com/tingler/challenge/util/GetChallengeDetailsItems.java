@@ -6,9 +6,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class GetChallengeDetailsItems {
-public static String c_id,challenger_id,title,description,c_day,c_hrs,c_min,challenge_time,start_date,end_date,is_active,custom_prize,c_coin,winner_id,is_complete,date_added,participants;
+public static String c_id,challenger_id,title,description,c_day,c_hrs,c_min,challenge_time,start_date,end_date,is_active,is_started,custom_prize,c_coin,winner_id,is_complete,date_added,participants;
 
 public static ArrayList<ParticipantItems> participantItemsArrayList;
+
+
+public  String getIs_started() {
+	return is_started;
+}
+
+
+public  void setIs_started(String is_started) {
+	this.is_started = is_started;
+}
 
 
 public void addGetChallengeDetails(String challengedetails) {
@@ -31,6 +41,8 @@ public void addGetChallengeDetails(String challengedetails) {
 	    setWinner_id(jsonObject.getString("winner_id"));
 	    setIs_complete(jsonObject.getString("is_complete"));
 	    setDate_added(jsonObject.getString("date_added"));
+	    
+	    setIs_started(jsonObject.getString("is_started"));
 	    
 	    JSONArray array=new JSONArray(jsonObject.getString("participants"));
 	    participantItemsArrayList=new ArrayList<ParticipantItems>();

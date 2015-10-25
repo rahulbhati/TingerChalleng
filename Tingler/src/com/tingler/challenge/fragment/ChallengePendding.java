@@ -41,20 +41,18 @@ import com.tingler.challenge.util.SetterGetter;
 public class ChallengePendding extends Fragment implements OnClickListener{
 	ArrayList<MembersItems> memberArrayList;
 	LinearLayout layout_lv_members, bottomLayout;
-
 	Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
 			txt_pize, txt_coins,txt_edit;
 	EditText etxt_days, etxt_hours, etxt_minutes;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
-
-	FrameLayout.LayoutParams layoutParams;
+    FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
 	Button btn_start,btn_removeme,btn_stop_notifi;
 	Profile profile;
-	
+	ImageView imv_updown;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -69,15 +67,11 @@ public class ChallengePendding extends Fragment implements OnClickListener{
 		bottomLayout = (LinearLayout) view.findViewById(R.id.bottomLayout);
 		btn_removeme=(Button)view.findViewById(R.id.btn_removeme);
 		btn_stop_notifi=(Button)view.findViewById(R.id.btn_stop_notifi);
-		
+		imv_updown=(ImageView)view.findViewById(R.id.imv_updown);
 		btn_start=(Button)view.findViewById(R.id.btn_start);
 		btn_start.setOnClickListener(this);
 		btn_removeme.setOnClickListener(this);
 		btn_stop_notifi.setOnClickListener(this);
-		if(SetterGetter.getUserType()!=4){
-			btn_start.setVisibility(View.INVISIBLE);
-		}
-		
 		
 		slidingDrawer = (SlidingDrawer) view.findViewById(R.id.slidingDrawer);
 		txt_challengename = (TextView) view
@@ -124,6 +118,7 @@ public class ChallengePendding extends Fragment implements OnClickListener{
 			public void onDrawerOpened() {
 				// TODO Auto-generated method stub
 				bottomLayout.setVisibility(View.INVISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_up);
 			}
 		};
 	}
@@ -137,11 +132,19 @@ public class ChallengePendding extends Fragment implements OnClickListener{
 			//			LayoutParams.MATCH_PARENT);
 			//	slidingDrawer.setLayoutParams(layoutParams);
 				bottomLayout.setVisibility(View.VISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_down);
 			}
 		};
 	}
 	public void setValue() {
 		getChallengeDetailsItems = new GetChallengeDetailsItems();
+		
+		if(SetterGetter.getUserType()!=4){
+			btn_start.setVisibility(View.INVISIBLE);
+		}else if(Integer.parseInt(getChallengeDetailsItems.getIs_active())==1 && Integer.parseInt(getChallengeDetailsItems.getIs_started())==2){
+			btn_start.setVisibility(View.VISIBLE);
+		}
+		
 		txt_challengename.setText(getChallengeDetailsItems.getTitle());
 		txt_challengeDescription.setText(getChallengeDetailsItems
 				.getDescription());

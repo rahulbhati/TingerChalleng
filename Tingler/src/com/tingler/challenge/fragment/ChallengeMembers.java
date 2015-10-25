@@ -39,18 +39,16 @@ import com.tingler.challenge.util.Profile;
 public class ChallengeMembers extends Fragment implements OnClickListener {
 	ArrayList<MembersItems> memberArrayList;
 	LinearLayout layout_lv_members, bottomLayout;
-
-	Authentication authentication;
+    Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
 			txt_pize, txt_coins;
 	EditText etxt_days, etxt_hours, etxt_minutes, etxt_chat;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
-
-	FrameLayout.LayoutParams layoutParams;
+    FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
-
+	ImageView imv_updown;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -74,6 +72,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 		txt_challengetime = (TextView) view
 				.findViewById(R.id.txt_challengetime);
 		txt_coins = (TextView) view.findViewById(R.id.txt_coins);
+		imv_updown=(ImageView)view.findViewById(R.id.imv_updown);
 		txt_pize = (TextView) view.findViewById(R.id.txt_pize);
 		etxt_days = (EditText) view.findViewById(R.id.etxt_days);
 		etxt_hours = (EditText) view.findViewById(R.id.etxt_hours);
@@ -186,6 +185,7 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 			public void onDrawerOpened() {
 				// TODO Auto-generated method stub
 				bottomLayout.setVisibility(View.INVISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_up);
 			}
 		};
 	}
@@ -196,10 +196,8 @@ public class ChallengeMembers extends Fragment implements OnClickListener {
 			@Override
 			public void onDrawerClosed() {
 				// TODO Auto-generated method stub
-				layoutParams = new FrameLayout.LayoutParams(
-						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-				slidingDrawer.setLayoutParams(layoutParams);
 				bottomLayout.setVisibility(View.VISIBLE);
+				imv_updown.setImageResource(R.drawable.slide_down);
 			}
 		};
 	}

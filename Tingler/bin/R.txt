@@ -810,7 +810,7 @@ int id adjust_height 0x7f0b000d
 int id adjust_width 0x7f0b000e
 int id alertTitle 0x7f0b004d
 int id always 0x7f0b0038
-int id arrowLayout 0x7f0b00e3
+int id arrowLayout 0x7f0b00e2
 int id beginning 0x7f0b003d
 int id book_now 0x7f0b001d
 int id bottomLayout 0x7f0b00d5
@@ -831,7 +831,7 @@ int id btn_reject 0x7f0b00dc
 int id btn_removeme 0x7f0b011a
 int id btn_save 0x7f0b0075
 int id btn_signup 0x7f0b0089
-int id btn_start 0x7f0b00df
+int id btn_start 0x7f0b00de
 int id btn_stop_notifi 0x7f0b0119
 int id btn_sub 0x7f0b011c
 int id btn_submit 0x7f0b00b5
@@ -888,7 +888,7 @@ int id end 0x7f0b003e
 int id end_padder 0x7f0b0108
 int id error 0x7f0b006d
 int id error_request_pending 0x7f0b0113
-int id etxt_chat 0x7f0b00de
+int id etxt_chat 0x7f0b00dd
 int id etxt_city 0x7f0b007a
 int id etxt_coins 0x7f0b00d2
 int id etxt_contact 0x7f0b0077
@@ -939,7 +939,7 @@ int id imv_cross 0x7f0b0110
 int id imv_icon 0x7f0b00c4
 int id imv_icon1 0x7f0b010a
 int id imv_level 0x7f0b00cb
-int id imv_uparrow 0x7f0b00dd
+int id imv_uparrow 0x7f0b00e3
 int id imv_updown 0x7f0b00d9
 int id info 0x7f0b0107
 int id itemIcon 0x7f0b00ab
@@ -1031,13 +1031,13 @@ int id toolBar 0x7f0b006c
 int id toolbar 0x7f0b00f7
 int id toolbar_title 0x7f0b008f
 int id topPanel 0x7f0b004b
-int id txt 0x7f0b00e2
+int id txt 0x7f0b00e1
 int id txt_aboutus 0x7f0b00be
 int id txt_account 0x7f0b006f
 int id txt_accountactive_error 0x7f0b00c2
 int id txt_challengeDescription 0x7f0b0114
 int id txt_challengee_witness 0x7f0b010d
-int id txt_challengename 0x7f0b00e1
+int id txt_challengename 0x7f0b00e0
 int id txt_challengetime 0x7f0b0115
 int id txt_coins 0x7f0b00e9
 int id txt_coins_txt 0x7f0b00ea
@@ -1053,7 +1053,7 @@ int id txt_name 0x7f0b00c5
 int id txt_notifi_number 0x7f0b00bc
 int id txt_notification 0x7f0b00bb
 int id txt_pay_with 0x7f0b00d1
-int id txt_pendding 0x7f0b00e0
+int id txt_pendding 0x7f0b00df
 int id txt_pize 0x7f0b0116
 int id txt_profile 0x7f0b00b8
 int id txt_request 0x7f0b00da

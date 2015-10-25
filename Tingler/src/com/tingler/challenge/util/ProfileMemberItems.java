@@ -5,11 +5,25 @@ public class ProfileMemberItems {
 	public int progressBarLevel;
 	public static String profile_url, default_img_url;
 
-	public int user_type, challenge_id, is_active, c_status, c_progress;
+	public int user_type, challenge_id, is_active, c_status, c_progress,is_vote;
 
 	public static String getProfile_url() {
 		return profile_url;
 	}
+
+
+
+	public int getIs_vote() {
+		return is_vote;
+	}
+
+
+
+	public void setIs_vote(int is_vote) {
+		this.is_vote = is_vote;
+	}
+
+
 
 	public static String getDefault_img_url() {
 		return default_img_url;

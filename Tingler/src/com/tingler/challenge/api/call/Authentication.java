@@ -675,7 +675,8 @@ public class Authentication extends GoogleLogin {
 											.getString("start_date"));
 									items.setEnd_date(object
 											.getString("end_date"));
-									
+									items.setIs_vote(Integer.parseInt(object
+											.getString("is_vote")));
 
 									challengeArrayList.add(items);
 								}
@@ -703,7 +704,8 @@ public class Authentication extends GoogleLogin {
 											.getString("start_date"));
 									items.setEnd_date(object
 											.getString("end_date"));
-									
+									items.setIs_vote(Integer.parseInt(object
+											.getString("is_vote")));
 									witnessArrayList.add(items);
 								}
 
@@ -731,6 +733,8 @@ public class Authentication extends GoogleLogin {
 											.getString("start_date"));
 									items.setEnd_date(object
 											.getString("end_date"));
+									items.setIs_vote(Integer.parseInt(object
+											.getString("is_vote")));
 									watchersArrayList.add(items);
 								}
 								DashboardTabSetterGetter
@@ -996,24 +1000,22 @@ public class Authentication extends GoogleLogin {
 					@Override
 					public void onResponse(String arg0) {
 						// TODO Auto-generated method stub
-						System.out.println("data :" + arg0);
+						System.out.println("vote for witness data :" + arg0);
 						try {
 
 							JSONObject obj = new JSONObject(arg0);
-
-							if (obj.getString("data").length() > 0
-									&& obj.getString("error").length() == 0) {
-
-							} else {
-								Toast.makeText(context, obj.getString("error"),
+                            Toast.makeText(context, obj.getString("message"),
 										Toast.LENGTH_LONG).show();
-							}
+							
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						progressDialog.dismiss();
-
+						  com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(context);
+	              			Map<String, String> params = new HashMap<String, String>();
+	              			params.put(APIS.CC_user_id, profile.getId());
+	              			requestGetUserDashboardAPI(params);
 					}
 
 				}, new Response.ErrorListener() {

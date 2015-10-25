@@ -40,16 +40,13 @@ import com.tingler.challenge.util.SetterGetter;
 public class AcceptReject extends Fragment implements OnClickListener{
 	ArrayList<MembersItems> memberArrayList;
 	LinearLayout layout_lv_members, bottomLayout;
-
-	Authentication authentication;
+    Authentication authentication;
 	TextView txt_challengename, txt_challengeDescription, txt_challengetime,
 			txt_pize, txt_coins,txt_request;
 	EditText etxt_days, etxt_hours, etxt_minutes;
 	GetChallengeDetailsItems getChallengeDetailsItems;
 	SlidingDrawer slidingDrawer;
-
-	
-	FrameLayout.LayoutParams layoutParams;
+    FrameLayout.LayoutParams layoutParams;
 	InputMethodManager imm;
 	int height;
 	Button btn_accept,btn_reject;

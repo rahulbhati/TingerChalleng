@@ -47,6 +47,6 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="right"
-        android:text="you can add up to 5 witnes" />
+        android:text="you can add up to 5 witnes(Optional)" />
 
 </LinearLayout>

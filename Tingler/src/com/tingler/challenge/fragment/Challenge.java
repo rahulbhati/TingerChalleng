@@ -54,6 +54,7 @@ public class Challenge extends Fragment {
 				 
 				com.tingler.challenge.util.Profile profile = new com.tingler.challenge.util.Profile(
 						getActivity());
+				authentication = new Authentication(getActivity());
 				/**
 				 * User Type- > 1= challengee,2=witness,3=watchers,4=challenger
 				 * C_Status - > 0=Pending, 1=Accepted,2=Reject
@@ -62,7 +63,7 @@ public class Challenge extends Fragment {
 				if (challengeMemberArrayList.get(position).getUser_type() == 1) {
 					 SetterGetter.setUserType(1);
 					if (challengeMemberArrayList.get(position).getC_status() == 0) {
-						authentication = new Authentication(getActivity());
+					
 						Map<String, String> params = new HashMap<String, String>();
 						params.put(APIS.Challenge_id, ""
 								+ challengeMemberArrayList.get(position)
@@ -73,15 +74,27 @@ public class Challenge extends Fragment {
 					}else if (challengeMemberArrayList.get(position)
 							.getC_status() == 1) {
 						
+						if(challengeMemberArrayList.get(position).getIs_vote()==1)
+						{
+							
+							Map<String, String> params = new HashMap<String, String>();
+							params.put(APIS.Challenge_id, ""
+									+ challengeMemberArrayList.get(position)
+											.getChallenge_id());
+							params.put(APIS.CC_user_id, profile.getId());
+							authentication.requestGetChallengeDetailsAPI(params,
+									new ChallengePendding());
+							
+						}else if(challengeMemberArrayList.get(position).getIs_vote()==2){
+							HashMap<String, String> params = new HashMap<String, String>();
+							SetterGetter.setCurrentChallenge_id(challengeMemberArrayList.get(position).getChallenge_id());
+							params.put(APIS.Challenge_id, ""+challengeMemberArrayList.get(position).getChallenge_id());
+							params.put(APIS.CC_user_id,profile.getId());
+							System.out.println("input :"+params);
+							authentication.requestChallengeAcceptAPI(params,new VoteForWitness());
+						}
 						
-						authentication = new Authentication(getActivity());
-						Map<String, String> params = new HashMap<String, String>();
-						params.put(APIS.Challenge_id, ""
-								+ challengeMemberArrayList.get(position)
-										.getChallenge_id());
-						params.put(APIS.CC_user_id, profile.getId());
-						authentication.requestGetChallengeDetailsAPI(params,
-								new ChallengeMembers());
+						
 					
 					
 					}
@@ -93,7 +106,7 @@ public class Challenge extends Fragment {
 				} else if (challengeMemberArrayList.get(position)
 						.getUser_type() == 4) {
 					 SetterGetter.setUserType(4);
-					authentication = new Authentication(getActivity());
+					
 					Map<String, String> params = new HashMap<String, String>();
 					params.put(APIS.Challenge_id, ""
 							+ challengeMemberArrayList.get(position)

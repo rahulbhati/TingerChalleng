@@ -30,6 +30,7 @@ import com.tingler.challenge.util.DashboardTabSetterGetter;
 import com.tingler.challenge.util.GetChallengeDetailsItems;
 import com.tingler.challenge.util.Profile;
 import com.tingler.challenge.util.ProfileMemberItems;
+import com.tingler.challenge.util.SetterGetter;
 import com.tingler.challenge.util.VoteForWitnessSetterGetter;
 import com.tingler.challenge.util.WitnessForVote;
 
@@ -66,7 +67,7 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 		btn_submit.setOnClickListener(this);
 
 		for (int i = 0; i < witnessForVoteArrayList.size(); i++) {
-
+			
 			LayoutInflater mInflater = (LayoutInflater) getActivity()
 					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 			View rowview = mInflater.inflate(R.layout.row_witness_vote, null);
@@ -77,8 +78,8 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 			ImageLoader mImageLoader = null;
 			mImageLoader = AppController.getInstance().getImageLoader();
 		
-			//	imv_icon.setImageUrl(witnessForVoteArrayList.get(i)
-			//			.getProfile_img(), mImageLoader);
+				imv_icon.setImageUrl(witnessForVoteArrayList.get(i)
+					.getProfile_img(), mImageLoader);
 			
 			
 
@@ -104,13 +105,22 @@ public class VoteForWitness extends Fragment implements OnClickListener {
 			String user_id = profile.getId();
 			if(witness_id!=null && witness_id.length()>0){
 			HashMap<String, String> params = new HashMap<String, String>();
-			params.put(APIS.Challenge_id,
-					getChallengeDetailsItems.getC_id());
+			
+			String challegne_id;
+			
+			if(getChallengeDetailsItems.getC_id()!=null){
+				challegne_id=getChallengeDetailsItems.getC_id();
+			}else{
+				challegne_id=""+SetterGetter.getCurrentChallenge_id();
+			}
+			params.put(APIS.Challenge_id,challegne_id);
+			
+			
 			params.put(APIS.CC_user_id, user_id);
 			params.put(APIS.Witness_id, witness_id);
 			System.out.println("vote input :" + params);
-			Toast.makeText(getActivity(),""+ params, Toast.LENGTH_LONG).show();
-			//authentication.requestChallengeVoteForWitnessAPI(params);
+			
+			authentication.requestChallengeVoteForWitnessAPI(params);
 			}else{
 				Toast.makeText(getActivity(), "Please select witness", Toast.LENGTH_LONG).show();
 			}
